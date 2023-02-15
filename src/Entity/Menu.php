@@ -19,6 +19,7 @@ class Menu
     private ?string $title = null;
 
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Formule::class)]
+    #[ORM\JoinColumn(nullable: false)]
     private Collection $formule;
 
     public function __construct()
@@ -71,5 +72,9 @@ class Menu
         }
 
         return $this;
+    }
+
+    public function __toString(){
+        return $this->getTitle();
     }
 }

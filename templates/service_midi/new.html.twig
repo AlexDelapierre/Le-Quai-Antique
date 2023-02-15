@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ServiceMidi{% endblock %}
+
+{% block body %}
+    <h1>Create new ServiceMidi</h1>
+
+    {{ include('service_midi/_form.html.twig') }}
+
+    <a href="{{ path('app_service_midi_index') }}">back to list</a>
+{% endblock %}
