@@ -14,12 +14,12 @@ class Image
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $filepath = null;
+    private ?string $title = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $filename = null;
 
-    #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist'])]
     private ?Plat $plat = null;
 
     public function getId(): ?int
@@ -27,26 +27,26 @@ class Image
         return $this->id;
     }
 
-    public function getFilepath(): ?string
+    public function getTitle(): ?string
     {
-        return $this->filepath;
+        return $this->title;
     }
 
-    public function setFilepath(string $filepath): self
+    public function setTitle(string $title): self
     {
-        $this->filepath = $filepath;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getName(): ?string
+    public function getFilename(): ?string
     {
-        return $this->name;
+        return $this->filename;
     }
 
-    public function setName(?string $name): self
+    public function setFilename(string $filename): self
     {
-        $this->name = $name;
+        $this->filename = $filename;
 
         return $this;
     }
@@ -74,6 +74,6 @@ class Image
     }
 
     public function __toString(){
-        return $this->filepath;
+        return $this->getFilename();
     }
 }
