@@ -15,7 +15,7 @@ class FrontendController extends AbstractController
    */
   public function index(): Response
   {
-    return $this->render('frontend/homepage.html.twig', ['name' => '']);
+    return $this->render('main/index.html.twig', ['name' => '']);
   }
 
   /**
@@ -23,7 +23,7 @@ class FrontendController extends AbstractController
    */
   public function carte (): Response
   {
-    return $this->render('frontend/carte.html.twig', ['name' => '']);
+    return $this->render('main/carte.html.twig', ['name' => '']);
   }
 
   /**
@@ -31,7 +31,7 @@ class FrontendController extends AbstractController
    */
   public function reservation(): Response
   {
-    return $this->render('frontend/reservation.html.twig', ['name' => '']);
+    return $this->render('main/reservation.html.twig', ['name' => '']);
   }
 
   /**
@@ -39,6 +39,6 @@ class FrontendController extends AbstractController
    */
   public function contact(): Response
   {
-    return $this->render('frontend/contact.html.twig', ['name' => '']);
+    return $this->render('main/contact.html.twig', ['name' => '']);
   }
 }
