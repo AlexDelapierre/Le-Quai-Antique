@@ -9,7 +9,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Faker;
 
-class UsersFixtures extends Fixture
+class UserFixtures extends Fixture
 {
     public function __construct(
         private UserPasswordHasherInterface $passwordEncoder,
