@@ -27,6 +27,7 @@ class UserFixtures extends Fixture
 
         $manager->persist($admin);
 
+        //use the factory to create a Faker\Generator instance
         $faker = Faker\Factory::create('fr_FR');
 
         for($usr=1; $usr<=5; $usr++){
