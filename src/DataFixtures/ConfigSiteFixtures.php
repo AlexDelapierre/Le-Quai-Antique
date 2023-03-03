@@ -8,10 +8,11 @@ use Doctrine\Persistence\ObjectManager;
 
 class ConfigSiteFixtures extends Fixture
 {
-    public function load(int $maxCouverts, string $horaires ,ObjectManager $manager): void
+    public function load(ObjectManager $manager): void
     {
+        $horaires = '';
         $plat = new ConfigSite();
-        $plat->setMaxCouverts($maxCouverts);
+        $plat->setMaxCouverts(20);
         $plat->setHoraires($horaires);
         $manager->persist($plat);
 
