@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Formule;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class FormuleFixtures extends Fixture
+class FormuleFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -28,5 +29,13 @@ class FormuleFixtures extends Fixture
         $formule->setMenu($menu);
 
         $manager->persist($formule);
+    }
+
+    //Méthode de la DependentFixtureInterface qui permet de changer l'ordre alphabétique du chargement des fixtures lors d'un data load
+    public function getDependencies(): array
+    {
+        return [
+            MenuFixtures::class
+        ];
     }
 }

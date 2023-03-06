@@ -15,7 +15,7 @@ class CategoryFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $parent = $this->createCategory('Entrée', null, $manager);
+        $parent = $this->createCategory('Entrées', null, $manager);
         $parent = $this->createCategory('Plats', null, $manager);
         $parent = $this->createCategory('Desserts', null, $manager);
         

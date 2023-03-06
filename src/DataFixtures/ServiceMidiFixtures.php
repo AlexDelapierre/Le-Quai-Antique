@@ -10,21 +10,21 @@ class ServiceMidiFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $this->createHoraire($manager, 12.00);
-        $this->createHoraire($manager, 12.15);
-        $this->createHoraire($manager, 12.30);
-        $this->createHoraire($manager, 12.45);
-        $this->createHoraire($manager, 13.00);
-        $this->createHoraire($manager, 13.15);
-        $this->createHoraire($manager, 13.30);
+        // $this->createHoraire($manager, );
+        // $this->createHoraire($manager, );
+        // $this->createHoraire($manager, );
+        // $this->createHoraire($manager, );
+        // $this->createHoraire($manager, );
+        // $this->createHoraire($manager, );
+        // $this->createHoraire($manager, );
 
         $manager->flush();
     }
 
-    public function createHoraire(ObjectManager $manager, $horaire)
+    public function createHoraire(ObjectManager $manager, $creneau)
     {
         $service = new ServiceMidi();
-        $service->setHoraire($horaire);
+        $service->setHoraire($creneau);
         $manager->persist($service);
 
     }
