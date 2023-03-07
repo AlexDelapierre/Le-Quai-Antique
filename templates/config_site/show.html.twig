@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ConfigSite{% endblock %}
+
+{% block body %}
+    <h1>ConfigSite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ config_site.id }}</td>
+            </tr>
+            <tr>
+                <th>MaxCouverts</th>
+                <td>{{ config_site.maxCouverts }}</td>
+            </tr>
+            <tr>
+                <th>Horaires</th>
+                <td>{{ config_site.horaires }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_config_site_index') }}">back to list</a>
+
+    <a href="{{ path('app_config_site_edit', {'id': config_site.id}) }}">edit</a>
+
+    {{ include('config_site/_delete_form.html.twig') }}
+{% endblock %}

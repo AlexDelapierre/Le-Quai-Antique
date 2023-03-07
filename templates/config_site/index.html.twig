@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ConfigSite index{% endblock %}
+
+{% block body %}
+    <h1>ConfigSite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>MaxCouverts</th>
+                <th>Horaires</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for config_site in config_sites %}
+            <tr>
+                <td>{{ config_site.id }}</td>
+                <td>{{ config_site.maxCouverts }}</td>
+                <td>{{ config_site.horaires }}</td>
+                <td>
+                    <a href="{{ path('app_config_site_show', {'id': config_site.id}) }}">show</a>
+                    <a href="{{ path('app_config_site_edit', {'id': config_site.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_config_site_new') }}">Create new</a>
+{% endblock %}
