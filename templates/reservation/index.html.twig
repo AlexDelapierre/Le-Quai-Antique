@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>CutleryNumber</th>
+                <th>nbCouverts</th>
                 <th>Date</th>
                 <th>actions</th>
             </tr>
@@ -18,7 +18,7 @@
         {% for reservation in reservations %}
             <tr>
                 <td>{{ reservation.id }}</td>
-                <td>{{ reservation.cutleryNumber }}</td>
+                <td>{{ reservation.nbCouverts }}</td>
                 <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
