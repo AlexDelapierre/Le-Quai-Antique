@@ -1,105 +1,73 @@
 <aside class="col-2 border border-light bg-white p-2">
-  <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-      <span class="fs-5 fw-semibold">Administration</span>
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+    <a href="/" class="d-flex {#align-items-center#} mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Administration</span>
     </a>
-    <ul class="list-unstyled ps-0">
-
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          Galerie d'images 
-        </button>
-        <div class="collapse" id="home-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Liste des images</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Ajouter une image</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Modifier une image</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Supprimer une image</a></li>
-          </ul>
-        </div>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-white {#active#}" aria-current="page">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          Galerie 
+        </a>
       </li>
-
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+      <li>
+        <a href="{{ path('app_plat_index') }}" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
           Carte 
-        </button>
-        <div class="collapse" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Liste des plats</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Ajouter un plat</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Modifier un plat</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Supprimer un plat</a></li>
-          </ul>
-        </div>
+        </a>
       </li>
-
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+      <li>
+        <a href="{{ path('app_menu_index') }}" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
           Menus 
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Liste des menus</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Ajouter un menu</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Modifier un menu</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Supprimer un menu</a></li>
-          </ul>
-        </div>
+        </a>
       </li>
-
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Formules 
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Liste des formules</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Ajouter une formule</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Modifier une formule</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Supprimer une formule</a></li>
-          </ul>
-        </div>
+      <li>
+        <a href="{{ path('app_formule_index') }}" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+          Formules
+        </a>
       </li>
-
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Réservations 
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Liste des réservations</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Ajouter une réservation</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Modifier une réservation</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Supprimer une réservation</a></li>
-          </ul>
-        </div>
+      <li>
+        <a href="{{ path('app_reservation_index') }}" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Réservations
+        </a>
       </li>
-      
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Horaires
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Afficher les horaires</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Modifier les horaires</a></li>
-          </ul>
-        </div>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Couverts
+        </a>
       </li>
-      
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Nbre de couverts
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Afficher les horaires</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Modifier les horaires</a></li>
-          </ul>
-        </div>
+      <li>
+        <a href="{{ path('app_user_index') }}" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Clients
+        </a>
       </li>
-      <li class="border-top my-3"></li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Horaires 
+        </a>
+      </li>
     </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
   </div>
-</aside>
+</aside>  
