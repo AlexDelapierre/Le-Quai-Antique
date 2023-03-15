@@ -11,6 +11,7 @@
         {# La fonction asset() est une fonction twig qui permet de préciser le chemin relatif du dossier public #}
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('assets/css/override-bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
         <!-- Fichiers JS -->
@@ -20,8 +21,15 @@
         <script src="{{ asset('assets/js/scripts.js') }}"defer></script>
     </head>
     <body>
-        {% include "_partials/_navbar.html.twig" %}
-        {% block body %}{% endblock %}
-        {% include "_partials/_footer.html.twig" %}
+        <div class="container">
+            {% include "_partials/_navbar.html.twig" %}
+            {% block body %}{% endblock %}
+            {% include "_partials/_footer.html.twig" %}
+        </div>
+        <!-- Copyright -->
+        <div class=" copyright text-center p-3" style="background-color: rgba(0, 0, 0, 0.9);">
+        ©2023 Restaurant 
+        </div>
+        <!-- Copyright -->
     </body>
 </html>
