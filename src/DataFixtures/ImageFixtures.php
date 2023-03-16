@@ -10,6 +10,8 @@ use Faker;
 
 class ImageFixtures extends Fixture implements DependentFixtureInterface
 {
+    private $counter = 1;
+
     public function load(ObjectManager $manager): void
     {
         $this->createImage('Salade du chef', 'Salade_du_chef.jpg', 1, $manager);
@@ -27,6 +29,10 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
         $plat = $this->getReference('plat-'.$platCounter);
         $image->setPlat($plat);   
         $manager->persist($image);
+
+        #Référence : mis en mémoire sous un nom d'un élément
+        $this->setReference('img-'.$this->counter, $image);
+        $this->counter++; 
         
         return $image;
     }

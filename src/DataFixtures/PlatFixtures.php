@@ -27,7 +27,7 @@ class PlatFixtures extends Fixture
         $plat->setPrice($price);
         $manager->persist($plat);
 
-        //On va chercher une référence de catégorie 
+        //On va chercher une référence de CatégorieFixtures 
         $category = $this->getReference('cat-'.$counterCategory);
         $plat->setCategory($category);
 

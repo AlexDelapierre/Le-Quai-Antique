@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Galerie;
 use App\Form\GalerieType;
@@ -10,13 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/galerie')]
+#[Route('/admin/galerie')]
 class GalerieController extends AbstractController
 {
     #[Route('/', name: 'app_galerie_index', methods: ['GET'])]
     public function index(GalerieRepository $galerieRepository): Response
     {
-        return $this->render('galerie/index.html.twig', [
+        return $this->render('admin/galerie/index.html.twig', [
             'galeries' => $galerieRepository->findAll(),
         ]);
     }
@@ -34,7 +34,7 @@ class GalerieController extends AbstractController
             return $this->redirectToRoute('app_galerie_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('galerie/new.html.twig', [
+        return $this->renderForm('admin/galerie/new.html.twig', [
             'galerie' => $galerie,
             'form' => $form,
         ]);
@@ -43,7 +43,7 @@ class GalerieController extends AbstractController
     #[Route('/{id}', name: 'app_galerie_show', methods: ['GET'])]
     public function show(Galerie $galerie): Response
     {
-        return $this->render('galerie/show.html.twig', [
+        return $this->render('admin/galerie/show.html.twig', [
             'galerie' => $galerie,
         ]);
     }
@@ -60,7 +60,7 @@ class GalerieController extends AbstractController
             return $this->redirectToRoute('app_galerie_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('galerie/edit.html.twig', [
+        return $this->renderForm('admin/galerie/edit.html.twig', [
             'galerie' => $galerie,
             'form' => $form,
         ]);

@@ -50,10 +50,10 @@ class ConfigSiteFixtures extends Fixture
                 </tr>         
             </tbody>
             </table>';
-        $plat = new ConfigSite();
-        $plat->setMaxCouverts(20);
-        $plat->setHoraires($horaires);
-        $manager->persist($plat);
+        $configSite = new ConfigSite();
+        $configSite->setMaxCouverts(20);
+        $configSite->setHoraires($horaires);
+        $manager->persist($configSite);
 
         $manager->flush();
     }
