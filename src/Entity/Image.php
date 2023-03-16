@@ -22,6 +22,9 @@ class Image
     #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist'])]
     private ?Plat $plat = null;
 
+    #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist', 'remove'])]
+    private ?Galerie $galerie = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,5 +78,27 @@ class Image
 
     public function __toString(){
         return $this->getFilename();
+    }
+
+    public function getGalerie(): ?Galerie
+    {
+        return $this->galerie;
+    }
+
+    public function setGalerie(?Galerie $galerie): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($galerie === null && $this->galerie !== null) {
+            $this->galerie->setImage(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($galerie !== null && $galerie->getImage() !== $this) {
+            $galerie->setImage($this);
+        }
+
+        $this->galerie = $galerie;
+
+        return $this;
     }
 }
