@@ -3,37 +3,46 @@
 {% block title %}Plat index{% endblock %}
 
 {% block body %}
-    <h1>Plat index</h1>
+    <main class="container">
+        <section class="row">
+            {% include "_partials/_adminNav.html.twig" %}
+            <div class="col-9 border border-light bg-white p-2">
+                <h1>Carte</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for plat in plats %}
-            <tr>
-                <td>{{ plat.id }}</td>
-                <td>{{ plat.title }}</td>
-                <td>{{ plat.description }}</td>
-                <td>{{ plat.price }}</td>
-                <td>
-                    <a href="{{ path('app_plat_show', {'id': plat.id}) }}">show</a>
-                    <a href="{{ path('app_plat_edit', {'id': plat.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Catégorie</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Prix</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for plat in plats %}
+                        <tr>
+                            <td>{{ plat.id }}</td>
+                            <td>{{ plat.category.name }}</td>
+                            <td>{{ plat.title }}</td>
+                            <td>{{ plat.description }}</td>
+                            <td>{{ plat.price }}</td>
+                            <td>
+                                <a href="{{ path('app_plat_show', {'id': plat.id}) }}">show</a>
+                                <a href="{{ path('app_plat_edit', {'id': plat.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-    <a href="{{ path('app_plat_new') }}">Create new</a>
+                <a href="{{ path('app_plat_new') }}">Create new</a>
+            </div>
+        </section>    
+    </main>
 {% endblock %}
