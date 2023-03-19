@@ -17,12 +17,21 @@ class Reservation
     #[ORM\Column]
     private ?int $nbCouverts = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE )]
+    private ?\DateTimeInterface $dateTime = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reservations')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    #[ORM\Column(length: 100)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $phoneNumber = null;
+    
+    // #[ORM\ManyToOne(inversedBy: 'reservations')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private ?User $user = null;
 
 
     public function getId(): ?int
@@ -42,27 +51,63 @@ class Reservation
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDateTime(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->dateTime;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDateTime(\DateTimeInterface $dateTime): self
     {
-        $this->date = $date;
+        $this->dateTime = $dateTime;
 
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getLastname(): ?string
     {
-        return $this->user;
+        return $this->lastname;
     }
 
-    public function setUser(?User $user): self
+    public function setLastname(string $lastname): self
     {
-        $this->user = $user;
+        $this->lastname = $lastname;
 
         return $this;
     }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+        // public function getUser(): ?User
+    // {
+    //     return $this->user;
+    // }
+
+    // public function setUser(?User $user): self
+    // {
+    //     $this->user = $user;
+
+    //     return $this;
+    // }
 }
