@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Couvert;
 use App\Form\CouvertType;
@@ -16,7 +16,7 @@ class CouvertController extends AbstractController
     #[Route('/', name: 'app_couvert_index', methods: ['GET'])]
     public function index(CouvertRepository $couvertRepository): Response
     {
-        return $this->render('couvert/index.html.twig', [
+        return $this->render('admin/couvert/index.html.twig', [
             'couverts' => $couvertRepository->findAll(),
         ]);
     }
@@ -34,7 +34,7 @@ class CouvertController extends AbstractController
             return $this->redirectToRoute('app_couvert_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('couvert/new.html.twig', [
+        return $this->renderForm('admin/couvert/new.html.twig', [
             'couvert' => $couvert,
             'form' => $form,
         ]);
@@ -43,7 +43,7 @@ class CouvertController extends AbstractController
     #[Route('/{id}', name: 'app_couvert_show', methods: ['GET'])]
     public function show(Couvert $couvert): Response
     {
-        return $this->render('couvert/show.html.twig', [
+        return $this->render('admin/couvert/show.html.twig', [
             'couvert' => $couvert,
         ]);
     }
@@ -60,7 +60,7 @@ class CouvertController extends AbstractController
             return $this->redirectToRoute('app_couvert_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('couvert/edit.html.twig', [
+        return $this->renderForm('admin/couvert/edit.html.twig', [
             'couvert' => $couvert,
             'form' => $form,
         ]);

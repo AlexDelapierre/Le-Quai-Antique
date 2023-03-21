@@ -12,8 +12,32 @@
                 <td>{{ horaire.id }}</td>
             </tr>
             <tr>
-                <th>Horaires</th>
-                <td>{{ horaire.horaires }}</td>
+                <th>Monday</th>
+                <td>{{ horaire.monday }}</td>
+            </tr>
+            <tr>
+                <th>Tuesday</th>
+                <td>{{ horaire.tuesday }}</td>
+            </tr>
+            <tr>
+                <th>Wednesday</th>
+                <td>{{ horaire.wednesday }}</td>
+            </tr>
+            <tr>
+                <th>Thursday</th>
+                <td>{{ horaire.thursday }}</td>
+            </tr>
+            <tr>
+                <th>Friday</th>
+                <td>{{ horaire.friday }}</td>
+            </tr>
+            <tr>
+                <th>Saturday</th>
+                <td>{{ horaire.saturday }}</td>
+            </tr>
+            <tr>
+                <th>Sunday</th>
+                <td>{{ horaire.sunday }}</td>
             </tr>
         </tbody>
     </table>
@@ -22,5 +46,5 @@
 
     <a href="{{ path('app_horaire_edit', {'id': horaire.id}) }}">edit</a>
 
-    {{ include('horaire/_delete_form.html.twig') }}
+    {{ include('admin/horaire/_delete_form.html.twig') }}
 {% endblock %}

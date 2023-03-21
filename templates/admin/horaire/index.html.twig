@@ -1,35 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Horaire index{% endblock %}
+{% block title %}Horaires index{% endblock %}
 
 {% block body %}
-    <h1>Horaire index</h1>
+    <main class="container">
+        <section class="row">
+            {% include "_partials/_adminNav.html.twig" %}
+            <div class="col-9 border border-light bg-white p-2">
+            
+                <h1>Horaires</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Horaires</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for horaire in horaires %}
-            <tr>
-                <td>{{ horaire.id }}</td>
-                <td>{{ horaire.horaires }}</td>
-                <td>
-                    <a href="{{ path('app_horaire_show', {'id': horaire.id}) }}">show</a>
-                    <a href="{{ path('app_horaire_edit', {'id': horaire.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Lundi</th>
+                            <th>Mardi</th>
+                            <th>Mercredi</th>
+                            <th>Jeudi</th>
+                            <th>Vendredi</th>
+                            <th>Samedi</th>
+                            <th>Dimanche</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for horaire in horaires %}
+                        <tr>
+                            <td>{{ horaire.monday | raw }}</td>
+                            <td>{{ horaire.tuesday | raw }}</td>
+                            <td>{{ horaire.wednesday | raw }}</td>
+                            <td>{{ horaire.thursday | raw }}</td>
+                            <td>{{ horaire.friday | raw }}</td>
+                            <td>{{ horaire.saturday | raw }}</td>
+                            <td>{{ horaire.sunday | raw }}</td>
+                            <td>
+                                <a href="{{ path('app_horaire_edit', {'id': horaire.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="9">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>    
 
-    <a href="{{ path('app_horaire_new') }}">Create new</a>
 {% endblock %}

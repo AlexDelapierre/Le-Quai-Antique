@@ -12,7 +12,27 @@ class HoraireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('horaires')
+            ->add('monday', options:[
+                'label' => 'Lundi'
+            ])
+            ->add('tuesday', options:[
+                'label' => 'Mardi'
+            ])
+            ->add('wednesday', options:[
+                'label' => 'Mercredi'
+            ])
+            ->add('thursday', options:[
+                'label' => 'Jeudi'
+            ])
+            ->add('friday', options:[
+                'label' => 'Vendredi'
+            ])
+            ->add('saturday', options:[
+                'label' => 'Samedi'
+            ])
+            ->add('sunday', options:[
+                'label' => 'Dimanche'
+            ])
         ;
     }
 

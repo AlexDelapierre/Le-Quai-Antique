@@ -10,50 +10,24 @@ class HoraireFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $horaires = 
-            '<h2>Horaires d\'ouverture</h2>
-            <table class="table">
-            <thead>
-                <tr>
-                <th></th>
-                <th></th>          
-                </tr>          
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Lundi</td>
-                    <td>12:00 - 14:00<br>19:00 - 22:00</td
-                </tr>
-                <tr>
-                    <td>Mardi</td>
-                    <td>12:00 - 14:00<br>19:00 - 22:00</td
-                </tr>
-                <tr>
-                    <td>Mercredi</td>
-                    <td>fermé</td
-                </tr>
-                <tr>
-                    <td>Jeudi</td>
-                    <td>12:00 - 14:00<br>19:00 - 22:00</td
-                </tr>
-                <tr>
-                    <td>Vendredi</td>
-                    <td>12:00 - 14:00<br>19:00 - 22:00</td
-                </tr>
-                <tr>
-                    <td>Samedi</td>
-                    <td>12:00 - 14:00<br>19:00 - 23:00</td
-                </tr>
-                <tr>
-                    <td>Dimanche</td>
-                    <td>fermé</td
-                </tr>         
-            </tbody>
-            </table>';
-        $horaire = new Horaire();
-        $horaire->setHoraires($horaires);
-        $manager->persist($horaire);
+        $monday = '12:00 - 14:00<br>19:00 - 22:00';
+        $tuesday = '12:00 - 14:00<br>19:00 - 22:00';
+        $wednesday = 'fermé';
+        $thursday = '12:00 - 14:00<br>19:00 - 22:00';
+        $friday = '12:00 - 14:00<br>19:00 - 22:00';
+        $saturday = '12:00 - 14:00<br>19:00 - 23:00';
+        $sunday = 'fermé';
 
+        $horaire = new Horaire();
+        $horaire->setMonday($monday);
+        $horaire->setTuesday($tuesday);
+        $horaire->setWednesday($wednesday);
+        $horaire->setThursday($thursday);
+        $horaire->setFriday($friday);
+        $horaire->setSaturday($saturday);
+        $horaire->setSunday($sunday);
+
+        $manager->persist($horaire);
         $manager->flush();
     }
 }

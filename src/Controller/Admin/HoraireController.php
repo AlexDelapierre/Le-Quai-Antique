@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Horaire;
 use App\Form\HoraireType;
@@ -16,7 +16,7 @@ class HoraireController extends AbstractController
     #[Route('/', name: 'app_horaire_index', methods: ['GET'])]
     public function index(HoraireRepository $horaireRepository): Response
     {
-        return $this->render('horaire/index.html.twig', [
+        return $this->render('admin/horaire/index.html.twig', [
             'horaires' => $horaireRepository->findAll(),
         ]);
     }
@@ -34,7 +34,7 @@ class HoraireController extends AbstractController
             return $this->redirectToRoute('app_horaire_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('horaire/new.html.twig', [
+        return $this->renderForm('admin/horaire/new.html.twig', [
             'horaire' => $horaire,
             'form' => $form,
         ]);
@@ -43,7 +43,7 @@ class HoraireController extends AbstractController
     #[Route('/{id}', name: 'app_horaire_show', methods: ['GET'])]
     public function show(Horaire $horaire): Response
     {
-        return $this->render('horaire/show.html.twig', [
+        return $this->render('admin/horaire/show.html.twig', [
             'horaire' => $horaire,
         ]);
     }
@@ -60,7 +60,7 @@ class HoraireController extends AbstractController
             return $this->redirectToRoute('app_horaire_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('horaire/edit.html.twig', [
+        return $this->renderForm('admin/horaire/edit.html.twig', [
             'horaire' => $horaire,
             'form' => $form,
         ]);
