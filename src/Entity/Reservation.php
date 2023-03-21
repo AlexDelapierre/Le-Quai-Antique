@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Validator as AcmeAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -27,6 +29,8 @@ class Reservation
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank] 
+    #[AcmeAssert\FrenchPhoneNumber()]
     private ?string $phoneNumber = null;
     
     // #[ORM\ManyToOne(inversedBy: 'reservations')]

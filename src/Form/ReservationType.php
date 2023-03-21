@@ -5,8 +5,6 @@ namespace App\Form;
 use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,6 +18,9 @@ class ReservationType extends AbstractType
             ])
             ->add('firstname', options:[
                 'label' => 'Prénom'
+            ])
+            ->add('phoneNumber', options:[
+                'label' => 'Numéro de téléphone'
             ])
             ->add('nbCouverts', options:[
                 'label' => 'Nombre de couverts'

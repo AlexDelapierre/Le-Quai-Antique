@@ -15,6 +15,7 @@
                             <th>Id</th>
                             <th>Nom</th>
                             <th>Prenom</th>
+                            <th>Numéro de téléphone</th>
                             <th>nb de couverts</th>
                             <th>Date et heure</th>
                             <th>actions</th>
@@ -26,6 +27,7 @@
                             <td>{{ reservation.id }}</td>
                             <td>{{ reservation.lastname }}</td>
                             <td>{{ reservation.firstname }}</td>
+                            <td>{{ reservation.phoneNumber }}</td>
                             <td>{{ reservation.nbCouverts }}</td>
                             <td>{{ reservation.dateTime ? reservation.dateTime|date('d-m-Y H:i') : '' }}</td>
                             <td>
