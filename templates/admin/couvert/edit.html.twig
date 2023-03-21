@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Couvert{% endblock %}
+
+{% block body %}
+    <h1>Edit Couvert</h1>
+
+    {{ include('couvert/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_couvert_index') }}">back to list</a>
+
+    {{ include('couvert/_delete_form.html.twig') }}
+{% endblock %}

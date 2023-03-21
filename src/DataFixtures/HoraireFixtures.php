@@ -2,11 +2,11 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\ConfigSite;
+use App\Entity\Horaire;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class ConfigSiteFixtures extends Fixture
+class HoraireFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
@@ -50,10 +50,9 @@ class ConfigSiteFixtures extends Fixture
                 </tr>         
             </tbody>
             </table>';
-        $configSite = new ConfigSite();
-        $configSite->setMaxCouverts(20);
-        $configSite->setHoraires($horaires);
-        $manager->persist($configSite);
+        $horaire = new Horaire();
+        $horaire->setHoraires($horaires);
+        $manager->persist($horaire);
 
         $manager->flush();
     }

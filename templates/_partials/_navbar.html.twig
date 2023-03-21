@@ -7,7 +7,6 @@
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="{{ path('main') }}" class="nav-link px-2 link-secondary">Accueil</a></li>
         <li><a href="{{ path('carte') }}" class="nav-link px-2 link-dark">Carte</a></li>
-        <li><a href="{{ path('app_reservation_new') }}" class="nav-link px-2 link-dark">Reservation</a></li>
         <li><a href="{{ path('contact') }}" class="nav-link px-2 link-dark">Contact</a></li>
       </ul>
 
@@ -15,12 +14,17 @@
         {% if app.user %}
           {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('admin_index') }}" class="btn btn-outline-primary me-2">Administration</a>
-          {% endif %}
-          
+            <a href="#" class="btn btn-outline-primary me-2">Mon compte</a>
+            <a href="{{ path('app_logout') }}" class="btn btn-primary">Me déconnecter</a>
+            {% else %}
+          <a href="{{ path('app_reservation_new') }}" class="btn btn-success me-2">Réserver</a>
           <a href="#" class="btn btn-outline-primary me-2">Mon compte</a>
           <a href="{{ path('app_logout') }}" class="btn btn-primary">Me déconnecter</a>
+          {% endif %}
+          
           
         {% else %}
+          <a href="{{ path('app_reservation_new') }}" class="btn btn-success me-2">Réserver</a>
           <a href="{{ path('app_register') }}" class="btn btn-outline-primary me-2">M'inscrire</a>
           <a href="{{ path('app_login') }}" class="btn btn-primary">Me connecter</a>
         {% endif %}     

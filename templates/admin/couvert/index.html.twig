@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Couvert index{% endblock %}
+
+{% block body %}
+    <h1>Couvert index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>MaxCouverts</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for couvert in couverts %}
+            <tr>
+                <td>{{ couvert.id }}</td>
+                <td>{{ couvert.maxCouverts }}</td>
+                <td>
+                    <a href="{{ path('app_couvert_show', {'id': couvert.id}) }}">show</a>
+                    <a href="{{ path('app_couvert_edit', {'id': couvert.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_couvert_new') }}">Create new</a>
+{% endblock %}
