@@ -43,12 +43,67 @@ class ReservationController extends AbstractController
     public function new(Request $request, ReservationRepository $reservationRepository): Response
     {
         $reservation = new Reservation();
-        $form = $this->createForm(ReservationType::class, $reservation);
+        $form = $this->createForm(ReservationType::class);
         $form->handleRequest($request);
 
         // $reservation->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $data = $form->getData();
+            print_r($data);
+
+            echo '<br>';
+
+            $lastname = $data['lastname'];
+            $firstname = $data['firstname'];
+            $phoneNumber = $data['phoneNumber'];
+            $nbCouverts = $data['nbCouverts'];
+            
+            //On crée une variable de type string qui contient la date, l'heure et le timezone.
+            $date = $data['date']->format('m/d/Y');
+            $time = $data['time'];
+            $timezone = 'GMT';
+            $dateString = $date.' '.$time.' '.$timezone;
+
+            echo($dateString);
+            echo '<br>';
+
+            //Pour convertir une string en objet dateTime :
+            $dateTime = DateTime::createfromformat('m/d/Y H:i:s e',$dateString);   
+
+            // echo $dateTime->format('Y-m-d H:i:s e');
+
+            $reservation->setLastname($lastname);
+            $reservation->setFirstname($firstname);
+            $reservation->setPhoneNumber($phoneNumber);
+            $reservation->setnbCouverts($nbCouverts);
+            $reservation->setDateTime($dateTime);
+            
+                        
+
+            // $dateString = 'Wed, 28 Dec 2011 13:04:30 GMT';
+            // $dateTime = DateTime::createfromformat('D, d M Y H:i:s e',$dateString);      
+            // echo $dateTime->format('d-M-Y H:i:s e');
+
+            // $date = new DateTime('2000-01-01');
+            // $result = $date->format('Y-m-d H:i:s'); 
+
+
+
+          
+
+            
+        
+            //Pour convertir une string en objet dateTime :
+            // $dateTime = strtotime($date.' '.$time);
+            // echo date('d/M/Y H:i', $dateTime);
+            
+            
+           
+
+            // print_r($dateTime);
+
             $reservationRepository->save($reservation, true);
 
             return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);

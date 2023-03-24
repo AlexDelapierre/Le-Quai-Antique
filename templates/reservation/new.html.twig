@@ -2,10 +2,14 @@
 
 {% block title %}Nouvelle Reservation{% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/reservation-Form.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Reservation</h1>
+    {# <h1>Reservation</h1> #}
 
-    {{ include('reservation/_form.html.twig') }}
+    {{ include('reservation/_form.html.twig') }} 
 
-    <a href="{{ path('app_reservation_index') }}">back to list</a>
+    {# <a href="{{ path('app_reservation_index') }}">back to list</a> #}
 {% endblock %}
