@@ -3,10 +3,10 @@
 {% block title %}Couvert index{% endblock %}
 
 {% block body %}
-    <main class="container">    
+    {# <main class="container">    
         <section class="row">
             {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9 border border-light bg-white p-2">
+            <div class="col-9 border border-light bg-white p-2"> #}
                 <h1>Couverts</h1>
 
                 <table class="table">
@@ -22,7 +22,8 @@
                                 <td>{{ couvert.maxCouverts }}</td>
                                 <td>
                                     {# <a href="{{ path('app_couvert_show', {'id': couvert.id}) }}">show</a> #}
-                                    <a href="{{ path('app_couvert_edit', {'id': couvert.id}) }}">edit</a>
+                                    <a href="{{ path('app_couvert_edit', {'id': couvert.id}) }}"
+                                    class="btn btn-primary">Modifier</a>
                                 </td>
                             </tr>
                         {% else %}
@@ -32,7 +33,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
-            </div>
+            {# </div>
         </section>
-    </main>            
+    </main>             #}
 {% endblock %}

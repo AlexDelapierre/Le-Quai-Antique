@@ -3,18 +3,22 @@
 {% block title %}Plat index{% endblock %}
 
 {% block body %}
-    <main class="container">
+    {# <main class="container">
         <section class="row">
             {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9 border border-light bg-white p-2">
-                <h1>Carte</h1>
+            <div class="col-9 border border-light bg-white p-2"> #}
+                
+                <div>
+                    <h1>Carte</h1>
+                    <a href="{{ path('app_plat_new') }}" class="btn btn-success">Ajouter</a>
+                </div>
 
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Catégorie</th>
-                            <th>Nom</th>
+                            <th>Plat</th>
                             <th>Description</th>
                             <th>Prix</th>
                             <th>actions</th>
@@ -27,10 +31,10 @@
                             <td>{{ plat.category.name }}</td>
                             <td>{{ plat.title }}</td>
                             <td>{{ plat.description }}</td>
-                            <td>{{ plat.price }}</td>
+                            <td>{{ plat.price ~ '€' }}</td>
                             <td>
-                                <a href="{{ path('app_plat_show', {'id': plat.id}) }}">show</a>
-                                <a href="{{ path('app_plat_edit', {'id': plat.id}) }}">edit</a>
+                                {# <a href="{{ path('app_plat_show', {'id': plat.id}) }}">show</a> #}
+                                <a href="{{ path('app_plat_edit', {'id': plat.id}) }}" class="btn btn-primary">Modifier</a>
                             </td>
                         </tr>
                     {% else %}
@@ -40,9 +44,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-
-                <a href="{{ path('app_plat_new') }}">Create new</a>
-            </div>
+            {# </div>
         </section>    
-    </main>
+    </main> #}
 {% endblock %}

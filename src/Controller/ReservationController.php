@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,27 +19,25 @@ class ReservationController extends AbstractController
     #[Route('/', name: 'app_reservation_index', methods: ['GET'])]
     public function index(ReservationRepository $reservationRepository): Response
     {      
-        if ($this->getUser()){
-            $userRole = $this->getUser()->getRoles();
+        // if ($this->getUser()){
+        //     $userRole = $this->getUser()->getRoles();
             
-            if(in_array("ROLE_ADMIN", $userRole)){
-                return $this->render('admin/reservationAdmin/index.html.twig', [
-                    'reservations' => $reservationRepository->findAll(),
-                ]);
-            } 
-            else {
-                return $this->render('reservation/index.html.twig', [
-                    'reservations' => $reservationRepository->findAll(),
-                ]);
-            } 
-        }
+        //     if(in_array("ROLE_ADMIN", $userRole)){
+        //         return $this->render('admin/reservationAdmin/index.html.twig', [
+        //             'reservations' => $reservationRepository->findAll(),
+        //         ]);
+        //     } 
+        //     else {
+        //         return $this->render('reservation/index.html.twig', [
+        //             'reservations' => $reservationRepository->findAll(),
+        //         ]);
+        //     } 
+        // }
 
         return $this->render('reservation/index.html.twig', [
             'reservations' => $reservationRepository->findAll(),
         ]);
     }
-
-        
 
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ReservationRepository $reservationRepository): Response

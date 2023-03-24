@@ -3,10 +3,10 @@
 {% block title %}Horaires index{% endblock %}
 
 {% block body %}
-    <main class="container">
+    {# <main class="container">
         <section class="row">
             {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9 border border-light bg-white p-2">
+            <div class="col-9 border border-light bg-white p-2"> #}
             
                 <h1>Horaires</h1>
 
@@ -26,15 +26,16 @@
                     <tbody>
                     {% for horaire in horaires %}
                         <tr>
-                            <td>{{ horaire.monday | raw }}</td>
-                            <td>{{ horaire.tuesday | raw }}</td>
-                            <td>{{ horaire.wednesday | raw }}</td>
-                            <td>{{ horaire.thursday | raw }}</td>
-                            <td>{{ horaire.friday | raw }}</td>
-                            <td>{{ horaire.saturday | raw }}</td>
-                            <td>{{ horaire.sunday | raw }}</td>
+                            <td>{{ horaire.monday | nl2br }}</td>
+                            <td>{{ horaire.tuesday | nl2br }}</td>
+                            <td>{{ horaire.wednesday | nl2br }}</td>
+                            <td>{{ horaire.thursday | nl2br }}</td>
+                            <td>{{ horaire.friday | nl2br }}</td>
+                            <td>{{ horaire.saturday | nl2br }}</td>
+                            <td>{{ horaire.sunday | nl2br }}</td>
                             <td>
-                                <a href="{{ path('app_horaire_edit', {'id': horaire.id}) }}">edit</a>
+                                <a href="{{ path('app_horaire_edit', {'id': horaire.id}) }}" 
+                                class="btn btn-primary">Modifier</a>
                             </td>
                         </tr>
                     {% else %}
@@ -44,8 +45,8 @@
                     {% endfor %}
                     </tbody>
                 </table>
-            </div>
+            {# </div>
         </section>
-    </main>    
+    </main>     #}
 
 {% endblock %}

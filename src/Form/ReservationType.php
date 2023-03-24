@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,14 +28,15 @@ class ReservationType extends AbstractType
                 'label' => 'Nombre de couverts'
             ])
             ->add('dateTime', DateTimeType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'label' => 'Date et heure'
             ]);  
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Reservation::class,
+            // 'data_class' => Reservation::class,
         ]);
     }
 }

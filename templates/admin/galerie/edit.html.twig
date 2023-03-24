@@ -3,19 +3,19 @@
 {% block title %}Edit Galerie{% endblock %}
 
 {% block body %}
-    <main class="container">
+    {# <main class="container">
         <section class="row">
         {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9">
+            <div class="col-9 border border-light bg-white p-2"> #}
             
-                <h1>Edit Galerie</h1>
+                <h1>Galerie</h1>
 
-                {{ include('admin/galerie/_form.html.twig', {'button_label': 'Update'}) }}
+                {{ include('admin/galerie/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-                <a href="{{ path('app_galerie_index') }}">back to list</a>
+                <a href="{{ path('app_galerie_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
 
                 {# {{ include('admin/galerie/_delete_form.html.twig') }} #}
-            </div>
+            {# </div>
         </section>
-    </main>
+    </main> #}
 {% endblock %}

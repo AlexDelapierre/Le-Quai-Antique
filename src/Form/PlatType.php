@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Plat;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,11 +13,17 @@ class PlatType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('category', options:[
+                'label' => 'Catégorie'
+            ])
+            ->add('title', options:[
+                'label' => 'Nom'
+            ])
             ->add('description')
-            ->add('price')
-            ->add('image')
-            ->add('category')
+            ->add('price', MoneyType::class, options:[
+                'label' => 'Prix'
+            ])
+            ->add('image')    
         ;
     }
 

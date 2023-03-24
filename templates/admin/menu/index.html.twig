@@ -3,17 +3,18 @@
 {% block title %}Menu index{% endblock %}
 
 {% block body %}
-    <main class="container">
+    {# <main class="container">
         <section class="row">
             {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9 border border-light bg-white p-2">
+            <div class="col-9 border border-light bg-white p-2"> #}
                 <h1>Menus</h1>
+                <a href="{{ path('app_menu_new') }}" class="btn btn-success">Nouveau</a>
 
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Titre</th>
+                            <th>Nom</th>
                             <th>actions</th>
                         </tr>
                     </thead>
@@ -24,19 +25,19 @@
                             <td>{{ menu.title }}</td>
                             <td>
                                 {# <a href="{{ path('app_menu_show', {'id': menu.id}) }}">show</a> #}
-                                <a href="{{ path('app_menu_edit', {'id': menu.id}) }}">edit</a>
+                                <a href="{{ path('app_menu_edit', {'id': menu.id}) }}" class="btn btn-primary">Modifier</a>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="3">no records found</td>
+                            <td colspan="3">Pas de menus</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
 
-                <a href="{{ path('app_menu_new') }}">Create new</a>
-            </div>
+                
+            {# </div>
         </section>
-    </main>
+    </main> #}
 {% endblock %}

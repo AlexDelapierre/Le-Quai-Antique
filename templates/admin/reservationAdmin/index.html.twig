@@ -4,21 +4,22 @@
 
 {% block body %}
     <main class="container">
-        <section class="row">
+        {# <section class="row">
             {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9 border border-light bg-white p-2">
+            <div class="col-9 border border-light bg-white p-2"> #}
                 <h1>Réservations</h1>
+                <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
 
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Numéro de téléphone</th>
-                            <th>nb de couverts</th>
+                            <th>Prénom</th>
+                            <th>Téléphone</th>
+                            <th>Couverts</th>
                             <th>Date et heure</th>
-                            <th>actions</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,20 +32,21 @@
                             <td>{{ reservation.nbCouverts }}</td>
                             <td>{{ reservation.dateTime ? reservation.dateTime|date('d-m-Y H:i') : '' }}</td>
                             <td>
-                                <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
-                                <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
+                                {# <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a> #}
+                                <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" 
+                                class="btn btn-primary">Modifier</a>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="4">no records found</td>
+                            <td colspan="4">Aucune réservation</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
-                <a href="{{ path('app_reservation_new') }}">Create new</a>
-            </div>
+                
+            {# </div>
         </section>
-    </main>    
+    </main>     #}
 
 {% endblock %}

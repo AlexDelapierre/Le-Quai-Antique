@@ -11,8 +11,10 @@ class FormuleFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        $this->createFormule($manager, 'Formule déjeuner', '', 16.00, 1);
-        $this->createFormule($manager, 'Formule dîner', '', 20.00, 1);
+        $this->createFormule($manager, 'Formule déjeuner', 
+        '(Le midi du lundi au vendredi) <br> Entrée + plat ou plat + dessert', 16.00, 1);
+        $this->createFormule($manager, 'Formule dîner', 
+        '(Le soir du lundi au samedi) <br> Entrée + plat + dessert', 20.00, 1);
 
         $manager->flush();
     }

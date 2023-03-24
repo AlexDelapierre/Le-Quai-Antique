@@ -3,35 +3,50 @@
 {% block title %}Reservation index{% endblock %}
 
 {% block body %}
-    <h1>Reservation index</h1>
+    <main class="container">
+        {# <section class="row">
+            {% include "_partials/_adminNav.html.twig" %}
+            <div class="col-9 border border-light bg-white p-2"> #}
+                <h1>Réservations</h1>
+                <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>nbCouverts</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation in reservations %}
-            <tr>
-                <td>{{ reservation.id }}</td>
-                <td>{{ reservation.nbCouverts }}</td>
-                <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
-                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Téléphone</th>
+                            <th>Couverts</th>
+                            <th>Date et heure</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.id }}</td>
+                            <td>{{ reservation.lastname }}</td>
+                            <td>{{ reservation.firstname }}</td>
+                            <td>{{ reservation.phoneNumber }}</td>
+                            <td>{{ reservation.nbCouverts }}</td>
+                            <td>{{ reservation.dateTime ? reservation.dateTime|date('d-m-Y H:i') : '' }}</td>
+                            <td>
+                                {# <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a> #}
+                                <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" 
+                                class="btn btn-primary">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucune réservation</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                
+            {# </div>
+        </section>
+    </main>     #}
 
-    <a href="{{ path('app_reservation_new') }}">Create new</a>
 {% endblock %}

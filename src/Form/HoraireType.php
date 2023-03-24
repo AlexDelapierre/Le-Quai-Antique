@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Horaire;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,8 +13,9 @@ class HoraireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('monday', options:[
-                'label' => 'Lundi'
+            ->add('monday', TextareaType::class, [
+                'label' => 'Lundi',
+                'trim' => true
             ])
             ->add('tuesday', options:[
                 'label' => 'Mardi'
