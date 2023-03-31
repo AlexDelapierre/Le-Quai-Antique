@@ -17,8 +17,10 @@
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Téléphone</th>
-                            <th>Couverts</th>
                             <th>Date et heure</th>
+                            <th>Service</th>
+                            <th>Couverts</th>
+                            <th>Commentaires</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -28,12 +30,15 @@
                             <td>{{ reservation.id }}</td>
                             <td>{{ reservation.lastname }}</td>
                             <td>{{ reservation.firstname }}</td>
-                            <td>{{ reservation.phoneNumber }}</td>
-                            <td>{{ reservation.nbCouverts }}</td>
+                            <td>{{ reservation.phoneNumber }}</td>                         
                             <td>{{ reservation.dateTime ? reservation.dateTime|date('d-m-Y H:i') : '' }}</td>
+                            <td>{{ reservation.service }}</td>
+                            <td>{{ reservation.nbCouverts }}</td>
+                            <td>{{ reservation.comments }}</td>
                             <td>
+
                                 {# <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a> #}
-                                <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" 
+                                <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}",  
                                 class="btn btn-primary">Modifier</a>
                             </td>
                         </tr>

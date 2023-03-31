@@ -9,13 +9,13 @@
 
         <!-- Feuilles de styles -->
         {# La fonction asset() est une fonction twig qui permet de préciser le chemin relatif du dossier public #}
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('assets/css/override-bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"> 
+        <link rel="stylesheet" href="{{ asset('assets/css/override-bootstrap.css') }}"> 
+        {% block stylesheets %}{% endblock %} 
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}"> 
 
         <!-- Fichiers JS -->
-        {# Ne pas oublier de mattre l'attribut defer pour ne pas que le js de Bootstrap démarre avant d'avoir charger le dom #}
+        {# Ne pas oublier de mettre l'attribut defer pour ne pas que le js de Bootstrap démarre avant d'avoir charger le dom #}
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"defer></script>
         {% block javascripts %}{% endblock %}
         <script src="{{ asset('assets/js/scripts.js') }}"defer></script>

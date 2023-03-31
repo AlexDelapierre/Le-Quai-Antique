@@ -3,9 +3,111 @@
 {% block title %}Edit Reservation{% endblock %}
 
 {% block body %}
-    <h1>Reservation</h1>
-    <a href="{{ path('app_reservation_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
 
-    {{ include('reservation/_form.html.twig', {'button_label': 'Modifier'}) }}
+    <form method="post" action="{{ path('app_reservation_new') }}">
+        <h1 class="section-header">Réservation</h1>
+
+        <div id="fullAlert" class="alert alert-danger" role="alert">
+            <strong>Le restaurant est complet,</strong> nous sommes désolés pour ce désagrément !
+        </div>
+
+        <div class="form-floating mb-4">
+            <input type="text" class="form-control" id="lastname" placeholder="nom" name="lastname" required>
+            <label for="lastname" class="form-label">Nom</label>  
+        </div>
+
+        <div class="form-floating mb-4">
+            <input type="text" class="form-control" id="firstname" placeholder="Prénom" name="firstname" required>
+            <label for="firstname" class="form-label">Prénom</label>
+        </div>
+
+        <div class="form-floating mb-4">
+            <input type="tel" class="form-control" id="phoneNumber" placeholder="0600000000" 
+            name="phoneNumber" required>
+            <label for="phoneNumber" class="form-label">Téléphone</label>
+            {# <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #}
+        </div>
+
+        <div class="form-floating mb-4">
+            <input type="number" class="form-control" id="nbCouverts" placeholder="2" name="nbCouverts" required>
+            <label for="nbCouverts" class="form-label">Nombre de Personnes</label>
+        </div>    
+            
+        <div class="form-floating mb-4"> 
+            <input type="date" class="form-control" id="date" name="date" required>   
+            <label for="date" class="form-label">Date</label>
+        </div>
+
+    <div id="service" class="form-floating mb-4"> 
+            <select class="form-select" aria-label="Floating label select example" id="service" 
+            name="service" required>
+                <option selected value="midi">Midi</option>
+                <option value="soir">Soir</option>
+            </select>
+            <label for="service">Service</label>
+        </div>
+
+    <div id="creneauMidi" class="form-floating mb-4"> 
+            <select class="form-select" aria-label="Floating label select example" id="midi" name="midi">
+                <option selected value="12:00:00">12:00</option>
+                <option value="12:15:00">12:15</option>
+                <option value="12:30:00">12:30</option>
+                <option value="12:45:00">12:45</option>
+                <option value="13:00:00">13:00</option>
+                <option value="13:15:00">13:15</option>
+                <option value="13:30:00">13:30</option>
+                <option value="13:45:00">13:45</option>
+                <option value="14:00:00">14:00</option>
+            </select>
+            <label for="midi">Heure</label>
+        </div>
+
+    <div id="creneauSoir" class="form-floating mb-4"> 
+            <select class="form-select" aria-label="Floating label select example" id="soir" name="soir" 
+            disabled>
+                <option selected value="19:00:00">19:00</option>
+                <option value="19:15:00">19:15</option>
+                <option value="19:30:00">19:30</option>
+                <option value="19:45:00">19:45</option>
+                <option value="20:00:00">20:00</option>
+                <option value="20:15:00">20:15</option>
+                <option value="20:30:00">20:30</option>
+                <option value="20:45:00">20:45</option>
+                <option value="21:00:00">21:00</option>
+            </select>
+            <label for="soir">Heure</label>
+        </div>
+
+        <div class="row">
+            <div class="col-5 form-floating mb-4">
+                <textarea class="form-control" id="comments" name="comments" placeholder="Commentaires"  
+                aria-labelledby="textHelpInline"  style="height: 100px"></textarea>
+                <label for="comments" class="ms-3">Commentaires</label>
+            </div>
+            <div class="col-7">
+                <span id="textHelpInline" class="form-text">
+                    Merci d'avance de préciser en commentaire le nombre d'enfant présent à table <br> 
+                    (si il y en a).
+                </span>
+            </div>
+        </div> 
+
+        {# <div class="form-floating mb-4">
+            <textarea class="form-control" id="comments" name="comments" placeholder="Commentaires"  
+            aria-labelledby="textHelpInline" style="height: 100px"></textarea>
+            <label for="comments" class="ms-3">Commentaires</label>
+        </div> #}
+
+        
+        {# <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> #}
+
+        <button type="submit" class="btn btn-primary send-button">Submit</button>
+    </form>
+
+
+    {# {{ include('reservation/_form.html.twig', {'button_label': 'Modifier'}) }} #}
     {{ include('reservation/_delete_form.html.twig') }}
 {% endblock %}

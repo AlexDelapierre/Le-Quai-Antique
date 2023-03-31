@@ -32,6 +32,12 @@ class Reservation
     #[Assert\NotBlank] 
     #[AcmeAssert\FrenchPhoneNumber()]
     private ?string $phoneNumber = null;
+
+    #[ORM\Column(length: 4)]
+    private ?string $service = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $comments = null;
     
     // #[ORM\ManyToOne(inversedBy: 'reservations')]
     // #[ORM\JoinColumn(nullable: false)]
@@ -114,4 +120,28 @@ class Reservation
 
     //     return $this;
     // }
+
+    public function getService(): ?string
+    {
+        return $this->service;
+    }
+
+    public function setService(string $service): self
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    public function getComments(): ?string
+    {
+        return $this->comments;
+    }
+
+    public function setComments(?string $comments): self
+    {
+        $this->comments = $comments;
+
+        return $this;
+    }
 }
