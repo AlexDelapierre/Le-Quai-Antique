@@ -1,101 +1,40 @@
-{# {{ form_start(form) }}
-    {{ form_row(form.lastname) }}
-    {{ form_row(form.firstname) }}
-    {{ form_row(form.phoneNumber) }}
-    {{ form_row(form.nbCouverts) }}
-    {{ form_row(form.dateTime) }}
-    {{ form_row(form.service) }}
-    {{ form_row(form.comments) }}
-    <button class="btn btn-success">{{ button_label|default('Ajouter') }}</button>
-{{ form_end(form) }}  #}
 
+<div class="row">
+    <div class="col-7 mx-auto">
+        <h1 class="display-5 my-4 text-center"><span class="text-danger"></span> Réservation</h1>
 
-
-<form method="post" action="{{ path('app_reservation_new') }}">
-    <h1 class="section-header">Réservation</h1>
-
-    <div id="fullAlert" class="alert alert-danger" role="alert">
-        <strong>Le restaurant est complet,</strong> nous sommes désolés pour ce désagrément !
-    </div>
-
-    <div class="form-floating mb-4">
-        <input type="text" class="form-control" id="lastname" placeholder="nom" name="lastname" required>
-        <label for="lastname" class="form-label">Nom</label>  
-    </div>
-
-    <div class="form-floating mb-4">
-        <input type="text" class="form-control" id="firstname" placeholder="Prénom" name="firstname" required>
-        <label for="firstname" class="form-label">Prénom</label>
-    </div>
-
-    <div class="form-floating mb-4">
-        <input type="tel" class="form-control" id="phoneNumber" placeholder="0600000000" 
-        name="phoneNumber" required>
-        <label for="phoneNumber" class="form-label">Téléphone</label>
-        {# <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> #}
-    </div>
-
-    <div class="form-floating mb-4">
-        <input type="number" class="form-control" id="nbCouverts" placeholder="2" name="nbCouverts" required>
-        <label for="nbCouverts" class="form-label">Nombre de Personnes</label>
-    </div>    
-        
-    <div class="form-floating mb-4"> 
-        <input type="date" class="form-control" id="date" name="date" required>   
-        <label for="date" class="form-label">Date</label>
-    </div>
-
-   <div class="form-floating mb-4"> 
-        <select class="form-select" aria-label="Floating label select example" id="service" 
-        name="service" required>
-            <option selected value="midi">Midi</option>
-            <option value="soir">Soir</option>
-        </select>
-        <label for="service">Service</label>
-    </div>
-
-   <div id="midiDiv" class="form-floating mb-4"> 
-        <select class="form-select" aria-label="Floating label select example" id="midi" name="midi">
-            <option selected value="12:00:00">12:00</option>
-            <option value="12:15:00">12:15</option>
-            <option value="12:30:00">12:30</option>
-            <option value="12:45:00">12:45</option>
-            <option value="13:00:00">13:00</option>
-            <option value="13:15:00">13:15</option>
-            <option value="13:30:00">13:30</option>
-            <option value="13:45:00">13:45</option>
-            <option value="14:00:00">14:00</option>
-        </select>
-        <label for="midi">Heure</label>
-    </div>
-
-   <div id="soirDiv" class="form-floating mb-4"> 
-        <select class="form-select" aria-label="Floating label select example" id="soir" name="soir">
-            <option selected value="19:00:00">19:00</option>
-            <option value="19:15:00">19:15</option>
-            <option value="19:30:00">19:30</option>
-            <option value="19:45:00">19:45</option>
-            <option value="20:00:00">20:00</option>
-            <option value="20:15:00">20:15</option>
-            <option value="20:30:00">20:30</option>
-            <option value="20:45:00">20:45</option>
-            <option value="21:00:00">21:00</option>
-        </select>
-        <label for="soir">Heure</label>
-    </div>
-
-    <div class="row">
-        <div class="col-5 form-floating mb-4">
-            <textarea class="form-control" id="comments" name="comments" placeholder="Commentaires"  
-            aria-labelledby="textHelpInline"  style="height: 100px"></textarea>
-            <label for="comments" class="ms-3">Commentaires</label>
+        <div id="fullAlert" class="alert alert-danger" role="alert">
+            <strong>Le restaurant est complet,</strong> nous sommes désolés pour ce désagrément !
         </div>
-        <div class="col-7">
-            <span id="textHelpInline" class="form-text">
-                Merci d'avance de préciser en commentaire le nombre d'enfant présent à table <br> 
-                (si il y en a).
-            </span>
-        </div>
-    </div> 
-    <button type="submit" class="btn btn-primary send-button">Submit</button>
-</form>
+
+        {{ form_start(form) }}
+            {{ form_row(form.lastname) }}
+            {{ form_row(form.firstname) }}
+            {{ form_row(form.phoneNumber) }}
+            {{ form_row(form.nbCouverts) }}
+            {{ form_row(form.date) }}
+            {{ form_row(form.service) }}
+            <div id="midiDiv">
+                {{ form_row(form.midi) }}
+            </div>
+            <div id ="soirDiv">
+                {{ form_row(form.soir) }}
+            </div>    
+            <div class="row">    
+                <div class="col-6">
+                    {{ form_row(form.comments) }}
+                </div>
+                <div class="col-6 pt-4">
+                {# form-text #}
+                    <span  class="form-text">
+                        Merci d'avance de préciser en commentaire le nombre d'enfant présent à table 
+                        (si il y en a).
+                    </span>
+                </div>
+            </div>
+            <button class="btn btn-primary w-100 mt-2 mb-5">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+
+

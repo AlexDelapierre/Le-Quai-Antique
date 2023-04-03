@@ -12,12 +12,32 @@
                 <td>{{ reservation.id }}</td>
             </tr>
             <tr>
-                <th>nbCouverts</th>
+                <th>Lastname</th>
+                <td>{{ reservation.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ reservation.firstname }}</td>
+            </tr>
+            <tr>
+                <th>PhoneNumber</th>
+                <td>{{ reservation.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>NbCouverts</th>
                 <td>{{ reservation.nbCouverts }}</td>
             </tr>
             <tr>
                 <th>Date</th>
                 <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ reservation.service }}</td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td>{{ reservation.comments }}</td>
             </tr>
         </tbody>
     </table>

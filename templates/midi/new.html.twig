@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Midi{% endblock %}
+
+{% block body %}
+    <h1>Create new Midi</h1>
+
+    {{ include('midi/_form.html.twig') }}
+
+    <a href="{{ path('app_midi_index') }}">back to list</a>
+{% endblock %}

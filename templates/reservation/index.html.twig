@@ -3,55 +3,55 @@
 {% block title %}Reservation index{% endblock %}
 
 {% block body %}
-    <main class="container">
-        {# <section class="row">
-            {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9 border border-light bg-white p-2"> #}
-                <h1>Réservations</h1>
-                <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Téléphone</th>
-                            <th>Date et heure</th>
-                            <th>Service</th>
-                            <th>Couverts</th>
-                            <th>Commentaires</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for reservation in reservations %}
-                        <tr>
-                            <td>{{ reservation.id }}</td>
-                            <td>{{ reservation.lastname }}</td>
-                            <td>{{ reservation.firstname }}</td>
-                            <td>{{ reservation.phoneNumber }}</td>                         
-                            <td>{{ reservation.dateTime ? reservation.dateTime|date('d-m-Y H:i') : '' }}</td>
-                            <td>{{ reservation.service }}</td>
-                            <td>{{ reservation.nbCouverts }}</td>
-                            <td>{{ reservation.comments }}</td>
-                            <td>
+    <div>
+        <h1>Reservation index</h1>
+        <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
+    </div>
 
-                                {# <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a> #}
-                                <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}",  
-                                class="btn btn-primary">Modifier</a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="4">Aucune réservation</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                
-            {# </div>
-        </section>
-    </main>     #}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th>Date</th>
+                <th>Service</th>
+                <th>Heure</th>
+                <th>Couverts</th>
+                <th>Commentaires</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.lastname }}</td>
+                <td>{{ reservation.firstname }}</td>
+                <td>{{ reservation.phoneNumber }}</td>
+                <td>{{ reservation.date ? reservation.date|date('d-m-Y') : '' }}</td>
+                <td>{{ reservation.service }}</td>
+ 
+                {% if  reservation.midi  is not null %}
+                    <td>{{ reservation.midi.time|date('H:i') }}</td>
+                {% else %}
+                    <td>{{ reservation.soir.time|date('H:i') }}</td>    
+                {% endif %}
 
+                <td>{{ reservation.nbCouverts }}</td>
+                <td>{{ reservation.comments }}</td>
+                <td>
+                    {# <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a> #}
+                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="btn btn-primary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

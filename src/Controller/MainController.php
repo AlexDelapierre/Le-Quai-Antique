@@ -15,7 +15,7 @@ class MainController extends AbstractController
   }
 
   #[Route('/carte', name: 'carte')]
-  public function carte (): Response
+  public function carte(): Response
   {
     return $this->render('main/carte.html.twig', ['name' => '']);
   }

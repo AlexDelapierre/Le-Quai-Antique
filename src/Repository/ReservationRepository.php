@@ -39,6 +39,15 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
+    //Requête DQL
+    public function findNbCouverts()
+    {
+        return $this->getEntityManager()->createQuery(
+        'select SUM(nb_couverts) FROM reservation')
+        ->getOneOrNullResult();
+    }
+
+
 //    /**
 //     * @return Reservation[] Returns an array of Reservation objects
 //     */

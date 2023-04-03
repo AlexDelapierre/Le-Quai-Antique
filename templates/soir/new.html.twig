@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Soir{% endblock %}
+
+{% block body %}
+    <h1>Create new Soir</h1>
+
+    {{ include('soir/_form.html.twig') }}
+
+    <a href="{{ path('app_soir_index') }}">back to list</a>
+{% endblock %}

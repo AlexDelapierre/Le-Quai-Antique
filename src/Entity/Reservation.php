@@ -5,8 +5,6 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Validator as AcmeAssert;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -16,12 +14,6 @@ class Reservation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $nbCouverts = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE )]
-    private ?\DateTimeInterface $dateTime = null;
-
     #[ORM\Column(length: 100)]
     private ?string $lastname = null;
 
@@ -29,48 +21,29 @@ class Reservation
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank] 
-    #[AcmeAssert\FrenchPhoneNumber()]
     private ?string $phoneNumber = null;
+
+    #[ORM\Column]
+    private ?int $nbCouverts = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 4)]
     private ?string $service = null;
 
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?Midi $midi = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?Soir $soir = null;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $comments = null;
-    
-    // #[ORM\ManyToOne(inversedBy: 'reservations')]
-    // #[ORM\JoinColumn(nullable: false)]
-    // private ?User $user = null;
-
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getnbCouverts(): ?int
-    {
-        return $this->nbCouverts;
-    }
-
-    public function setnbCouverts(int $nbCouverts): self
-    {
-        $this->nbCouverts = $nbCouverts;
-
-        return $this;
-    }
-
-    public function getDateTime(): ?\DateTimeInterface
-    {
-        return $this->dateTime;
-    }
-
-    public function setDateTime(\DateTimeInterface $dateTime): self
-    {
-        $this->dateTime = $dateTime;
-
-        return $this;
     }
 
     public function getLastname(): ?string
@@ -109,17 +82,29 @@ class Reservation
         return $this;
     }
 
-        // public function getUser(): ?User
-    // {
-    //     return $this->user;
-    // }
+    public function getNbCouverts(): ?int
+    {
+        return $this->nbCouverts;
+    }
 
-    // public function setUser(?User $user): self
-    // {
-    //     $this->user = $user;
+    public function setNbCouverts(int $nbCouverts): self
+    {
+        $this->nbCouverts = $nbCouverts;
 
-    //     return $this;
-    // }
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
 
     public function getService(): ?string
     {
@@ -129,6 +114,30 @@ class Reservation
     public function setService(string $service): self
     {
         $this->service = $service;
+
+        return $this;
+    }
+
+    public function getMidi(): ?Midi
+    {
+        return $this->midi;
+    }
+
+    public function setMidi(?Midi $midi): self
+    {
+        $this->midi = $midi;
+
+        return $this;
+    }
+
+    public function getSoir(): ?Soir
+    {
+        return $this->soir;
+    }
+
+    public function setSoir(?Soir $soir): self
+    {
+        $this->soir = $soir;
 
         return $this;
     }
