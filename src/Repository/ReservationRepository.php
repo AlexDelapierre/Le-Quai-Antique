@@ -69,7 +69,7 @@ class ReservationRepository extends ServiceEntityRepository
     public function findNbCouverts()
     {
         $conn = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT SUM(nb_couverts) FROM reservation';
+        $sql = 'SELECT SUM(nb_couverts) as nbCouverts FROM reservation';
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
         // returns an array of arrays (i.e. a raw data set)

@@ -4,6 +4,7 @@ let soir = document.getElementById("reservation_soir");
 let midiDiv = document.getElementById("midiDiv");
 let soirDiv = document.getElementById("soirDiv");
 let nbCouvertsForm = document.getElementById("reservation_nbCouverts");
+let nbCouvertsValue = document.getElementById("reservation_nbCouverts").value;
 
 soir.disabled = true;
 
@@ -21,11 +22,9 @@ service.addEventListener("change", (event) => {
   }
 });
 
-const url = Routing.generate("app_nbCouverts");
-console.log(url);
+nbCouvertsForm.addEventListener("change", (event) => {});
 
-/*
-fetch("app_nbCouverts")
+fetch("/nbCouverts")
   .then((response) => {
     if (response.ok) {
       return response.json();
@@ -35,9 +34,6 @@ fetch("app_nbCouverts")
     }
   })
   .then((data) => {
-    console.log(data);
+    console.log(data[0].nbCouverts);
   })
   .catch((error) => console.error(error)); //Traitement de l'erreur dans l'appel
-  */
-
-// const request = new Request(url, { method: "GET" });

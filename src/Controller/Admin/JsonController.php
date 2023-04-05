@@ -51,8 +51,7 @@ class JsonController extends AbstractController
 
     // Avec requête DQL :
     $nbCouverts = $reservationRepository->findNbCouverts();
-    // dd($nbCouverts);
-
-    return new JsonResponse($nbCouverts); 
+    
+    return new JsonResponse($nbCouverts);  
   } 
 }
