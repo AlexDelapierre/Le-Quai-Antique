@@ -37,7 +37,8 @@ class ReservationType extends AbstractType
             ])
             ->add('nbCouverts', NumberType::class, [
                 'label' => 'Nombre de personnes',
-                'html5' => true
+                'html5' => true,
+                // 'attr' => ['id' => 'nom-du-champ']
             ])  
             ->add('date', DateType::class, [
                 'widget' => 'single_text',

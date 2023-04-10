@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Reservation;
+use App\Repository\CouvertRepository;
 use App\Repository\ReservationRepository;
 use PDO;
 use PDOException;
@@ -13,6 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class JsonController extends AbstractController
 {
+  #[Route('/nbCouvertsMax')]
+  public function getNbCouvertsMax(CouvertRepository $couvertRepository): JsonResponse
+  {
+    $couverts = $couvertRepository->findAll();
+    $nbCouvertsMax = array();
+    foreach ($couverts as $key => $couvert) {
+      $nbCouvertsMax[$key]['maxCouverts'] = $couvert->getMaxCouverts();
+    }
+
+    return new JsonResponse($nbCouvertsMax);  
+  }
+
   #[Route('/nbCouverts', name:'app_nbCouverts')]
   public function getNbCouverts(ReservationRepository $reservationRepository): JsonResponse
   {
@@ -43,9 +56,9 @@ class JsonController extends AbstractController
     /*
     // Avec finAll() :
     $reservations = $reservationRepository->findAll(); 
-    $$nbCouverts = array();
+    $nbCouverts = array();
     foreach ($reservations as $key => $reservation) {
-      $$nbCouverts[$key]['nbCouverts'] = $reservation->getNbCouverts();
+      $nbCouverts[$key]['nbCouverts'] = $reservation->getNbCouverts();
     }
     */ 
 
