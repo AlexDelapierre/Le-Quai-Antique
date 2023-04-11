@@ -7,35 +7,36 @@
             <strong>Le restaurant est complet,</strong> nous sommes désolés pour ce désagrément !
         </div>
 
-        {{ form_start(form) }}
-            {{ form_row(form.lastname) }}
-            {{ form_row(form.firstname) }}
-            {{ form_row(form.phoneNumber) }}
-            <div id="nbCouvertsDiv">
-            {{ form_row(form.nbCouverts) }}
-            </div>
-            {{ form_row(form.date) }}
-            {{ form_row(form.service) }}
-            <div id="midiDiv">
-                {{ form_row(form.midi) }}
-            </div>
-            <div id ="soirDiv">
-                {{ form_row(form.soir) }}
-            </div>    
-            <div class="row">    
-                <div class="col-6">
-                    {{ form_row(form.comments) }}
+        <div id="formDiv">
+            {{ form_start(form) }}
+                {{ form_row(form.lastname) }}
+                {{ form_row(form.firstname) }}
+                {{ form_row(form.phoneNumber) }}
+                <div id="nbCouvertsDiv">
+                {{ form_row(form.nbCouverts) }}
                 </div>
-                <div class="col-6 pt-4">
-                {# form-text #}
-                    <span  class="form-text">
-                        Merci d'avance de préciser en commentaire le nombre d'enfant présent à table 
-                        (si il y en a).
-                    </span>
+                {{ form_row(form.date) }}
+                {{ form_row(form.service) }}
+                <div id="midiDiv">
+                    {{ form_row(form.midi) }}
                 </div>
-            </div>
-            <button class="btn btn-primary w-100 mt-2 mb-5">{{ button_label|default('Save') }}</button>
-        {{ form_end(form) }}
+                <div id ="soirDiv">
+                    {{ form_row(form.soir) }}
+                </div>    
+                <div class="row">    
+                    <div class="col-6">
+                        {{ form_row(form.comments) }}
+                    </div>
+                    <div class="col-6 pt-4">
+                    {# form-text #}
+                        <span  class="form-text">
+                            Merci d'avance de préciser en commentaire les allergies éventuelles.
+                        </span>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100 mt-2 mb-5">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+        </div>
     </div>
 </div>
 

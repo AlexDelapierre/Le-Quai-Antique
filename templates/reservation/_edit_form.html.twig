@@ -1,0 +1,37 @@
+
+<div class="row">
+    <div class="col-7 mx-auto">
+        <h1 class="display-5 my-4 text-center"><span class="text-danger"></span> Réservation</h1>
+    
+        {{ form_start(form) }}
+            {{ form_row(form.lastname) }}
+            {{ form_row(form.firstname) }}
+            {{ form_row(form.phoneNumber) }}
+            <div id="nbCouvertsDiv">
+            {{ form_row(form.nbCouverts) }}
+            </div>
+            {{ form_row(form.date) }}
+            {{ form_row(form.service) }}
+            <div id="midiDiv">
+                {{ form_row(form.midi) }}
+            </div>
+            <div id ="soirDiv">
+                {{ form_row(form.soir) }}
+            </div>    
+            <div class="row">    
+                <div class="col-6">
+                    {{ form_row(form.comments) }}
+                </div>
+                <div class="col-6 pt-4">
+                {# form-text #}
+                    <span  class="form-text">
+                        Merci d'avance de préciser en commentaire les allergies éventuelles.
+                    </span>
+                </div>
+            </div>
+            <button class="btn btn-primary w-100 mt-2 mb-5">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}   
+    </div>
+</div>
+
+

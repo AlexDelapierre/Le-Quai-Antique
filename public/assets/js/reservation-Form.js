@@ -1,4 +1,5 @@
 let form = document.querySelector("form");
+let formDiv = document.getElementById("formDiv");
 let service = document.getElementById("reservation_service");
 let midi = document.getElementById("reservation_midi");
 let soir = document.getElementById("reservation_soir");
@@ -60,6 +61,7 @@ fetch("/nbCouvertsMax")
 
     if (!nbCouvertsRemain > 0) {
       fullAlert.style.display = "block";
+      formDiv.style.display = "none";
     }
 
     nbCouverts.addEventListener("input", function(event) {  

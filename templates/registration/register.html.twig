@@ -9,15 +9,19 @@
                 <h1>Inscription</h1>
 
                 {{ form_start(registrationForm) }}
-                    <fieldset class="mb-3">
-                        <legend>Mon identité</legend>
+                    <fieldset class="mb-3"
                         {{ form_row(registrationForm.lastname) }}
                         {{ form_row(registrationForm.firstname) }}
                         {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.phoneNumber) }}
+                        {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'}) }}
                     </fieldset>
-                    {{ form_row(registrationForm.plainPassword, {
-                        label: 'Password'
-                    }) }}
+                        <legend>Informations complémentaires <br> (Ces informations sont optionnelles et servent à pré-remplir le formulaire de réservation).</legend>
+                        {{ form_row(registrationForm.nbCouverts) }}
+                        {{ form_row(registrationForm.allergie) }}
+                    </fieldset>
+                    
                     {{ form_row(registrationForm.RGPDConsent) }}
 
                     <button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire

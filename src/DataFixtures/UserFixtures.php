@@ -22,8 +22,12 @@ class UserFixtures extends Fixture
         $admin->setEmail('admin@demo.fr');
         $admin->setLastname('DELAPIERRE');
         $admin->setFirstname('Alexandre');
+        $admin->setPhoneNumber('0627175198');
         $admin->setPassword($this->passwordEncoder->hashPassword($admin, 'admin'));
         $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setNbCouverts(2);
+        $admin->setAllergie('Crustacés');
+        
 
         $manager->persist($admin);
 
@@ -35,6 +39,7 @@ class UserFixtures extends Fixture
             $user->setEmail($faker->email);
             $user->setLastname($faker->lastName);
             $user->setFirstname($faker->firstName);
+            $user->setPhoneNumber($faker->phoneNumber);
             $user->setPassword($this->passwordEncoder->hashPassword($user, 'secret'));
 
         $manager->persist($user);

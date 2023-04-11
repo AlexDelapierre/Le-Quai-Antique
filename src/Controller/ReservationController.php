@@ -26,10 +26,32 @@ class ReservationController extends AbstractController
     public function new(Request $request, ReservationRepository $reservationRepository): Response
     {
         $reservation = new Reservation();
+
+        if ($this->getUser()){
+            // Récupérer l'utilisateur actuellement authentifié
+            $user = $this->getUser();
+
+            // Pré-remplie les données du formulaire
+            // $form->setData(['lastname' => $user->getLastname(), 'firstname' => $user->getFirstname(),
+            // 'phoneNumber' => $user->getPhoneNumber()]);
+            
+            // Pré-remplissage du formulaire avec les données de l'utilisateur connecté
+            $reservation->setLastname($user->getLastname());
+            $reservation->setFirstname($user->getFirstname());
+            $reservation->setPhoneNumber($user->getPhoneNumber());
+            $reservation->setNbCouverts($user->getNbCouverts());
+            $reservation->setComments($user->getAllergie());
+        };
+
         $form = $this->createForm(ReservationType::class, $reservation);
+
+        
+
         $form->handleRequest($request);
 
-        // $form->setData(['lastname' => 'Duss', 'firstname' => 'Jean Claude', 'date' => new \DateTimeImmutable()]); 
+        
+
+        
 
         // dd(
         //     $form->get('lastname')->getData(),  //Données de modèle
@@ -43,7 +65,7 @@ class ReservationController extends AbstractController
             // dd($form->get('lastname')); 
             // dd($form->get('lastname')->getName()->getConfig()->getType()->getInnerType());
             
-            
+            $reservation->setUser($user);
 
             $reservationRepository->save($reservation, true);
 
@@ -90,13 +112,5 @@ class ReservationController extends AbstractController
         }
 
         return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
-    }
-
-    #[Route('/test', name: 'app_reservation_essai', methods: ['GET'])]
-    public function getNbCouverts(ReservationRepository $reservationRepository): Response
-    {
-        // $nbCouverts = $reservationRepository->findAll();
-        // return new JsonResponse('salut');
-        return new Response('salut');
     }
 }

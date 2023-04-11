@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -37,12 +38,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $firstname = null;
 
-    // #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class, orphanRemoval: true)]
-    // private Collection $reservations;
+    #[ORM\Column(length: 255)]
+    private ?string $phoneNumber = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
+    private Collection $reservation;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nbCouverts = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $allergie = null;
+
 
     public function __construct()
     {
         // $this->reservations = new ArrayCollection();
+        $this->reservation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,33 +170,69 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    // /**
-    //  * @return Collection<int, Reservation>
-    //  */
-    // public function getReservations(): Collection
-    // {
-    //     return $this->reservations;
-    // }
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
 
-    // public function addReservation(Reservation $reservation): self
-    // {
-    //     if (!$this->reservations->contains($reservation)) {
-    //         $this->reservations->add($reservation);
-    //         $reservation->setUser($this);
-    //     }
+    public function setPhoneNumber(string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function removeReservation(Reservation $reservation): self
-    // {
-    //     if ($this->reservations->removeElement($reservation)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($reservation->getUser() === $this) {
-    //             $reservation->setUser(null);
-    //         }
-    //     }
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservation(): Collection
+    {
+        return $this->reservation;
+    }
 
-    //     return $this;
-    // }
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservation->contains($reservation)) {
+            $this->reservation->add($reservation);
+            $reservation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservation->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getUser() === $this) {
+                $reservation->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getNbCouverts(): ?int
+    {
+        return $this->nbCouverts;
+    }
+
+    public function setNbCouverts(?int $nbCouverts): self
+    {
+        $this->nbCouverts = $nbCouverts;
+
+        return $this;
+    }
+
+    public function getAllergie(): ?string
+    {
+        return $this->allergie;
+    }
+
+    public function setAllergie(?string $allergie): self
+    {
+        $this->allergie = $allergie;
+
+        return $this;
+    }
 }

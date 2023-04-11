@@ -76,10 +76,6 @@ class Image
         return $this;
     }
 
-    public function __toString(){
-        return $this->getFilename();
-    }
-
     public function getGalerie(): ?Galerie
     {
         return $this->galerie;
@@ -100,5 +96,9 @@ class Image
         $this->galerie = $galerie;
 
         return $this;
+    }
+
+    public function __toString(){
+        return $this->getFilename();
     }
 }

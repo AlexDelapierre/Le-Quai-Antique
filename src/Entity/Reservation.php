@@ -41,6 +41,9 @@ class Reservation
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $comments = null;
 
+    #[ORM\ManyToOne(inversedBy: 'reservation')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,7 +90,7 @@ class Reservation
         return $this->nbCouverts;
     }
 
-    public function setNbCouverts(int $nbCouverts): self
+    public function setNbCouverts(?int $nbCouverts): self
     {
         $this->nbCouverts = $nbCouverts;
 
@@ -150,6 +153,18 @@ class Reservation
     public function setComments(?string $comments): self
     {
         $this->comments = $comments;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

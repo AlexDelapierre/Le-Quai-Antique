@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -36,7 +37,22 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control'
                 ],
                 'label' => 'Prénom'
+            ])    
+            ->add('phoneNumber', options:[
+                'label' => 'Numéro de téléphone',
+                // 'constraints' => [
+                //     new NotBlank(['message' => 'Entrez un nom.']),
+                //     new Length(['min' => 10, 'minMessage' => '> {{ limit }}'])    
+                // ] 
             ])
+            ->add('nbCouverts', NumberType::class, [
+                'label' => 'Nombre de personnes',
+                'html5' => true,
+                // 'attr' => ['id' => 'nom-du-champ']
+            ])
+            ->add('allergie', options:[
+                'label' => 'allergies éventuelles'
+            ])       
             ->add('RGPDConsent', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

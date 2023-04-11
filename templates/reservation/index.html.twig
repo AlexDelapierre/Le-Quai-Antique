@@ -5,7 +5,7 @@
 {% block body %}
 
     <div>
-        <h1>Reservation index</h1>
+        <h1>Liste des réservations</h1>
         <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
     </div>
 
@@ -20,7 +20,7 @@
                 <th>Service</th>
                 <th>Heure</th>
                 <th>Couverts</th>
-                <th>Commentaires</th>
+                <th>Allergies</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -49,7 +49,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="9">Aucune réservation</td>
             </tr>
         {% endfor %}
         </tbody>
