@@ -3,15 +3,18 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\GalerieRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
   #[Route('/', name: 'main')]
-  public function index(): Response
+  public function index(GalerieRepository $galerieRepository): Response
   {
-    return $this->render('main/index.html.twig', ['name' => '']);
+    $galerie = $galerieRepository->findAll();
+
+    return $this->render('main/index.html.twig', compact('galerie'));
   }
 
   #[Route('/carte', name: 'carte')]
