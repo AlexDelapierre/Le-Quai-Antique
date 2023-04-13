@@ -12,9 +12,22 @@ class MainController extends AbstractController
   #[Route('/', name: 'main')]
   public function index(GalerieRepository $galerieRepository): Response
   {
-    $galerie = $galerieRepository->findAll();
+    $galeries = $galerieRepository->findAll();
+    // dd($galeries);
 
-    return $this->render('main/index.html.twig', compact('galerie'));
+    /*
+    // On récupère une galerie par son id (ici, 40)
+    $galerie = $galerieRepository->find(40);
+
+    // On récupère l'objet Image associé à la galerie
+    $image = $galerie->getImage();
+    
+    // On peut maintenant accéder aux propriétés de l'objet Image
+    $filename = $image->getFilename();
+    $title = $image->getTitle();
+    */
+    
+    return $this->render('main/index.html.twig', compact('galeries'));
   }
 
   #[Route('/carte', name: 'carte')]
