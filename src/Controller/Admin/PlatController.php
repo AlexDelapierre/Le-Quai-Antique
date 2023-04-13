@@ -41,11 +41,12 @@ class PlatController extends AbstractController
             //On appelle le service d'ajout
             $fichier = $pictureService->add($image, $folder, 300, 300);
             
-            $img = new Image;
-            $img->setName($fichier);
+            // Ancienne méthode avec l'entity Image :
+            // $img = new Image;
+            // $img->setName($fichier);
 
             //On persiste notre image dans le plat
-            $plat->setImage($img);
+            $plat->setImage($fichier);
 
 
             $platRepository->save($plat, true);
@@ -70,8 +71,12 @@ class PlatController extends AbstractController
     #[Route('/{id}/edit', name: 'app_plat_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Plat $plat, PlatRepository $platRepository, PictureService $pictureService): Response
     {
-        //On récupère l'image
-        $image = $plat->getImage()->getName();
+        // Ancienne méthode avec l'entity Image :
+        //On récupère le nom l'image
+        // $image = $plat->getImage()->getName();
+
+        //On récupère le nom l'image
+        $image = $plat->getImage();
 
         $form = $this->createForm(PlatType::class, $plat);
         $form->handleRequest($request);
@@ -93,11 +98,12 @@ class PlatController extends AbstractController
              //On appelle le service d'ajout
              $fichier = $pictureService->add($image, $folder, 300, 300);
              
-             $img = new Image;
-             $img->setName($fichier);
+             // Ancienne méthode avec l'entity Image :
+            //  $img = new Image;
+            //  $img->setName($fichier);
  
              //On persiste notre image dans le plat
-             $plat->setImage($img);
+             $plat->setImage($fichier);
 
             $platRepository->save($plat, true);
 
@@ -115,8 +121,12 @@ class PlatController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$plat->getId(), $request->request->get('_token'))) {
             
-            //On récupère l'image
-            $image = $plat->getImage()->getName();
+            // Ancienne méthode avec l'entity Image :
+            //On récupère le nom l'image
+            // $image = $plat->getImage()->getName();
+
+            //On récupère le nom l'image
+            $image = $plat->getImage();
             
             //On défini le dossier de destination
             $folder = 'plats';

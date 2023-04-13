@@ -22,12 +22,16 @@ class Plat
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\OneToOne(inversedBy: 'plat', cascade: ['persist', 'remove'])]
-    private ?Image $image = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+    // #[ORM\OneToOne(inversedBy: 'plat', cascade: ['persist', 'remove'])]
+    // private ?Image $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'plats')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
 
     public function getId(): ?int
     {
@@ -70,17 +74,29 @@ class Plat
         return $this;
     }
 
-    public function getImage(): ?Image
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(?Image $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
         return $this;
     }
+
+    // public function getImage(): ?Image
+    // {
+    //     return $this->image;
+    // }
+
+    // public function setImage(?Image $image): self
+    // {
+    //     $this->image = $image;
+
+    //     return $this;
+    // }
 
     public function getCategory(): ?Category
     {
