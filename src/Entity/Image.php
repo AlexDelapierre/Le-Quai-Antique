@@ -14,12 +14,9 @@ class Image
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $filename = null;
-
-    #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist'])]
+    #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist', 'remove'])]
     private ?Plat $plat = null;
 
     #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist', 'remove'])]
@@ -30,26 +27,14 @@ class Image
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getFilename(): ?string
-    {
-        return $this->filename;
-    }
-
-    public function setFilename(string $filename): self
-    {
-        $this->filename = $filename;
+        $this->name = $name;
 
         return $this;
     }
@@ -98,7 +83,7 @@ class Image
         return $this;
     }
 
-    public function __toString(){
-        return $this->getFilename();
-    }
+    // public function __toString(){
+    //     return $this->getName();
+    // }
 }
