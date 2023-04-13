@@ -88,7 +88,7 @@ class ImageController extends AbstractController
             
             // Use unlink() function to delete a file
             $file_pointer = $image->getFilename();
-            if (!unlink('../public/uploads/images/'.$file_pointer)) {
+            if (!unlink('../public/assets/uploads/images/'.$file_pointer)) {
             echo ("$file_pointer cannot be deleted due to an error");
             }
             else {

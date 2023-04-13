@@ -12,7 +12,7 @@
     <div class="col-12">
       <h1>Nos plats star !</h1>
     </div>
-    <div class="col-6">
+    <div class="col-12">
       <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
           {% for i in 1..galeries|length %}
@@ -23,7 +23,7 @@
         <div class="carousel-inner">
           {% for galerie in galeries %}
             <div class="carousel-item {{ (loop.first) ? 'active' : ''}}">
-              <img src="{{ asset('uploads/images/') ~ galerie.image.filename }}" class="d-block w-100" alt="{{ galerie.image.title }}">
+              <img src="{{ asset('assets/uploads/images/') ~ galerie.image.filename }}" class="d-block w-100" alt="{{ galerie.image.title }}">
             </div>
           {% endfor %}
         </div>
