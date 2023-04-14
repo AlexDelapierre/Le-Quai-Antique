@@ -12,9 +12,9 @@ class PlatFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $this->createPlat('Salade du chef', 'Le poulet, les oeufs, le fromage bleu et l’avocat mûr font de cette succulente salade un plat très nourrissant.', 14, '300X300-4dc7b802487970aeeff0ac1470ae8b96.webp', 1, $manager);
-        $this->createPlat('Spaghetti', 'Spaghetti Napoli Pasta al Pomodoro !', 15, '300X300-7a80ce62ad457a1133f9b6b1b1c94216.webp', 2, $manager);
-        $this->createPlat('Tiramisu', 'Un super tiramisu', 6, '300X300-c895b63c689b466935e5a516c694fa64.webp', 3, $manager);
+        $this->createPlat('Salade du chef', 'Le poulet, les oeufs, le fromage bleu et l’avocat mûr font de cette succulente salade un plat très nourrissant.', 14, '1200X700-1de666b2bbde81e0d59fc67d1a149e6c.webp', 1, $manager);
+        $this->createPlat('Spaghetti', 'Spaghetti Napoli Pasta al Pomodoro !', 15, '1200X700-011d64a779dc23db7e00f33f035c713d.webp', 2, $manager);
+        $this->createPlat('Tiramisu', 'Un super tiramisu', 6, '1200X700-49817dba28263d1317fbe955905a91b7.webp', 3, $manager);
 
         $manager->flush();
     }

@@ -14,7 +14,7 @@ class Galerie
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'galeries')]
-    // #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Plat $plat = null;
 
     public function getId(): ?int

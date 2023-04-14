@@ -8,6 +8,7 @@ use App\Form\PlatType;
 use App\Repository\PlatRepository;
 use App\Service\PictureService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,7 +40,7 @@ class PlatController extends AbstractController
             $folder = 'plats';
 
             //On appelle le service d'ajout
-            $fichier = $pictureService->add($image, $folder, 300, 300);
+            $fichier = $pictureService->add($image, $folder, 1200, 700);
             
             // Ancienne méthode avec l'entity Image :
             // $img = new Image;
@@ -87,13 +88,13 @@ class PlatController extends AbstractController
             $folder = 'plats';
 
             //On appelle le service de suppression pour supprimer l'ancienne image
-            $pictureService->delete($image, $folder, 300, 300);
+            $pictureService->delete($image, $folder, 1200, 700);
 
             //On récupère la nouvelle image
              $image = $form->get('image')->getData();
        
              //On appelle le service d'ajout
-             $fichier = $pictureService->add($image, $folder, 300, 300);
+             $fichier = $pictureService->add($image, $folder, 1200, 700);
              
              // Ancienne méthode avec l'entity Image :
             //  $img = new Image;
@@ -129,7 +130,7 @@ class PlatController extends AbstractController
             $folder = 'plats';
 
             //On appelle le service de suppression
-            $pictureService->delete($image, $folder, 300, 300);
+            $pictureService->delete($image, $folder, 1200, 700);
             
 
             // // Use unlink() function to delete a file
