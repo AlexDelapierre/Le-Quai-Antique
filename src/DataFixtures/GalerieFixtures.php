@@ -23,8 +23,8 @@ class GalerieFixtures extends Fixture implements DependentFixtureInterface
     {
         $galerie = new Galerie();
         //On va chercher une référence de ImageFixtures
-        $image = $this->getReference('img-'.$counterImage);
-        $galerie->setImage($image);
+        $image = $this->getReference('plat-'.$counterImage);
+        $galerie->setPlat($image);
 
         $manager->persist($galerie);
 
@@ -34,7 +34,7 @@ class GalerieFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            ImageFixtures::class
+            PlatFixtures::class
         ];
     }
 }

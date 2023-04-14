@@ -13,7 +13,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Images</th>
+                            <th>Plat</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -21,7 +21,13 @@
                         {% for galerie in galeries %}
                             <tr>
                                 <td>{{ galerie.id }}</td>
-                                <td>{{ galerie.image.title }}</td>
+
+                                {% if galerie.plat is null %}
+                                <td>Vide</td>
+                                {% else %}                                  
+                                <td>{{ galerie.plat.title }}</td>
+                                {% endif %}
+                                
                                 <td>
                                     {# <a href="{{ path('app_galerie_show', {'id': galerie.id}) }}">show</a> #}
                                     <a href="{{ path('app_galerie_edit', {'id': galerie.id}) }}" class="btn btn-primary">Modifier</a>

@@ -23,7 +23,7 @@
         <div class="carousel-inner">
           {% for galerie in galeries %}
             <div class="carousel-item {{ (loop.first) ? 'active' : ''}}">
-              <img src="{{ asset('assets/uploads/images/') ~ galerie.image.filename }}" class="d-block w-100" alt="{{ galerie.image.title }}">
+              <img src="{{ asset('assets/uploads/images/plats/mini/') ~ galerie.plat.image }}" class="d-block w-100" alt="{{ galerie.plat.title }}">
             </div>
           {% endfor %}
         </div>

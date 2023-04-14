@@ -17,7 +17,7 @@ class GalerieController extends AbstractController
     public function index(GalerieRepository $galerieRepository): Response
     {
         return $this->render('admin/galerie/index.html.twig', [
-            'galeries' => $galerieRepository->findAll(),
+            'galeries' => $galerieRepository->findAllOrderedByIdAsc(),
         ]);
     }
 

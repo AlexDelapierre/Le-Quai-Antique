@@ -13,27 +13,29 @@ class Galerie
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'galerie', cascade: ['persist', 'remove'])]
-    private ?Image $image = null;
+    #[ORM\ManyToOne(inversedBy: 'galeries')]
+    // #[ORM\JoinColumn(nullable: false)]
+    private ?Plat $plat = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getImage(): ?Image
+    public function getPlat(): ?Plat
     {
-        return $this->image;
+        return $this->plat;
     }
 
-    public function setImage(?Image $image): self
+    public function setPlat(?Plat $plat): self
     {
-        $this->image = $image;
+        $this->plat = $plat;
 
         return $this;
     }
 
     public function __toString(){
-        return $this->getImage();
+        return $this->getPlat();
     }
+
 }

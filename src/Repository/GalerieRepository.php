@@ -39,6 +39,14 @@ class GalerieRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllOrderedByIdAsc()
+    {
+        return $this->createQueryBuilder('i')
+            ->orderBy('i.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Galerie[] Returns an array of Galerie objects
 //     */

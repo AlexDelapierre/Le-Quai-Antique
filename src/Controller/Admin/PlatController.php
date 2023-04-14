@@ -91,10 +91,7 @@ class PlatController extends AbstractController
 
             //On récupère la nouvelle image
              $image = $form->get('image')->getData();
-
-            // //On défini le dossier de destination
-            // $folder = 'plats';
-            
+       
              //On appelle le service d'ajout
              $fichier = $pictureService->add($image, $folder, 300, 300);
              
@@ -132,7 +129,7 @@ class PlatController extends AbstractController
             $folder = 'plats';
 
             //On appelle le service de suppression
-            $fichier = $pictureService->delete($image, $folder, 300, 300);
+            $pictureService->delete($image, $folder, 300, 300);
             
 
             // // Use unlink() function to delete a file

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlatRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlatRepository::class)]
@@ -25,13 +27,17 @@ class Plat
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    // #[ORM\OneToOne(inversedBy: 'plat', cascade: ['persist', 'remove'])]
-    // private ?Image $image = null;
-
     #[ORM\ManyToOne(inversedBy: 'plats')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\OneToMany(mappedBy: 'plat', targetEntity: Galerie::class)]
+    private Collection $galeries;
+
+    public function __construct()
+    {
+        $this->galeries = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,18 +92,6 @@ class Plat
         return $this;
     }
 
-    // public function getImage(): ?Image
-    // {
-    //     return $this->image;
-    // }
-
-    // public function setImage(?Image $image): self
-    // {
-    //     $this->image = $image;
-
-    //     return $this;
-    // }
-
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -106,6 +100,36 @@ class Plat
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Galerie>
+     */
+    public function getGaleries(): Collection
+    {
+        return $this->galeries;
+    }
+
+    public function addGalery(Galerie $galery): self
+    {
+        if (!$this->galeries->contains($galery)) {
+            $this->galeries->add($galery);
+            $galery->setPlat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGalery(Galerie $galery): self
+    {
+        if ($this->galeries->removeElement($galery)) {
+            // set the owning side to null (unless already changed)
+            if ($galery->getPlat() === $this) {
+                $galery->setPlat(null);
+            }
+        }
 
         return $this;
     }
