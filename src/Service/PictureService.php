@@ -75,15 +75,15 @@ class PictureService
     $squareSize, $squareSize);
 
     $path = $this->params->get('images_directory') . $folder;
-
+    
     //On crée le dossier de destination s'il n'existe pas
     if(!file_exists($path)){
       mkdir($path, 0755, true);
     }
 
     //On stocke l'image recadrée 
-    imagewebp($resized_picture, $path . $width . 'X' .$height . '-' . $fichier);
-
+    imagewebp($resized_picture, $path .'/'. $width . 'X' .$height . '-' . $fichier);
+  
     //Je déplace le fichier de taille d'origine dans le path (le '/' sert à des problème éventuels dans windows).
     // $picture->move($path . '/', $fichier);
 
@@ -104,7 +104,7 @@ class PictureService
       $path = $this->params->get('images_directory') . $folder;
 
       // $mini = $path . '/mini/' . $width . 'X' .$height . '-' . $fichier;
-      $filePath = $path . $fichier;
+      $filePath = $path . '/' . $fichier;
 
       if(file_exists($filePath)){
         unlink($filePath);
