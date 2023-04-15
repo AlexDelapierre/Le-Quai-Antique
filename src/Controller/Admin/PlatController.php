@@ -147,4 +147,12 @@ class PlatController extends AbstractController
 
         return $this->redirectToRoute('app_plat_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    // #[Route('json', name: 'app_plat_json')]
+    // public function jsonPlats(PlatRepository $platRepository): JsonResponse
+    // {
+    //     $plats = $platRepository->findAllOrderedByCategoryAsc();
+
+    //     return new JsonResponse($plats);
+    // }
 }

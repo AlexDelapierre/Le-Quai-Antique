@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\GalerieRepository;
+use App\Repository\PlatRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -31,9 +32,13 @@ class MainController extends AbstractController
   }
 
   #[Route('/carte', name: 'carte')]
-  public function carte(): Response
+  public function carte(PlatRepository $platRepository): Response
   {
-    return $this->render('main/carte.html.twig', ['name' => '']);
+    $tousLesPlats = $platRepository->findAll();
+    $entrees = $platRepository->findAllEntreesOrderedByAsc();
+    $plats = $platRepository->findAllPlatsOrderedByAsc();
+    $desserts = $platRepository->findAllDessertsOrderedByAsc();
+    return $this->render('main/carte.html.twig', compact('entrees', 'plats', 'desserts', 'tousLesPlats'));
   }
 
   #[Route('/reservations', name: 'reservations')]

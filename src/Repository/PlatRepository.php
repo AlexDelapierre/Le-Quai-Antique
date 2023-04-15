@@ -39,6 +39,84 @@ class PlatRepository extends ServiceEntityRepository
         }
     }
 
+    // public function findAllOrderByCategoryAsc()
+    // {
+    //     $entityManager = $this->getEntityManager();
+
+    //     $query = $entityManager->createQuery(
+    //         'SELECT p
+    //         FROM App\Entity\Plat p
+    //         ORDER BY p.category ASC'
+    //     );
+
+    //     return $query->getResult();
+    // }
+
+    // public function findAllOrderByCategoryAsc()
+    // {
+    //     $entityManager = $this->getEntityManager();
+
+    //     $query = $entityManager->createQuery(
+    //         'SELECT p
+    //         FROM App\Entity\Plat p
+    //         ORDER BY p.category ASC'
+    //     );
+
+    //     return $query->getResult();
+    // }
+
+    // public function findAllOrderedByCategoryAsc()
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->orderBy('p.category', 'ASC')
+    //         ->getQuery()
+    //         ->getResult();
+    // }
+
+    // Requête 1
+    public function findAllEntreesOrderedByAsc()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.category = :category')
+            ->setParameter('category', 'Entrées')
+            ->orderBy('p.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+   // Requête 2
+    public function findAllPlatsOrderedByAsc()
+    {
+    return $this->createQueryBuilder('p')
+    ->join('p.category', 'c')
+    ->andWhere('c.name = :category')
+    ->setParameter('category', 'plats')
+    ->orderBy('p.id', 'ASC')
+    ->getQuery()
+    ->getResult();
+    }
+
+    // Requête 3
+    public function findAllDessertsOrderedByAsc()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.category = :category')
+            ->setParameter('category', 'Desserts')
+            ->orderBy('p.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAll()
+{
+    return $this->createQueryBuilder('p')
+        ->leftJoin('p.category', 'c')
+        ->addSelect('c')
+        ->getQuery()
+        ->getResult();
+}
+
+
 //    /**
 //     * @return Plat[] Returns an array of Plat objects
 //     */
