@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Formule;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\GalerieRepository;
+use App\Repository\MenuRepository;
 use App\Repository\PlatRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,13 +34,13 @@ class MainController extends AbstractController
   }
 
   #[Route('/carte', name: 'carte')]
-  public function carte(PlatRepository $platRepository): Response
+  public function carte(PlatRepository $platRepository, MenuRepository $menuRepository): Response
   {
-    $tousLesPlats = $platRepository->findAll();
+    $menus = $menuRepository->findAll();
     $entrees = $platRepository->findAllEntreesOrderedByAsc();
     $plats = $platRepository->findAllPlatsOrderedByAsc();
     $desserts = $platRepository->findAllDessertsOrderedByAsc();
-    return $this->render('main/carte.html.twig', compact('entrees', 'plats', 'desserts', 'tousLesPlats'));
+    return $this->render('main/carte.html.twig', compact('entrees', 'plats', 'desserts', 'menus'));
   }
 
   #[Route('/reservations', name: 'reservations')]

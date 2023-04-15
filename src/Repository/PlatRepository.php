@@ -53,6 +53,16 @@ class PlatRepository extends ServiceEntityRepository
     //     return $query->getResult();
     // }
 
+    //Requête pour tout récupérer avec join
+    public function findAll()
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.category', 'c')
+            ->addSelect('c')
+            ->getQuery()
+            ->getResult();
+    }
+
  
     // Requête pour récupérer tous les plats avec la category 'Entrées'
     public function findAllEntreesOrderedByAsc()
@@ -90,14 +100,7 @@ class PlatRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findAll()
-{
-    return $this->createQueryBuilder('p')
-        ->leftJoin('p.category', 'c')
-        ->addSelect('c')
-        ->getQuery()
-        ->getResult();
-}
+
 
 
 //    /**
