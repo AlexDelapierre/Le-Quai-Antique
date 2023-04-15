@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Image;
 use App\Entity\Plat;
 use App\Form\PlatType;
+use App\Repository\HoraireRepository;
 use App\Repository\PlatRepository;
 use App\Service\PictureService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,15 +18,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class PlatController extends AbstractController
 {
     #[Route('/', name: 'app_plat_index', methods: ['GET'])]
-    public function index(PlatRepository $platRepository): Response
+    public function index(PlatRepository $platRepository, HoraireRepository $horaireRepository): Response
     {
         return $this->render('admin/plat/index.html.twig', [
             'plats' => $platRepository->findAll(),
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/new', name: 'app_plat_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, PlatRepository $platRepository, PictureService $pictureService): Response
+    public function new(Request $request, PlatRepository $platRepository,HoraireRepository $horaireRepository ,PictureService $pictureService): Response
     {
         $plat = new Plat();
         $form = $this->createForm(PlatType::class, $plat);
@@ -58,19 +60,21 @@ class PlatController extends AbstractController
         return $this->renderForm('admin/plat/new.html.twig', [
             'plat' => $plat,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}', name: 'app_plat_show', methods: ['GET'])]
-    public function show(Plat $plat): Response
+    public function show(Plat $plat, HoraireRepository $horaireRepository): Response
     {
         return $this->render('admin/plat/show.html.twig', [
             'plat' => $plat,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_plat_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Plat $plat, PlatRepository $platRepository, PictureService $pictureService): Response
+    public function edit(Request $request, Plat $plat, PlatRepository $platRepository,HoraireRepository $horaireRepository ,PictureService $pictureService): Response
     {
         // Ancienne méthode avec l'entity Image :
         //On récupère le nom l'image
@@ -111,6 +115,7 @@ class PlatController extends AbstractController
         return $this->renderForm('admin/plat/edit.html.twig', [
             'plat' => $plat,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 

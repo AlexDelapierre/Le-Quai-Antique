@@ -63,6 +63,7 @@ class HoraireController extends AbstractController
         return $this->renderForm('admin/horaire/edit.html.twig', [
             'horaire' => $horaire,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 

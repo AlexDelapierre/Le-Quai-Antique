@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\HoraireRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,15 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, HoraireRepository $horaireRepository): Response
     {
         return $this->render('admin/user/index.html.twig', [
             'users' => $userRepository-> findAll(),
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $userRepository): Response
+    public function new(Request $request, UserRepository $userRepository, HoraireRepository $horaireRepository): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -37,19 +39,21 @@ class UserController extends AbstractController
         return $this->renderForm('admin/user/new.html.twig', [
             'user' => $user,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, HoraireRepository $horaireRepository): Response
     {
         return $this->render('admin/user/show.html.twig', [
             'user' => $user,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, UserRepository $userRepository): Response
+    public function edit(Request $request, User $user, UserRepository $userRepository, HoraireRepository $horaireRepository): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -63,6 +67,7 @@ class UserController extends AbstractController
         return $this->renderForm('admin/user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 

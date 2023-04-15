@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\HoraireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,15 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository, HoraireRepository $horaireRepository): Response
     {
         return $this->render('admin/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CategoryRepository $categoryRepository): Response
+    public function new(Request $request, CategoryRepository $categoryRepository, HoraireRepository $horaireRepository): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
@@ -37,19 +39,21 @@ class CategoryController extends AbstractController
         return $this->renderForm('admin/category/new.html.twig', [
             'category' => $category,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    public function show(Category $category, HoraireRepository $horaireRepository): Response
     {
         return $this->render('admin/category/show.html.twig', [
             'category' => $category,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository, HoraireRepository $horaireRepository): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -63,6 +67,7 @@ class CategoryController extends AbstractController
         return $this->renderForm('admin/category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 

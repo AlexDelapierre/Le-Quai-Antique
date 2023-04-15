@@ -1,19 +1,17 @@
 <footer>
-
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-4 my-5 border-top">
+  {# {% include 'base.html.twig' with {'maVariable': maVariable} %} #}
+  {# {{ render('base.html.twig', {'horaires': horaires}) }} #}
+  {# <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-4 my-5 border-top"> #}
+  <div class="row py-4 my-5 border-top">
     
-    <div class="col mb-3">
+    <div class="col-sm-6 col-md-4 col-xl-4 mb-3">
       <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
       </a>
       <p class="text-muted">Logo</p>
     </div>
 
-    <div class="col mb-3">
-
-    </div>
-
-    <div class="col mb-3">
+    <div class="col-sm-6 col-md-4 col-xl-2 mb-3">
       <h5>Section</h5>
       <ul class="nav flex-column">
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -24,18 +22,43 @@
       </ul>
     </div>
 
-    <div class="col mb-3">
-      <h5>Section</h5>
-      <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-      </ul>
+    <div class="col-sm-6 col-md-4 col-xl-4 mb-3">
+      <h5>Horaires</h5>
+      <table>
+        <tbody>
+          <tr>
+            <td>Lundi</td>
+            <td> {{ horaires[0].monday | nl2br }} </td>
+          </tr>
+          <tr>
+            <td>Mardi</td>
+            <td> {{ horaires[0].tuesday | nl2br }} </td>
+          </tr>
+          <tr>
+            <td>Mercredi</td>
+            <td> {{ horaires[0].wednesday | nl2br }} </td>
+          </tr>
+          <tr>
+            <td>Jeudi</td>
+            <td> {{ horaires[0].thursday | nl2br }} </td>
+          </tr>
+          <tr>
+            <td>Vendredi</td>
+            <td> {{ horaires[0].friday | nl2br }} </td>
+          </tr>
+          <tr>
+            <td>Samedi</td>
+            <td> {{ horaires[0].saturday | nl2br }} </td>
+          </tr>
+          <tr>
+            <td>Dimance</td>
+            <td> {{ horaires[0].sunday | nl2br  }} </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="col mb-3">
+    <div class="col-sm-6 col-md-4 col-xl-2 mb-3">
       <h5>Section</h5>
       <ul class="nav flex-column">
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
@@ -47,3 +70,4 @@
     </div>
   </div> 
 </footer>
+

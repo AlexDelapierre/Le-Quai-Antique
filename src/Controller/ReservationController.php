@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Reservation;
 use App\Form\ReservationType;
+use App\Repository\HoraireRepository;
 use App\Repository\ReservationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,15 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReservationController extends AbstractController
 {
     #[Route('/', name: 'app_reservation_index', methods: ['GET'])]
-    public function index(ReservationRepository $reservationRepository): Response
+    public function index(ReservationRepository $reservationRepository, HoraireRepository $horaireRepository): Response
     {
         return $this->render('reservation/index.html.twig', [
             'reservations' => $reservationRepository->findAll(),
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ReservationRepository $reservationRepository): Response
+    public function new(Request $request, ReservationRepository $reservationRepository, HoraireRepository $horaireRepository): Response
     {
         $reservation = new Reservation();
 
@@ -44,14 +46,7 @@ class ReservationController extends AbstractController
         };
 
         $form = $this->createForm(ReservationType::class, $reservation);
-
-        
-
         $form->handleRequest($request);
-
-        
-
-        
 
         // dd(
         //     $form->get('lastname')->getData(),  //Données de modèle
@@ -75,19 +70,21 @@ class ReservationController extends AbstractController
         return $this->renderForm('reservation/new.html.twig', [
             'reservation' => $reservation,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]
-    public function show(Reservation $reservation): Response
+    public function show(Reservation $reservation, HoraireRepository $horaireRepository): Response
     {
         return $this->render('reservation/show.html.twig', [
             'reservation' => $reservation,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_reservation_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Reservation $reservation, ReservationRepository $reservationRepository): Response
+    public function edit(Request $request, Reservation $reservation, ReservationRepository $reservationRepository, HoraireRepository $horaireRepository): Response
     {
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -101,6 +98,7 @@ class ReservationController extends AbstractController
         return $this->renderForm('reservation/edit.html.twig', [
             'reservation' => $reservation,
             'form' => $form,
+            'horaires' => $horaireRepository->findAll(),
         ]);
     }
 

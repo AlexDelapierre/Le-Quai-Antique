@@ -3,9 +3,8 @@
 {% block title %}Homepage{% endblock %}
 
 {% block body %}
-  {# Ici on utilise la variable name #}
-  {# <h1>Site restaurant</h1>
-  <p>Bonjour {{ name }}, vous êtes sur la page d'accueil.</p> #}
+ 
+  {# {{ include("base.html.twig", {'horaires': horaires}) }} #}
 
  <main class="container">
   <section class="row">
@@ -50,8 +49,4 @@
     </div>
   </section> 
 </main>    
-
-
-
-
 {% endblock %}

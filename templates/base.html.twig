@@ -23,8 +23,10 @@
     <body>
         <div class="container">
             {% include "_partials/_navbar.html.twig" %}
-            {% block body %}{% endblock %}
+            {% block body %}{% endblock %}        
             {% include "_partials/_footer.html.twig" %}
+            {# {{ include("_partials/_footer.html.twig", {'horaires': horaires}) }} #}
+            {# {{ render('index.html.twig', {'horaires': horaires}) }} #}
         </div>
         <!-- Copyright -->
         <div class=" copyright text-center p-3" style="background-color: rgba(0, 0, 0, 0.9);">
