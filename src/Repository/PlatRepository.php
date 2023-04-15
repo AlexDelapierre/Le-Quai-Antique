@@ -39,18 +39,6 @@ class PlatRepository extends ServiceEntityRepository
         }
     }
 
-    // public function findAllOrderByCategoryAsc()
-    // {
-    //     $entityManager = $this->getEntityManager();
-
-    //     $query = $entityManager->createQuery(
-    //         'SELECT p
-    //         FROM App\Entity\Plat p
-    //         ORDER BY p.category ASC'
-    //     );
-
-    //     return $query->getResult();
-    // }
 
     // public function findAllOrderByCategoryAsc()
     // {
@@ -65,42 +53,37 @@ class PlatRepository extends ServiceEntityRepository
     //     return $query->getResult();
     // }
 
-    // public function findAllOrderedByCategoryAsc()
-    // {
-    //     return $this->createQueryBuilder('p')
-    //         ->orderBy('p.category', 'ASC')
-    //         ->getQuery()
-    //         ->getResult();
-    // }
-
-    // Requête 1
+ 
+    // Requête pour récupérer tous les plats avec la category 'Entrées'
     public function findAllEntreesOrderedByAsc()
     {
         return $this->createQueryBuilder('p')
-            ->where('p.category = :category')
+            ->join('p.category', 'c')
+            ->andWhere('c.name = :category')
             ->setParameter('category', 'Entrées')
             ->orderBy('p.title', 'ASC')
             ->getQuery()
             ->getResult();
     }
 
-   // Requête 2
+   // Requête pour récupérer tous les plats avec la category 'plats'
     public function findAllPlatsOrderedByAsc()
     {
-    return $this->createQueryBuilder('p')
-    ->join('p.category', 'c')
-    ->andWhere('c.name = :category')
-    ->setParameter('category', 'plats')
-    ->orderBy('p.id', 'ASC')
-    ->getQuery()
-    ->getResult();
+        return $this->createQueryBuilder('p')
+        ->join('p.category', 'c')
+        ->andWhere('c.name = :category')
+        ->setParameter('category', 'plats')
+        ->orderBy('p.id', 'ASC')
+        ->getQuery()
+        ->getResult();
     }
 
-    // Requête 3
+    // Requête pour récupérer tous les plats avec la category 'Desserts'
     public function findAllDessertsOrderedByAsc()
     {
         return $this->createQueryBuilder('p')
-            ->where('p.category = :category')
+            ->join('p.category', 'c')
+            ->andWhere('c.name = :category')
             ->setParameter('category', 'Desserts')
             ->orderBy('p.title', 'ASC')
             ->getQuery()

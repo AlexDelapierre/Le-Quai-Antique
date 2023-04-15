@@ -4,11 +4,45 @@
 
 {% block body %}
 
-{% for plat in plats %}
- 
-  {{ dump(plat) }}
- 
+  <main class="container">
+    <div class="mt-5 mx-auto" style="width: 300px">
+      <h1>Notre carte</h1>
+    </div>
+    
+    <section class="row mt-5">
+      <div class="col-4">
+        <h2>Les entrées :</h2>
+      </div>
+      <div class="col-6">
+        {% for entree in entrees %}
+          <h3> {{ entree.title }} - {{ entree.price }}€ </h3>
+          <p> {{ entree.description }} </p>
+        {% endfor %}
+      </div>
+    </section>
 
-{% endfor %}
+  <section class="row mt-5">
+    <div class="col-4">
+      <h2>Les plats :</h2>
+    </div>
+    <div class="col-6">
+      {% for plat in plats %}
+        <h3> {{ plat.title }} - {{ plat.price }}€ </h3>
+        <p> {{ plat.description }} </p>
+      {% endfor %}
+    </div>
+  </section>
 
+  <section class="row mt-5">
+    <div class="col-4">
+      <h2>Les desserts :</h2>
+    </div> 
+    <div class="col-6">
+      {% for dessert in desserts %}
+        <h3> {{ dessert.title }} - {{ dessert.price }}€ </h3>
+          <p> {{ dessert.description }} </p>  
+      {% endfor %}
+    </div>
+  </section>
+  </main>
 {% endblock %}
