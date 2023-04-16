@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
 {% block title %}Edit Reservation{% endblock %}
 
@@ -10,12 +10,12 @@
 <script src="{{ asset('assets/js/reservation-Form.js') }}"defer></script> 
 {% endblock %}
 
-{% block body %}
+{% block section %}
     <h1>Réservation</h1>
 
     <a href="{{ path('app_reservation_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
 
-    {{ include('reservation/_edit_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ include('admin/reservationAdmin/_edit_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    {{ include('reservation/_delete_form.html.twig') }}
+    {{ include('admin/reservationAdmin/_delete_form.html.twig') }}
 {% endblock %}

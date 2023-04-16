@@ -11,7 +11,7 @@
 
         {% if app.user %}
           {% if is_granted('ROLE_ADMIN') %}
-            <li class="nav-item dropdown">
+            {# <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="{{ path('app_galerie_index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Administration
               </a>
@@ -27,7 +27,9 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
-            </li> 
+            </li>  #}
+
+            <li><a href="{{ path('app_galerie_index') }}" class="nav-link px-2 link-danger">Administration</a></li>
           {% endif %}  
         {% endif %}  
       </ul>

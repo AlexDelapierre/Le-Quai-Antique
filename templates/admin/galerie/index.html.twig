@@ -1,12 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
 {% block title %}Galerie index{% endblock %}
 
-{% block body %}
-    {# <main class="container">
-        <section class="row">
-            {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9 border border-light bg-white p-2"> #}
+{% block section %}
                 <h1>Galerie</h1>
 
                 <table class="table">
@@ -40,8 +36,4 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                {# <a href="{{ path('app_galerie_new') }}">Create new</a> #}
-            {# </div>      
-        </section>
-    </main> #}
 {% endblock %}

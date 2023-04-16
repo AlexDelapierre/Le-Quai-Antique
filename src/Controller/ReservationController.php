@@ -18,10 +18,21 @@ class ReservationController extends AbstractController
     #[Route('/', name: 'app_reservation_index', methods: ['GET'])]
     public function index(ReservationRepository $reservationRepository, HoraireRepository $horaireRepository): Response
     {
-        return $this->render('reservation/index.html.twig', [
-            'reservations' => $reservationRepository->findAll(),
-            'horaires' => $horaireRepository->findAll(),
-        ]);
+        if ($this->getUser()){
+            $userRole = $this->getUser()->getRoles();
+ 
+            if(in_array("ROLE_ADMIN", $userRole)){
+                return $this->render('admin/reservationAdmin/index.html.twig', [
+                    'reservations' => $reservationRepository->findAll(),
+                    'horaires' => $horaireRepository->findAll(),
+                ]);
+            } 
+            else {
+                return $this->render('main.html.twig');
+            } 
+        }
+
+        return $this->render('main.html.twig');
     }
 
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
@@ -43,7 +54,7 @@ class ReservationController extends AbstractController
             $reservation->setPhoneNumber($user->getPhoneNumber());
             $reservation->setNbCouverts($user->getNbCouverts());
             $reservation->setComments($user->getAllergie());
-        };
+        }; 
 
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -64,20 +75,40 @@ class ReservationController extends AbstractController
 
             $reservationRepository->save($reservation, true);
 
+            
             return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
         }
+
+        if ($this->getUser()){
+            $userRole = $this->getUser()->getRoles();
+            if(in_array("ROLE_ADMIN", $userRole)){
+                return $this->renderForm('admin/reservationAdmin/new.html.twig', [
+                'reservation' => $reservation,
+                'form' => $form,
+                'horaires' => $horaireRepository->findAll(),
+                ]);
+            } 
+            else {
+                return $this->renderForm('reservation/new.html.twig', [
+                    'reservation' => $reservation,
+                    'form' => $form,
+                    'horaires' => $horaireRepository->findAll(),
+                ]);
+            } 
+        }; 
 
         return $this->renderForm('reservation/new.html.twig', [
             'reservation' => $reservation,
             'form' => $form,
             'horaires' => $horaireRepository->findAll(),
         ]);
+           
     }
 
     #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]
     public function show(Reservation $reservation, HoraireRepository $horaireRepository): Response
     {
-        return $this->render('reservation/show.html.twig', [
+        return $this->render('admin/reservationAdmin/index.html.twig', [
             'reservation' => $reservation,
             'horaires' => $horaireRepository->findAll(),
         ]);
@@ -95,7 +126,7 @@ class ReservationController extends AbstractController
             return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('reservation/edit.html.twig', [
+        return $this->renderForm('admin/reservationAdmin/index.html.twig', [
             'reservation' => $reservation,
             'form' => $form,
             'horaires' => $horaireRepository->findAll(),

@@ -1,9 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
 {% block title %}Reservation index{% endblock %}
 
-{% block body %}
-
+{% block section %}
     <div>
         <h1>Liste des réservations</h1>
         <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
 {% block title %}Nouvelle Reservation{% endblock %}
 
@@ -10,8 +10,10 @@
 <script src="{{ asset('assets/js/reservation-Form.js') }}"defer></script> 
 {% endblock %}
 
-{% block body %}
-   
+{% block section %}
+    {# <h1>Reservation</h1> #}
+
     {{ include('admin/reservationAdmin/_form.html.twig') }} 
 
+    {# <a href="{{ path('app_reservation_index') }}">back to list</a> #}
 {% endblock %}
