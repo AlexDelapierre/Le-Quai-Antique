@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <th>Comments</th>
-                <td>{{ reservation.comments }}</td>
+                <td>{{ reservation.comments | raw | nl2br }}</td>
             </tr>
         </tbody>
     </table>

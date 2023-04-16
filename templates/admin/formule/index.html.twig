@@ -25,9 +25,9 @@
                     {% for formule in formules %}
                         <tr>
                             <td>{{ formule.id }}</td>
-                            <td>{{ formule.menu.title }}</td>
-                            <td>{{ formule.name }}</td>
-                            <td>{{ formule.description | nl2br  }}</td>
+                            <td>{{ formule.menu.title | raw | nl2br }}</td>
+                            <td>{{ formule.name | raw | nl2br }}</td>
+                            <td>{{ formule.description | raw | nl2br   }}</td>
                             <td>{{ formule.price ~ '€' }}</td>
                             <td>
                                 {# <a href="{{ path('app_formule_show', {'id': formule.id}) }}">show</a> #}

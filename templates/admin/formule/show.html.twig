@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <th>Name</th>
-                <td>{{ formule.name }}</td>
+                <td>{{ formule.name | raw | nl2br }}</td>
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ formule.description }}</td>
+                <td>{{ formule.description | raw | nl2br }}</td>
             </tr>
             <tr>
                 <th>Price</th>

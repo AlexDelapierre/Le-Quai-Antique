@@ -29,8 +29,8 @@
                         <tr>
                             <td>{{ plat.id }}</td>
                             <td>{{ plat.category.name }}</td>
-                            <td>{{ plat.title }}</td>
-                            <td>{{ plat.description }}</td>
+                            <td>{{ plat.title | raw | nl2br }}</td>
+                            <td>{{ plat.description | raw | nl2br }}</td>
                             <td>{{ plat.price ~ '€' }}</td>
                             <td>
                                 {# <a href="{{ path('app_plat_show', {'id': plat.id}) }}">show</a> #}

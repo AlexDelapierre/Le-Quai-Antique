@@ -26,13 +26,13 @@
                     <tbody>
                     {% for horaire in horaires %}
                         <tr>
-                            <td>{{ horaire.monday | nl2br }}</td>
-                            <td>{{ horaire.tuesday | nl2br }}</td>
-                            <td>{{ horaire.wednesday | nl2br }}</td>
-                            <td>{{ horaire.thursday | nl2br }}</td>
-                            <td>{{ horaire.friday | nl2br }}</td>
-                            <td>{{ horaire.saturday | nl2br }}</td>
-                            <td>{{ horaire.sunday | nl2br }}</td>
+                            <td>{{ horaire.monday | raw | nl2br }}</td>
+                            <td>{{ horaire.tuesday | raw | nl2br }}</td>
+                            <td>{{ horaire.wednesday | raw | nl2br }}</td>
+                            <td>{{ horaire.thursday | raw | nl2br }}</td>
+                            <td>{{ horaire.friday | raw | nl2br }}</td>
+                            <td>{{ horaire.saturday | raw | nl2br }}</td>
+                            <td>{{ horaire.sunday | raw | nl2br }}</td>
                             <td>
                                 <a href="{{ path('app_horaire_edit', {'id': horaire.id}) }}" 
                                 class="btn btn-primary">Modifier</a>

@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <th>Titre</th>
-                <td>{{ plat.title }}</td>
+                <td>{{ plat.title | raw | nl2br }}</td>
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ plat.description }}</td>
+                <td>{{ plat.description | raw | nl2br }}</td>
             </tr>
             <tr>
                 <th>Prix</th>
