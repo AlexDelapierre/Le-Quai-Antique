@@ -1,70 +1,68 @@
-<footer>
-  <div class="row py-4 border-top">
-    
-    <div class="col-sm-6 col-md-4 col-xl-4 mb-3">
-      <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-      <p class="text-muted">Logo</p>
-    </div>
+<footer class="row py-4 border-top bg-light">   
+  <div class="col-sm-6 col-md-4 col-xl-4 mb-3">
+    <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+    <p class="text-muted">Logo</p>
+  </div>
 
-    <div class="col-sm-6 col-md-4 col-xl-2 mb-3">
-      <h5>Section</h5>
-      <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-      </ul>
-    </div>
+  <div class="col-sm-6 col-md-4 col-xl-2 mb-3">
+    <h5>Section</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+    </ul>
+  </div>
 
-    <div class="col-sm-6 col-md-4 col-xl-4 mb-3">
-      <h5>Horaires</h5>
-      <table id="TableHoraires">
-        <tbody>
-          <tr>
-            <td>Lundi</td>
-            <td> {{ horaires[0].monday | raw | nl2br }} </td>
-          </tr>
-          <tr>
-            <td>Mardi</td>
-            <td> {{ horaires[0].tuesday | raw | nl2br }} </td>
-          </tr>
-          <tr>
-            <td>Mercredi</td>
-            <td> {{ horaires[0].wednesday | raw | nl2br }} </td>
-          </tr>
-          <tr>
-            <td>Jeudi</td>
-            <td> {{ horaires[0].thursday | raw | nl2br }} </td>
-          </tr>
-          <tr>
-            <td>Vendredi</td>
-            <td> {{ horaires[0].friday | raw | nl2br }} </td>
-          </tr>
-          <tr>
-            <td>Samedi</td>
-            <td> {{ horaires[0].saturday | raw | nl2br }} </td>
-          </tr>
-          <tr>
-            <td>Dimanche</td>
-            <td> {{ horaires[0].sunday | raw | nl2br  }} </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="col-sm-6 col-md-4 col-xl-4 mb-3">
+    <h5>Horaires</h5>
+    <table id="TableHoraires">
+      <tbody>
+        <tr>
+          <td>Lundi</td>
+          <td> {{ horaires[0].monday | raw | nl2br }} </td>
+        </tr>
+        <tr>
+          <td>Mardi</td>
+          <td> {{ horaires[0].tuesday | raw | nl2br }} </td>
+        </tr>
+        <tr>
+          <td>Mercredi</td>
+          <td> {{ horaires[0].wednesday | raw | nl2br }} </td>
+        </tr>
+        <tr>
+          <td>Jeudi</td>
+          <td> {{ horaires[0].thursday | raw | nl2br }} </td>
+        </tr>
+        <tr>
+          <td>Vendredi</td>
+          <td> {{ horaires[0].friday | raw | nl2br }} </td>
+        </tr>
+        <tr>
+          <td>Samedi</td>
+          <td> {{ horaires[0].saturday | raw | nl2br }} </td>
+        </tr>
+        <tr>
+          <td>Dimanche</td>
+          <td> {{ horaires[0].sunday | raw | nl2br  }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="col-sm-6 col-md-4 col-xl-2 mb-3">
-      <h5>Section</h5>
-      <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-      </ul>
-    </div>
-  </div> 
-</footer>
+  <div class="col-sm-6 col-md-4 col-xl-2 mb-3">
+    <h5>Section</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+    </ul>
+  </div>
+</footer> 
+
 

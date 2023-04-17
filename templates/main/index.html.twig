@@ -4,15 +4,10 @@
 
 {% block body %}
  
-  {# {{ include("base.html.twig", {'horaires': horaires}) }} #}
+    {% include "_partials/_mainBanner.html.twig" %}
 
- <main class="container">
-  <section class="row">
-  {# <div class="col-12">
-      <h1>Nos plats star !</h1>
-    </div> #}
-    
-    <div class="container col-xxl-8 px-4 py-5">
+ <main class="container"> 
+    <section class="py-5">
       <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div class="col-lg-6">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -46,7 +41,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </section> 
+    </section>
+  
 </main>    
 {% endblock %}
