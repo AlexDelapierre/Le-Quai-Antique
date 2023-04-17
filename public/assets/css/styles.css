@@ -1,9 +1,30 @@
-#adminNav {
+html {
+  height: 100%;
+  width: 100%;
+}
+
+#adminNavDesktopDisplay {
+  display: none;
+}
+
+#adminNavDesktop { 
+  width: 190px;
+  /* height: 100%; */
   margin-right: 3vw;
-  margin-left: 1vw;
+  margin-left: 5vw;
 }
 
 #TableHoraires td {
   vertical-align: top;
   padding-right: 20px;
+}
+
+@media screen and (min-width: 992px) {
+  #adminNavDesktopDisplay {
+    display: block;
+  }
+
+  #adminNavMobileDisplay {
+    display: none;
+  }
 }
