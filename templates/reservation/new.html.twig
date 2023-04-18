@@ -11,7 +11,18 @@
 {% endblock %}
 
 {% block body %}
-   
-    {{ include('admin/reservationAdmin/_form.html.twig') }} 
+    <main class="row">
+        <div class="col-7 mx-auto">
+            <h1 class="display-5 my-4 text-center"><span class="text-danger"></span> Réservation</h1>
+
+            <div id="fullAlert" class="alert alert-danger" role="alert">
+                <strong>Le restaurant est complet,</strong> nous sommes désolés pour ce désagrément !
+            </div>
+
+            <div id="formDiv">
+                {{ include('admin/reservationAdmin/_form.html.twig') }} 
+            </div>
+        </div>
+    </main>    
 
 {% endblock %}

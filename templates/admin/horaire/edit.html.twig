@@ -3,9 +3,10 @@
 {% block title %}Edit Horaire{% endblock %}
 
 {% block section %}
-    <h1>Horaires</h1>
+    <div class="h1Admin">
+        <h1>Horaires</h1>
+        <a href="{{ path('app_horaire_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+    </div> 
 
-    {{ include('admin/horaire/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-    <a href="{{ path('app_horaire_index') }}" class="btn btn-outline-primary">Retour</a>
+    {{ include('admin/horaire/_form.html.twig', {'button_label': 'Modifier'}) }} 
 {% endblock %}

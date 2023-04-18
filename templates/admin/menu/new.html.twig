@@ -3,9 +3,10 @@
 {% block title %}New Menu{% endblock %}
 
 {% block section %}
-    <h1>Nouveau Menu</h1>
+    <div class="h1Admin">
+        <h1>Nouveau Menu</h1>
+        <a href="{{ path('app_menu_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+    </div>    
 
     {{ include('admin/menu/_form.html.twig') }}
-
-    <a href="{{ path('app_menu_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
 {% endblock %}

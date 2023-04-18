@@ -3,9 +3,14 @@
 {% block title %}Edit Formule{% endblock %}
 
 {% block section %}
-    <h1>Formule</h1>
-    <a href="{{ path('app_formule_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
 
-    {{ include('admin/formule/_form.html.twig', {'button_label': 'Modifier'}) }}
-    {{ include('admin/formule/_delete_form.html.twig') }}
+    <div class="h1Admin">
+        <h1>Formule</h1>
+            <a href="{{ path('app_formule_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+        <div class="deleteButton">
+            {{ include('admin/formule/_delete_form.html.twig') }}
+        </div>
+    </div>  
+
+    {{ include('admin/formule/_form.html.twig', {'button_label': 'Modifier'}) }}   
 {% endblock %}

@@ -3,6 +3,8 @@ html {
   width: 100%;
 }
 
+/*---------------------Navbar-------------------------*/
+
 #adminNavDesktopDisplay {
   display: none;
 }
@@ -27,4 +29,32 @@ html {
   #adminNavMobileDisplay {
     display: none;
   }
+}
+
+/*---------------------Tables-------------------------*/
+
+table {
+  width: 100%;
+  min-width: 300px;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.5em;
+  min-width: 100px;
+  width: auto;
+  max-width: none;
+}
+
+/*-----------------------.h1Admin-----------------------*/
+.h1Admin {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 10px; 
+}
+
+.h1Admin > a, .deleteButton {
+  height: 40px;
+  margin-left: 20px;
 }

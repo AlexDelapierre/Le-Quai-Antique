@@ -25,7 +25,7 @@ class PlatType extends AbstractType
                 'label' => 'Prix'
             ])
             ->add('image', filetype::class, [
-                'label' => false,
+                'label' => 'Choisir une image',
                 //La contrainte multiple permet de dire que c'est un tableau d'image
                 // 'multiple' => true,
                 //Symfony ne va pas vérifier si on a l'équivalent de filetype dans l'entité avec mapped

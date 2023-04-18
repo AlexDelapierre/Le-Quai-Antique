@@ -3,11 +3,13 @@
 {% block title %}Edit Plat{% endblock %}
 
 {% block section %}
-    <h1>Plat</h1>
-
-    <a href="{{ path('app_plat_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
-
+    <div class="h1Admin">
+        <h1>Plat</h1>
+        <a href="{{ path('app_plat_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+        <div class="deleteButton">
+            {{ include('admin/plat/_delete_form.html.twig') }}
+        </div>
+    </div>  
+    
     {{ include('admin/plat/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-    {{ include('admin/plat/_delete_form.html.twig') }}
 {% endblock %}

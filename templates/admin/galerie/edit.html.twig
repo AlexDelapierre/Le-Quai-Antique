@@ -3,10 +3,12 @@
 {% block title %}Edit Galerie{% endblock %}
 
 {% block section %}         
-                <h1>Galerie</h1>
+  <div class="h1Admin">
+    <h1>Galerie</h1>
+      <a href="{{ path('app_galerie_index') }}" class="btn btn-outline-primary">
+    Retour à la liste</a>
+  </div>
+    {{ include('admin/galerie/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-                {{ include('admin/galerie/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-                <a href="{{ path('app_galerie_index') }}" class="btn btn-outline-primary">
-                Retour à la liste</a>
+               
 {% endblock %}

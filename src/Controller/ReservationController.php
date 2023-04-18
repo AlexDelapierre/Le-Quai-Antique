@@ -43,17 +43,20 @@ class ReservationController extends AbstractController
         if ($this->getUser()){
             // Récupérer l'utilisateur actuellement authentifié
             $user = $this->getUser();
-
+            $userRole = $this->getUser()->getRoles();
             // Pré-remplie les données du formulaire
             // $form->setData(['lastname' => $user->getLastname(), 'firstname' => $user->getFirstname(),
             // 'phoneNumber' => $user->getPhoneNumber()]);
+
+            if(!in_array("ROLE_ADMIN", $userRole)){
+                // Pré-remplissage du formulaire avec les données de l'utilisateur connecté
+                $reservation->setLastname($user->getLastname());
+                $reservation->setFirstname($user->getFirstname());
+                $reservation->setPhoneNumber($user->getPhoneNumber());
+                $reservation->setNbCouverts($user->getNbCouverts());
+                $reservation->setComments($user->getAllergie());
+            }
             
-            // Pré-remplissage du formulaire avec les données de l'utilisateur connecté
-            $reservation->setLastname($user->getLastname());
-            $reservation->setFirstname($user->getFirstname());
-            $reservation->setPhoneNumber($user->getPhoneNumber());
-            $reservation->setNbCouverts($user->getNbCouverts());
-            $reservation->setComments($user->getAllergie());
         }; 
 
         $form = $this->createForm(ReservationType::class, $reservation);
@@ -126,7 +129,7 @@ class ReservationController extends AbstractController
             return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/reservationAdmin/index.html.twig', [
+        return $this->renderForm('admin/reservationAdmin/edit.html.twig', [
             'reservation' => $reservation,
             'form' => $form,
             'horaires' => $horaireRepository->findAll(),
