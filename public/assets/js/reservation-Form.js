@@ -8,6 +8,7 @@ let midiDiv = document.getElementById("midiDiv");
 let soirDiv = document.getElementById("soirDiv");
 let nbCouvertsDiv = document.getElementById("nbCouvertsDiv");
 let fullAlert = document.getElementById("fullAlert");
+let newReservationBottom = document.getElementById("newReservationBottom");
 
 soir.disabled = true;
 

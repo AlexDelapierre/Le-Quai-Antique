@@ -2,10 +2,16 @@
 
 {% block title %}Reservation index{% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('assets/js/reservation-Form.js') }}"defer></script>
+{% endblock %}
+
 {% block section %}
     <div class="h1Admin">
         <h1>Liste des réservations</h1>
-        <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
+        <div id="newReservationBottom">
+            <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
+        </div>
     </div>
 
     <table class="table">

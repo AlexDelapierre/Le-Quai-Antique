@@ -24,9 +24,15 @@
   color: white;
   background-color: #bac4bf;
 } */
+
 #fullAlert {
   display: none;
 }
+
 #soirDiv {
   display: none;
 }
+
+/* #newReservationBottom {
+  display: none;
+} */

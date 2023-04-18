@@ -18,21 +18,26 @@ class ReservationController extends AbstractController
     #[Route('/', name: 'app_reservation_index', methods: ['GET'])]
     public function index(ReservationRepository $reservationRepository, HoraireRepository $horaireRepository): Response
     {
-        if ($this->getUser()){
-            $userRole = $this->getUser()->getRoles();
+        // if ($this->getUser()){
+        //     $userRole = $this->getUser()->getRoles();
  
-            if(in_array("ROLE_ADMIN", $userRole)){
-                return $this->render('admin/reservationAdmin/index.html.twig', [
-                    'reservations' => $reservationRepository->findAll(),
-                    'horaires' => $horaireRepository->findAll(),
-                ]);
-            } 
-            else {
-                return $this->render('main.html.twig');
-            } 
-        }
+        //     if(in_array("ROLE_ADMIN", $userRole)){
+        //         return $this->render('admin/reservationAdmin/index.html.twig', [
+        //             'reservations' => $reservationRepository->findAll(),
+        //             'horaires' => $horaireRepository->findAll(),
+        //         ]);
+        //     } 
+        //     else {
+        //         return $this->render('main/index.html.twig', compact('galeries', 'horaires'));
+        //     } 
+        // }
 
-        return $this->render('main.html.twig');
+        // return $this->render('main/index.html.twig', compact('galeries', 'horaires'));
+
+        return $this->render('admin/reservationAdmin/index.html.twig', [
+            'reservations' => $reservationRepository->findAll(),
+            'horaires' => $horaireRepository->findAll(),
+        ]);
     }
 
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
@@ -40,13 +45,11 @@ class ReservationController extends AbstractController
     {
         $reservation = new Reservation();
 
+        // Pré-remplie les données du formulaire
         if ($this->getUser()){
             // Récupérer l'utilisateur actuellement authentifié
             $user = $this->getUser();
             $userRole = $this->getUser()->getRoles();
-            // Pré-remplie les données du formulaire
-            // $form->setData(['lastname' => $user->getLastname(), 'firstname' => $user->getFirstname(),
-            // 'phoneNumber' => $user->getPhoneNumber()]);
 
             if(!in_array("ROLE_ADMIN", $userRole)){
                 // Pré-remplissage du formulaire avec les données de l'utilisateur connecté
@@ -58,6 +61,11 @@ class ReservationController extends AbstractController
             }
             
         }; 
+
+        // Pré-remplie les données du formulaire
+            // $form->setData(['lastname' => $user->getLastname(), 'firstname' => $user->getFirstname(),
+            // 'phoneNumber' => $user->getPhoneNumber()]);
+            
 
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -74,12 +82,25 @@ class ReservationController extends AbstractController
             // dd($form->get('lastname')); 
             // dd($form->get('lastname')->getName()->getConfig()->getType()->getInnerType());
             
-            $reservation->setUser($user);
+            if ($this->getUser()){
+                $reservation->setUser($user);
+            }
 
             $reservationRepository->save($reservation, true);
 
-            
-            return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+            //On vérifie si l'utilisateur est connecté et si c'est l'administrateur
+            if ($this->getUser()){
+                $userRole = $this->getUser()->getRoles();
+     
+                if(in_array("ROLE_ADMIN", $userRole)){
+                    return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+                } 
+                // else {
+                //     return $this->render('main/index.html.twig', compact('galeries', 'horaires'));
+                // } 
+            }
+
+            return $this->redirectToRoute('main', [], Response::HTTP_SEE_OTHER);
         }
 
         if ($this->getUser()){
