@@ -11,7 +11,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                {# <th>Id</th> #}
                 <th>Catégorie</th>
                 <th>Plat</th>
                 <th>Description</th>
@@ -22,7 +22,7 @@
         <tbody>
         {% for plat in plats %}
             <tr>
-                <td>{{ plat.id }}</td>
+                {# <td>{{ plat.id }}</td> #}
                 <td>{{ plat.category.name }}</td>
                 <td>{{ plat.title | raw | nl2br }}</td>
                 <td>{{ plat.description | raw | nl2br }}</td>

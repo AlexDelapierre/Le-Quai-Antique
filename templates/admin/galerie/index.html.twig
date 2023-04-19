@@ -8,15 +8,15 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Plat</th>
+                            {# <th>Id</th> #}
+                            <th>Plats</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for galerie in galeries %}
                             <tr>
-                                <td>{{ galerie.id }}</td>
+                                {# <td>{{ galerie.id }}</td> #}
 
                                 {% if galerie.plat is null %}
                                 <td>Vide</td>

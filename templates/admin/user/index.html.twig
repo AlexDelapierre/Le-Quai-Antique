@@ -8,10 +8,13 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            {# <th>Id</th> #}
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Email</th>
+                            <th>Téléphone</th>
+                            <th>Couverts</th>
+                            <th>Allergies</th>
                             {# <th>Roles</th> #}
                             <th>actions</th>
                         </tr>
@@ -19,11 +22,14 @@
                     <tbody>
                     {% for user in users %}
                         <tr>
-                            <td>{{ user.id }}</td>
+                            {# <td>{{ user.id }}</td> #}
                             <td>{{ user.lastname }}</td>
                             <td>{{ user.firstname }}</td>
                             <td>{{ user.email }}</td>
                             {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
+                            <td>{{ user.phoneNumber }}</td>
+                            <td>{{ user.nbCouverts }}</td>
+                            <td>{{ user.allergie }}</td>
                             <td>
                                 {# <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a> #}
                                 <a href="{{ path('app_user_edit', {'id': user.id}) }}"
@@ -32,7 +38,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="5">no records found</td>
+                            <td colspan="5">Aucun clients inscrit</td>
                         </tr>
                     {% endfor %}
                     </tbody>

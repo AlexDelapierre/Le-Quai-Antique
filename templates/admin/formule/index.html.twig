@@ -11,7 +11,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                {# <th>Id</th> #}
                 <th>Menu</th>
                 <th>Formule</th>
                 <th>Description</th>
@@ -22,7 +22,7 @@
         <tbody>
         {% for formule in formules %}
             <tr>
-                <td>{{ formule.id }}</td>
+                {# <td>{{ formule.id }}</td> #}
                 <td>{{ formule.menu.title | raw | nl2br }}</td>
                 <td>{{ formule.name | raw | nl2br }}</td>
                 <td>{{ formule.description | raw | nl2br   }}</td>
