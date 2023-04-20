@@ -9,6 +9,7 @@ use PDO;
 use PDOException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -27,9 +28,17 @@ class JsonController extends AbstractController
   }
 
   #[Route('/nbCouverts', name:'app_nbCouverts')]
-  public function getNbCouverts(ReservationRepository $reservationRepository): JsonResponse
+  public function getNbCouverts(Request $request, ReservationRepository $reservationRepository): JsonResponse
   {
-   
+    // On récupére les données envoyées en POST avec $_POST
+    // $date = $_POST['date'];
+    // $service = $_POST['service']; 
+
+    // On récupére les données envoyées en POST avec $request
+    $date = $request->request->get('date');
+    $service = $request->request->get('service');
+
+ 
     /*
     // Avec PDO :
     try {
@@ -63,8 +72,8 @@ class JsonController extends AbstractController
     */ 
 
     // Avec requête DQL :
-    $nbCouverts = $reservationRepository->findNbCouverts();
+    $nbCouverts = $reservationRepository->findNbCouverts($date, $service);
     
     return new JsonResponse($nbCouverts);  
-  } 
+  }   
 }
