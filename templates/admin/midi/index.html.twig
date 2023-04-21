@@ -3,33 +3,36 @@
 {% block title %}Midi index{% endblock %}
 
 {% block body %}
-    <h1>Midi index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Time</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for midi in midis %}
-            <tr>
-                <td>{{ midi.id }}</td>
-                <td>{{ midi.time ? midi.time|date('H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_midi_show', {'id': midi.id}) }}">show</a>
-                    <a href="{{ path('app_midi_edit', {'id': midi.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_midi_new') }}">Create new</a>
+    <div class="h1Admin">
+        <h1>Midi index</h1>
+        {# <a href="{{ path('app_midi_new') }}"class="btn btn-success">Ajouter</a> #}
+    </div>
+    <div class="tableResponsive table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    {# <th>Id</th> #}
+                    <th>Time</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for midi in midis %}
+                <tr>
+                    {# <td>{{ midi.id }}</td> #}
+                    <td>{{ midi.time ? midi.time|date('H:i:s') : '' }}</td>
+                    <td>
+                        {# <a href="{{ path('app_midi_show', {'id': midi.id}) }}">show</a> #}
+                        <a href="{{ path('app_midi_edit', {'id': midi.id}) }}"class="btn btn-primary">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

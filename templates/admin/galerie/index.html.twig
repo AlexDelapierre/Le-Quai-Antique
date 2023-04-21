@@ -3,37 +3,40 @@
 {% block title %}Galerie index{% endblock %}
 
 {% block section %}
-                <h1>Galerie</h1>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            {# <th>Id</th> #}
-                            <th>Plats</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for galerie in galeries %}
-                            <tr>
-                                {# <td>{{ galerie.id }}</td> #}
+    <h1>Galerie</h1>
 
-                                {% if galerie.plat is null %}
-                                <td>Vide</td>
-                                {% else %}                                  
-                                <td>{{ galerie.plat.title }}</td>
-                                {% endif %}
-                                
-                                <td>
-                                    {# <a href="{{ path('app_galerie_show', {'id': galerie.id}) }}">show</a> #}
-                                    <a href="{{ path('app_galerie_edit', {'id': galerie.id}) }}" class="btn btn-primary">Modifier</a>
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                 <td colspan="2">no records found</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+    <div class="tableResponsive table-responsive">    
+        <table class="table">
+            <thead>
+                <tr>
+                    {# <th>Id</th> #}
+                    <th>Plats</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for galerie in galeries %}
+                    <tr>
+                        {# <td>{{ galerie.id }}</td> #}
+
+                        {% if galerie.plat is null %}
+                        <td>Vide</td>
+                        {% else %}                                  
+                        <td>{{ galerie.plat.title }}</td>
+                        {% endif %}
+                        
+                        <td>
+                            {# <a href="{{ path('app_galerie_show', {'id': galerie.id}) }}">show</a> #}
+                            <a href="{{ path('app_galerie_edit', {'id': galerie.id}) }}" class="btn btn-primary">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                            <td colspan="2">no records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

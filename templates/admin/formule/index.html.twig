@@ -3,41 +3,43 @@
 {% block title %}Formule index{% endblock %}
 
 {% block section %}
+
     <div class="h1Admin">
         <h1>Formules</h1>
         <a href="{{ path('app_formule_new') }}" class="btn btn-success">Nouveau</a>
     </div>
-    
-    <table class="table">
-        <thead>
-            <tr>
-                {# <th>Id</th> #}
-                <th>Menu</th>
-                <th>Formule</th>
-                <th>Description</th>
-                <th>Prix</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for formule in formules %}
-            <tr>
-                {# <td>{{ formule.id }}</td> #}
-                <td>{{ formule.menu.title | raw | nl2br }}</td>
-                <td>{{ formule.name | raw | nl2br }}</td>
-                <td>{{ formule.description | raw | nl2br   }}</td>
-                <td>{{ formule.price ~ '€' }}</td>
-                <td>
-                    {# <a href="{{ path('app_formule_show', {'id': formule.id}) }}">show</a> #}
-                    <a href="{{ path('app_formule_edit', {'id': formule.id}) }}" 
-                    class="btn btn-primary">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="tableResponsive table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    {# <th>Id</th> #}
+                    <th>Menu</th>
+                    <th>Formule</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for formule in formules %}
+                <tr>
+                    {# <td>{{ formule.id }}</td> #}
+                    <td>{{ formule.menu.title | raw | nl2br }}</td>
+                    <td>{{ formule.name | raw | nl2br }}</td>
+                    <td>{{ formule.description | raw | nl2br   }}</td>
+                    <td>{{ formule.price ~ '€' }}</td>
+                    <td>
+                        {# <a href="{{ path('app_formule_show', {'id': formule.id}) }}">show</a> #}
+                        <a href="{{ path('app_formule_edit', {'id': formule.id}) }}" 
+                        class="btn btn-primary">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>    
 {% endblock %}

@@ -3,37 +3,33 @@
 {% block title %}Couvert index{% endblock %}
 
 {% block section %}
-    {# <main class="container">    
-        <section class="row">
-            {% include "_partials/_adminNav.html.twig" %}
-            <div class="col-9 border border-light bg-white p-2"> #}
-                <h1>Couverts</h1>
+       
+    <h1>Couverts</h1>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>MaxCouverts</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for couvert in couverts %}
-                            <tr>
-                                <td>{{ couvert.maxCouverts }}</td>
-                                <td>
-                                    {# <a href="{{ path('app_couvert_show', {'id': couvert.id}) }}">show</a> #}
-                                    <a href="{{ path('app_couvert_edit', {'id': couvert.id}) }}"
-                                    class="btn btn-primary">Modifier</a>
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="3">no records found</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {# </div>
-        </section>
-    </main>             #}
+    <div class="tableResponsive table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>MaxCouverts</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for couvert in couverts %}
+                    <tr>
+                        <td>{{ couvert.maxCouverts }}</td>
+                        <td>
+                            {# <a href="{{ path('app_couvert_show', {'id': couvert.id}) }}">show</a> #}
+                            <a href="{{ path('app_couvert_edit', {'id': couvert.id}) }}"
+                            class="btn btn-primary">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">no records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

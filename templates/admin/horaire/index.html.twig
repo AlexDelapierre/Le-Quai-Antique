@@ -3,41 +3,46 @@
 {% block title %}Horaires index{% endblock %}
 
 {% block section %}
-                <h1>Horaires</h1>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Lundi</th>
-                            <th>Mardi</th>
-                            <th>Mercredi</th>
-                            <th>Jeudi</th>
-                            <th>Vendredi</th>
-                            <th>Samedi</th>
-                            <th>Dimanche</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for horaire in horaires %}
-                        <tr>
-                            <td>{{ horaire.monday | raw | nl2br }}</td>
-                            <td>{{ horaire.tuesday | raw | nl2br }}</td>
-                            <td>{{ horaire.wednesday | raw | nl2br }}</td>
-                            <td>{{ horaire.thursday | raw | nl2br }}</td>
-                            <td>{{ horaire.friday | raw | nl2br }}</td>
-                            <td>{{ horaire.saturday | raw | nl2br }}</td>
-                            <td>{{ horaire.sunday | raw | nl2br }}</td>
-                            <td>
-                                <a href="{{ path('app_horaire_edit', {'id': horaire.id}) }}" 
-                                class="btn btn-primary">Modifier</a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="9">no records found</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+    <div class="h1Admin">
+        <h1>Horaires</h1>
+        {# <a href="{{ path('app_horaire_new') }}" class="btn btn-success">Ajouter</a> #}
+    </div>    
+    <div class="tableResponsive table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Lundi</th>
+                    <th>Mardi</th>
+                    <th>Mercredi</th>
+                    <th>Jeudi</th>
+                    <th>Vendredi</th>
+                    <th>Samedi</th>
+                    <th>Dimanche</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for horaire in horaires %}
+                <tr>
+                    <td>{{ horaire.monday | raw | nl2br }}</td>
+                    <td>{{ horaire.tuesday | raw | nl2br }}</td>
+                    <td>{{ horaire.wednesday | raw | nl2br }}</td>
+                    <td>{{ horaire.thursday | raw | nl2br }}</td>
+                    <td>{{ horaire.friday | raw | nl2br }}</td>
+                    <td>{{ horaire.saturday | raw | nl2br }}</td>
+                    <td>{{ horaire.sunday | raw | nl2br }}</td>
+                    <td>
+                        <a href="{{ path('app_horaire_edit', {'id': horaire.id}) }}" 
+                        class="btn btn-primary">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>    
 {% endblock %}

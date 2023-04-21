@@ -2,61 +2,57 @@
 
 {% block title %}Reservation index{% endblock %}
 
-{% block javascripts %}
-    <script src="{{ asset('assets/js/reservation-Form.js') }}"defer></script>
-{% endblock %}
-
 {% block section %}
+
     <div class="h1Admin">
         <h1>Liste des réservations</h1>
-        {# <div id="newReservationBottom"> #}
-            <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
-        {# </div> #}
+        <a href="{{ path('app_reservation_new') }}" class="btn btn-success">Ajouter</a>
     </div>
+    <div class="tableResponsive table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    {# <th>Id</th> #}
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Téléphone</th>
+                    <th>Date</th>
+                    <th>Service</th>
+                    <th>Heure</th>
+                    <th>Couverts</th>
+                    <th>Allergies</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    {# <td>{{ reservation.id }}</td> #}
+                    <td>{{ reservation.lastname }}</td>
+                    <td>{{ reservation.firstname }}</td>
+                    <td>{{ reservation.phoneNumber }}</td>
+                    <td>{{ reservation.date ? reservation.date|date('d-m-Y') : '' }}</td>
+                    <td>{{ reservation.service }}</td>
     
-    <table class="table">
-        <thead>
-            <tr>
-                {# <th>Id</th> #}
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Téléphone</th>
-                <th>Date</th>
-                <th>Service</th>
-                <th>Heure</th>
-                <th>Couverts</th>
-                <th>Allergies</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation in reservations %}
-            <tr>
-                {# <td>{{ reservation.id }}</td> #}
-                <td>{{ reservation.lastname }}</td>
-                <td>{{ reservation.firstname }}</td>
-                <td>{{ reservation.phoneNumber }}</td>
-                <td>{{ reservation.date ? reservation.date|date('d-m-Y') : '' }}</td>
-                <td>{{ reservation.service }}</td>
- 
-                {% if  reservation.midi  is not null %}
-                    <td>{{ reservation.midi.time|date('H:i') }}</td>
-                {% else %}
-                    <td>{{ reservation.soir.time|date('H:i') }}</td>    
-                {% endif %}
+                    {% if  reservation.midi  is not null %}
+                        <td>{{ reservation.midi.time|date('H:i') }}</td>
+                    {% else %}
+                        <td>{{ reservation.soir.time|date('H:i') }}</td>    
+                    {% endif %}
 
-                <td>{{ reservation.nbCouverts }}</td>
-                <td>{{ reservation.comments | raw | nl2br }}</td>
-                <td>
-                    {# <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a> #}
-                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="btn btn-primary">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">Aucune réservation</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    <td>{{ reservation.nbCouverts }}</td>
+                    <td>{{ reservation.comments | raw | nl2br }}</td>
+                    <td>
+                        {# <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a> #}
+                        <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="btn btn-primary">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">Aucune réservation</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

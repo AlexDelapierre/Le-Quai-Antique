@@ -3,34 +3,36 @@
 {% block title %}Menu index{% endblock %}
 
 {% block section %}
+
     <div class="h1Admin">
         <h1>Menus</h1>
         <a href="{{ path('app_menu_new') }}" class="btn btn-success">Ajouter</a>
     </div>
-
-    <table class="table">
-        <thead>
-            <tr>
-                {# <th>Id</th> #}
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for menu in menus %}
-            <tr>
-                {# <td>{{ menu.id }}</td> #}
-                <td>{{ menu.title | raw | nl2br }}</td>
-                <td>
-                    {# <a href="{{ path('app_menu_show', {'id': menu.id}) }}">show</a> #}
-                    <a href="{{ path('app_menu_edit', {'id': menu.id}) }}" class="btn btn-primary">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">Pas de menus</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="tableResponsive table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    {# <th>Id</th> #}
+                    <th>Nom</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for menu in menus %}
+                <tr>
+                    {# <td>{{ menu.id }}</td> #}
+                    <td>{{ menu.title | raw | nl2br }}</td>
+                    <td>
+                        {# <a href="{{ path('app_menu_show', {'id': menu.id}) }}">show</a> #}
+                        <a href="{{ path('app_menu_edit', {'id': menu.id}) }}" class="btn btn-primary">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Pas de menus</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>    
 {% endblock %}
