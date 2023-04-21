@@ -21,17 +21,21 @@
         <script src="{{ asset('assets/js/scripts.js') }}"defer></script>
     </head>
     <body>
-        <div class="container-fluid">
+        <header>
             {% include "_partials/_navbar.html.twig" %}
-            {% block body %}{% endblock %}        
+            {# {% include "_partials/_mainBanner.html.twig" %} #}
+        </header>
+        <main>
+            {% block body %}{% endblock %} 
+        </main>
+        <footer>
             {% include "_partials/_footer.html.twig" %}
-            {# {{ include("_partials/_footer.html.twig", {'horaires': horaires}) }} #}
-            {# {{ render('index.html.twig', {'horaires': horaires}) }} #}
-        </div>
+            
+        </footer>  
         <!-- Copyright -->
         <div class=" copyright text-center p-3" style="background-color: rgba(0, 0, 0, 0.9);">
-        ©2023 Restaurant 
+            ©2023 Restaurant 
         </div>
-        <!-- Copyright -->
+        <!-- Copyright -->                   
     </body>
 </html>

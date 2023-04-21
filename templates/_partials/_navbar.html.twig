@@ -1,55 +1,55 @@
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
-      <a href="{{ path('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <img src="#" alt="Logo restaurant" width="250">
-      </a>
+<nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+  <a href="{{ path('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+    <img src="#" alt="Logo restaurant" width="250">
+  </a>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="{{ path('main') }}" class="nav-link px-2 link-secondary">Accueil</a></li>
-        <li><a href="{{ path('carte') }}" class="nav-link px-2 link-dark">Carte</a></li>
-        <li><a href="{{ path('contact') }}" class="nav-link px-2 link-dark">Contact</a></li>
+  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <li><a href="{{ path('main') }}" class="nav-link px-2 link-secondary">Accueil</a></li>
+    <li><a href="{{ path('carte') }}" class="nav-link px-2 link-dark">Carte</a></li>
+    <li><a href="{{ path('contact') }}" class="nav-link px-2 link-dark">Contact</a></li>
 
-        {% if app.user %}
-          {% if is_granted('ROLE_ADMIN') %}
-            {# <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="{{ path('app_galerie_index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Administration
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ path('app_galerie_index') }}">Galerie</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_plat_index') }}">Carte</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_menu_index') }}">Menus</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_formule_index') }}">Formules</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_reservation_index') }}">Réservations</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_couvert_index') }}">Couverts</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_horaire_index') }}">Horaires</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_user_index') }}">Clients</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>  #}
+    {% if app.user %}
+      {% if is_granted('ROLE_ADMIN') %}
+        {# <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{{ path('app_galerie_index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administration
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ path('app_galerie_index') }}">Galerie</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_plat_index') }}">Carte</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_menu_index') }}">Menus</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_formule_index') }}">Formules</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_reservation_index') }}">Réservations</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_couvert_index') }}">Couverts</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_horaire_index') }}">Horaires</a></li>
+            <li><a class="dropdown-item" href="{{ path('app_user_index') }}">Clients</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>  #}
 
-            <li><a href="{{ path('app_galerie_index') }}" class="nav-link px-2 link-danger">Administration</a></li>
-          {% endif %}  
-        {% endif %}  
-      </ul>
+        <li><a href="{{ path('app_galerie_index') }}" class="nav-link px-2 link-danger">Administration</a></li>
+      {% endif %}  
+    {% endif %}  
+  </ul>
 
-      <div class="col-md-5 text-end"> 
-        {% if app.user %}
-          {% if is_granted('ROLE_ADMIN') %}
-            {# <a href="{{ path('app_galerie_index') }}" class="btn btn-success me-2">Administration</a> #}
-            <a href="#" class="btn btn-outline-primary me-2">Mon compte</a>
-            <a href="{{ path('app_logout') }}" class="btn btn-primary">Me déconnecter</a>
-            {% else %}
-          <a href="{{ path('app_reservation_new') }}" class="btn btn-success me-2">Réserver</a>
-          <a href="#" class="btn btn-outline-primary me-2">Mon compte</a>
-          <a href="{{ path('app_logout') }}" class="btn btn-primary">Me déconnecter</a>
-          {% endif %}
-          
-          
+  <div class="col-md-5 text-end"> 
+    {% if app.user %}
+      {% if is_granted('ROLE_ADMIN') %}
+        {# <a href="{{ path('app_galerie_index') }}" class="btn btn-success me-2">Administration</a> #}
+        <a href="#" class="btn btn-outline-primary me-2">Mon compte</a>
+        <a href="{{ path('app_logout') }}" class="btn btn-primary">Me déconnecter</a>
         {% else %}
-          <a href="{{ path('app_reservation_new') }}" class="btn btn-success me-2">Réserver</a>
-          <a href="{{ path('app_register') }}" class="btn btn-outline-primary me-2">M'inscrire</a>
-          <a href="{{ path('app_login') }}" class="btn btn-primary">Me connecter</a>
-        {% endif %}     
-      </div>
-    </header>
+      <a href="{{ path('app_reservation_new') }}" class="btn btn-success me-2">Réserver</a>
+      <a href="#" class="btn btn-outline-primary me-2">Mon compte</a>
+      <a href="{{ path('app_logout') }}" class="btn btn-primary">Me déconnecter</a>
+      {% endif %}
+      
+      
+    {% else %}
+      <a href="{{ path('app_reservation_new') }}" class="btn btn-success me-2">Réserver</a>
+      <a href="{{ path('app_register') }}" class="btn btn-outline-primary me-2">M'inscrire</a>
+      <a href="{{ path('app_login') }}" class="btn btn-primary">Me connecter</a>
+    {% endif %}     
+  </div>
+</nav>

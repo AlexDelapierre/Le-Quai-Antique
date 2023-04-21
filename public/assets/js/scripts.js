@@ -1,14 +1,13 @@
 
-// Pour ajouter dynamiquement la classe Bootstrap col-6 à la balise sections des tables de l'interface administrateur
-const tableSection = document.querySelector('#tableSection');
+// Pour ajouter dynamiquement la classe Bootstrap tableResponsive aux tables du panneau d'administration en format mobile
 const tableResponsive = document.querySelector('.tableResponsive');
 
 function setClass() {
   if (window.innerWidth > 992) {
-    tableSection.classList.add('col-6');
+    
     tableResponsive.classList.remove('table-responsive');
   } else {
-    tableSection.classList.remove('col-6');
+    
     tableResponsive.classList.add('table-responsive');
   }
 }
