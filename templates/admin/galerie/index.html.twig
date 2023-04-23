@@ -11,15 +11,18 @@
             <thead class="table-light">
                 <tr>
                     {# <th>Id</th> #}
+                    <th>Images</th>
                     <th>Plats</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
+                {% set i = 1 %}
                 {% for galerie in galeries %}
                     <tr>
                         {# <td>{{ galerie.id }}</td> #}
-
+                        <td>{{ "Image " ~ i }}</td>
+                        {% set i = i + 1 %}
                         {% if galerie.plat is null %}
                         <td>Vide</td>
                         {% else %}                                  
@@ -33,7 +36,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                            <td colspan="2">no records found</td>
+                        <td colspan="2">no records found</td>
                     </tr>
                 {% endfor %}
             </tbody>

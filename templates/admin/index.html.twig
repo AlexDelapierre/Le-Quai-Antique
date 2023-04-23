@@ -7,17 +7,22 @@
 {% block javascripts %}{% endblock %}
 
 {% block body %}
-    
-    <div id="adminNavMobileDisplay">
-        {% include "_partials/_adminNavMobile.html.twig" %}
-    </div>
-
-    <div id="adminDesktopWrapper">    
-        <div id="adminNavDesktopDisplay">
-            {% include "_partials/_adminNavDesktop.html.twig" %}
+    {% include "_partials/_adminNavMobile.html.twig" %}
+   
+    <div id="wrapper">  
+        {% include "_partials/_adminSidebarDesktop.html.twig" %}    
+        <div> 
+            {% include "_partials/_adminHeaderDesktop.html.twig" %}   
+            <main class="pt-4 px-4">
+                {% block section %}{% endblock %}    
+            </main> 
+            <footer id="adminFooter" class="text-bg-dark fixed-bottom border-top">
+                <a href="{{ path('main') }}">
+                    <img id="homeIcon" src="{{ asset('assets/icons/house.svg') }}" alt="Home">
+                </a>
+                
+                
+            </footer>
         </div>
-        <section id="tableSection" class="container-fluid p-3">
-            {% block section %}{% endblock %}    
-        </section> 
     </div>
 {% endblock %}

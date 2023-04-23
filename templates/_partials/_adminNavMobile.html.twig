@@ -1,4 +1,4 @@
-
+{# 
 <nav id="adminNavMobile" class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Administration</a>
@@ -11,7 +11,7 @@
           <a class="nav-link active" aria-current="page" href="{{ path('app_galerie_index') }}">Galerie</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_plat_index') }}">Carte </a>
+          <a class="nav-link" href="{{ path('app_plat_index') }}">Carte</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ path('app_menu_index') }}">Menus</a>
@@ -33,8 +33,50 @@
         </li>
     </div>
   </div>
-</nav>
+</nav> #}
 
+
+<nav id="adminNavMobile" class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ path('admin_index') }}">Administration</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Administration</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+           <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ path('app_galerie_index') }}">Galerie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_plat_index') }}">Carte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_menu_index') }}">Menus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_formule_index') }}">Formules</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_reservation_index') }}">Réservations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_couvert_index') }}">Couverts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_horaire_index') }}">Horaires </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_user_index') }}">Clients </a>
+        </li>    
+      </div>
+    </div>
+  </div>
+</nav>
 
 
 

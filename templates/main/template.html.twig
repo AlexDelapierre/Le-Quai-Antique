@@ -1,0 +1,21 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}Main{% endblock %}
+
+{% block body %}
+  <header>
+    {% include "_partials/_navbar.html.twig" %}
+    {# {% include "_partials/_mainBanner.html.twig" %} #}
+  </header>
+  <main>
+    {% block main %}{% endblock %}
+  </main>
+  <footer>
+    {% include "_partials/_footer.html.twig" %}   
+  </footer> 
+  <!-- Copyright -->
+  <div class=" copyright text-center p-3" style="background-color: rgba(0, 0, 0, 0.9);">
+      ©2023 Restaurant 
+  </div>
+  <!-- Copyright -->    
+{% endblock %}
