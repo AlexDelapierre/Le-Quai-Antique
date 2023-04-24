@@ -10,10 +10,10 @@
 <script src="{{ asset('assets/js/reservation-Form.js') }}"defer></script> 
 {% endblock %}
 
-{% block section %}
+{% block main %}
     <div class="h1Admin">
         <h1>Réservation</h1>
-            <a href="{{ path('app_reservation_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+            <a href="{{ path('app_reservation_index') }}" class="btn btn-outline-primary">Retour</a>
         <div class="deleteButton">
             {{ include('admin/reservationAdmin/_delete_form.html.twig') }}
         </div>

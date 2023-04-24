@@ -1,46 +1,16 @@
-{# 
-<nav id="adminNavMobile" class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Administration</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ path('app_galerie_index') }}">Galerie</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_plat_index') }}">Carte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_menu_index') }}">Menus</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_formule_index') }}">Formules</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_reservation_index') }}">Réservations</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_couvert_index') }}">Couverts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_horaire_index') }}">Horaires </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_user_index') }}">Clients </a>
-        </li>
-    </div>
-  </div>
-</nav> #}
-
-
 <nav id="adminNavMobile" class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ path('admin_index') }}">Administration</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <a class="navbar-brand" href="{{ path('app_galerie_index') }}">Administration</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" 
+      aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation" style="color: #f4a353;">
+      {# <span class="navbar-toggler-icon"></span> #}
+
+      <!--Icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor" 
+            class="bi bi-list" style="color: #f4a353;" viewBox="0 0 16 16"> <!--class="text-light"-->
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+
     </button>
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
@@ -49,30 +19,31 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-           <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ path('app_galerie_index') }}">Galerie</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_plat_index') }}">Carte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_menu_index') }}">Menus</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_formule_index') }}">Formules</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_reservation_index') }}">Réservations</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_couvert_index') }}">Couverts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_horaire_index') }}">Horaires </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_user_index') }}">Clients </a>
-        </li>    
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{ path('app_galerie_index') }}">Galerie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_plat_index') }}">Carte</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_menu_index') }}">Menus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_formule_index') }}">Formules</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_reservation_index') }}">Réservations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_couvert_index') }}">Couverts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_horaire_index') }}">Horaires </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_user_index') }}">Clients </a>
+          </li> 
+        </ul>       
       </div>
     </div>
   </div>

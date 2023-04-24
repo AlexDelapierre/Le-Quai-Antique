@@ -2,10 +2,10 @@
 
 {% block title %}Nouvelle Formule{% endblock %}
 
-{% block section %}
+{% block main %}
     <div class="h1Admin">
         <h1>Nouvelle Formule</h1>
-        <a href="{{ path('app_formule_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+        <a href="{{ path('app_formule_index') }}" class="btn btn-outline-primary">Retour</a>
     </div>
 
     {{ include('admin/formule/_form.html.twig') }}
