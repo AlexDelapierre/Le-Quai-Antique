@@ -3,6 +3,7 @@
 {% block title %}Edit Reservation{% endblock %}
 
 {% block stylesheets %}
+{{ parent() }}
 <link rel="stylesheet" href="{{ asset('assets/css/reservation-Form.css') }}">
 {% endblock %}
 
@@ -19,5 +20,7 @@
         </div>
     </div>  
 
-    {{ include('admin/reservationAdmin/_form.html.twig', {'button_label': 'Modifier'}) }}
+    <div id="formDiv">
+        {{ include('admin/reservationAdmin/_form.html.twig', {'button_label': 'Modifier'}) }}
+    </div>
 {% endblock %}

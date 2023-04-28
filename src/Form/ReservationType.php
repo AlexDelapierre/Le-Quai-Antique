@@ -52,7 +52,8 @@ class ReservationType extends AbstractType
                 'label' => 'Midi ou soir ?',
             ]) 
             ->add('comments', options:[
-                'label' => 'Allergies'
+                // 'label' => 'Allergies'
+                'label' => false,
             ])  
             ->add('midi', EntityType::class, [
                 'class' => Midi::class,

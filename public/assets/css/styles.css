@@ -8,12 +8,68 @@ html, body {
   padding: 0;
 }
 
-body {
-  height: 100vh;
+@font-face {
+  font-family: 'ULTRA';
+  src: url('../fonts/Ultra-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('../fonts/Lora-Regular.ttf') format('truetype');
+}
+
+body {
+  height: 100vh;
+  font-family: 'Lora', serif;
+  font-size: 20px;
+}
+
+#frontMain {
+  min-height: 85vh;
+}
+
+section {
+  padding: 8%;
+}
+
+/* img {
+  max-width: 100%;
+    height: auto;
+} */
+
+.restaurant-name {
+  font-family: 'ULTRA', sans-serif;
+  /* font-size: 1.5rem; */
+  color: #642b2d;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat', sans-serif;
+}
 
 /*---------------------Navbar-------------------------*/
+
+/* #navbar li a:hover {
+  color: #ff8264;
+} */
+
+#navbar > a {
+  font-size: 1.5rem;
+}
+
+#navbar > a > p {
+  /* background-color: aquamarine; */
+  line-height: 0.4;
+}
+
+#navbar ul {
+  margin-top: -10px;
+}
 
 #adminNavMobile {
   height: 8%;
@@ -24,9 +80,55 @@ body {
   /* background-color: #ff8264;  */
 }
 
-
 #adminSidebarDesktop, #adminHeaderDesktop {
   display: none;
+}
+
+#navbarBotton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/*---------------------Header-picture-------------------------*/
+
+.header-picture {
+  position: relative;
+  height: 300px; 
+  width: 100%;
+  background-image: url('../uploads/images/main-banner.jpg');
+  background-size: cover;
+  background-position: bottom;
+  /* border: 2px solid ; */
+  display: flex; /* Flexbox pour centrer l'image horizontalement et verticalement */
+  justify-content: center; /* centre l'image horizontalement */
+  align-items: center; /* centre l'image verticalement */
+}
+
+.header-picture-background {
+  position:absolute;
+  width: 170px;
+  height: 8%;
+  left: 0;
+  right: 0;
+  bottom: 2%;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 30px;
+  text-align: center;
+}
+
+#header-picture-title {
+  position: relative;
+  bottom: 4px; 
+  color: white;
+}
+
+/* Logo */
+.header-picture > img {
+  position: absolute;
+  bottom: 8px;
+  width: 18vw;
 }
 
 
@@ -43,7 +145,7 @@ body {
 }
 
 /*---------------------Form-------------------------*/
-form {
+#formDiv {
   width: 100%;
   max-height: 77vh;
   overflow-y: auto;
@@ -78,6 +180,16 @@ th, td {
 
 /*-----------------------Footer-------------------------*/
 
+footer {
+  margin-top: 200px;
+}
+
+#logo-footer {
+  display: inline-block; /* Assurez-vous que l'image est affichée en tant que bloc pour pouvoir centrer horizontalement */
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
 #TableHoraires td {
   vertical-align: top;
   padding-right: 20px;
@@ -102,6 +214,10 @@ th, td {
 
 /*-----------------------@media query-----------------------*/
 @media screen and (min-width: 992px) {
+
+  #navbar ul {
+    margin-top: 0;
+  }
 
   #adminNavMobile {
     display: none;
@@ -142,7 +258,7 @@ th, td {
     background-color: #ff8264; 
   }
 
-  main {
+  #adminMain {
     height: 91%;
   }
 
@@ -152,5 +268,44 @@ th, td {
 
   #adminFooter {
     display: none;
+  }
+
+  .header-picture {
+    position: relative;
+    height: 500px; 
+    width: 100%;
+    background-image: url('../uploads/images/main-banner.jpg');
+    background-size: cover;
+    background-position: bottom;
+    /* border: 2px solid ; */
+  }
+
+  .h1-background {
+    position:absolute;
+    width: 160px;
+    height: 8%;
+    left: 0;
+    right: 0;
+    bottom: 3%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 30px;
+    text-align: center;
+  }
+  
+  #h1-header-picture {
+    position: relative;
+    bottom: 9px; 
+  }
+
+  /* Logo */
+  .header-picture > img {
+    position: absolute;
+    bottom: 8px;
+    width: 120px;
+  }
+
+  .categoryName {
+    margin-left: 10vw;
   }
 }

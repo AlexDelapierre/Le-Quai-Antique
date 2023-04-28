@@ -14,15 +14,19 @@
     {{ form_row(form.nbCouverts) }}
     </div>   
     <div class="row">    
-        <div class="col-6">
+        {# <div class="col-6"> #}
+            <legend>Allergies<br> 
+                <p style="font-size: 16px;">
+                    (Merci d'avance de préciser en commentaire les allergies éventuelles).
+                </p>
+            </legend>
             {{ form_row(form.comments) }}
-        </div>
-        <div class="col-6 pt-4">
-        {# form-text #}
+        {# </div> #}
+        {# <div class="col-6 pt-4">
             <span  class="form-text">
                 Merci d'avance de préciser en commentaire les allergies éventuelles.
             </span>
-        </div>
+        </div> #}
     </div>
     {# <button class="btn btn-primary w-100 mt-2 mb-5">{{ button_label|default('Réserver') }}</button> #}
     <button class="btn btn-success">{{ button_label|default('Réserver') }}</button>

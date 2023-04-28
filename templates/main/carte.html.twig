@@ -3,63 +3,66 @@
 {% block title %}Carte | {{ parent()}} {% endblock %}
 
 {% block main %}
-<div>
-  <div class="mt-5 mx-auto" style="width: 300px">
-    <h2>Nos menus</h2>
-  </div>
-  <section class="row mt-5 shadow p-3 mb-5 bg-white rounded">
+
+<div class="mt-5">
+  <h1 class="text-center display-5 fw-bold">Carte et menus</h1>    
+</div>
+
+{# Section menu #}
+<section class="mt-5 shadow p-3 py-4 mb-5 bg-body-tertiary rounded">
+  <h2 class="text-center fw-bold">Nos menus</h2>
+  <div class="row mt-5">
     {% for menu in menus %}
-      <div class="col-4">
-        <h3> {{ menu.title }} : </h3> 
+      <div class="col-sm-12 col-xl-4 mb-3">
+        <h3 class="categoryName fw-bold"> {{ menu.title }} : </h3> 
       </div>
-      <div class="col-6">      
+      <div class="col-sm-12 col-xl-5">      
           {% for formule in menu.formule %}
-            <h4>{{ formule.name }} - {{ formule.price }}€</h4>
-            <p> {{ formule.description | nl2br }} </p>  
+            <h4> - {{ formule.name }} - {{ formule.price }}€</h4>
+            <p> {{ formule.description | raw | nl2br }} </p>  
           {% endfor %}
       </div>
     {% endfor %}
-  </section>
+  </div>
+</section>
 
-    <div class="mt-5 mx-auto" style="width: 300px">
-      <h2>A la carte</h2>
+{# Section carte #}
+<section class="mt-5 shadow p-3 mb-5 py-4 bg-body-tertiary rounded">
+  <h2 class="text-center fw-bold">A la carte</h2>
+  <div class="row mt-5">
+    <div class="col-sm-12 col-xl-4 mb-3">
+      <h3 class="categoryName fw-bold">Les entrées :</h3>
     </div>
-  <section class="mt-5 shadow p-3 mb-5 bg-white rounded">
-    <div class="row mt-5">
-      <div class="col-4">
-        <h3>Les entrées :</h3>
-      </div>
-      <div class="col-6">
-        {% for entree in entrees %}
-          <h4> {{ entree.title }} - {{ entree.price }}€ </h4>
-          <p> {{ entree.description | nl2br }} </p>
-        {% endfor %}
-      </div>
+    <div class="col-sm-12 col-xl-5">
+      {% for entree in entrees %}
+        <h4> - {{ entree.title }} - {{ entree.price }}€ </h4>
+        <p> {{ entree.description | raw | nl2br }} </p>
+      {% endfor %}
     </div>
+  </div>
 
-    <div class="row mt-5">
-      <div class="col-4">
-        <h3>Les plats :</h3>
-      </div>
-      <div class="col-6">
-        {% for plat in plats %}
-          <h4> {{ plat.title }} - {{ plat.price }}€ </h4>
-          <p> {{ plat.description | nl2br }} </p>
-        {% endfor %}
-      </div>
+  <div class="row mt-5">
+    <div class="col-sm-12 col-xl-4 mb-3">
+      <h3 class="categoryName fw-bold">Les plats :</h3>
     </div>
+    <div class="col-sm-12 col-xl-5">
+      {% for plat in plats %}
+        <h4> - {{ plat.title }} - {{ plat.price }}€ </h4>
+        <p> {{ plat.description | raw | nl2br }} </p>
+      {% endfor %}
+    </div>
+  </div>
 
-    <div class="row mt-5">
-      <div class="col-4">
-        <h3>Les desserts :</h3>
-      </div> 
-      <div class="col-6">
-        {% for dessert in desserts %}
-          <h4> {{ dessert.title }} - {{ dessert.price }}€ </h4>
-            <p> {{ dessert.description | nl2br }} </p>  
-        {% endfor %}
-      </div>
+  <div class="row mt-5">
+    <div class="col-sm-12 col-xl-4 mb-3">
+      <h3 class="categoryName fw-bold">Les desserts :</h3>
+    </div> 
+    <div class="col-sm-12 col-xl-5">
+      {% for dessert in desserts %}
+        <h4> - {{ dessert.title }} - {{ dessert.price }}€ </h4>
+          <p> {{ dessert.description | raw | nl2br }} </p>  
+      {% endfor %}
     </div>
-  </section>
-</div>
+  </div>
+</section>
 {% endblock %}

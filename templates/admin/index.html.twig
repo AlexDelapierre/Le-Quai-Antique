@@ -2,7 +2,9 @@
 
 {% block title %}Administration{% endblock %}
 
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/override-bootstrap-admin.css') }}"> 
+{% endblock %}
 
 {% block javascripts %}{% endblock %}
 
@@ -13,7 +15,7 @@
         {% include "_partials/_adminSidebarDesktop.html.twig" %}    
         <div> 
             {% include "_partials/_adminHeaderDesktop.html.twig" %}   
-            <main class="pt-4 px-4">
+            <main id="adminMain" class="pt-4 px-4">
                 {% block main %}{% endblock %}    
             </main> 
             <footer id="adminFooter" class="text-bg-dark fixed-bottom border-top">

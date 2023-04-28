@@ -1,12 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
 {% block title %}Inscription{% endblock %}
 
-{% block body %}
-    <section class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Inscription</h1>
+{% block main %}
+    <section class="mb-5">
+                <h1 class="mb-4 text-center">Inscription</h1>
 
                 {{ form_start(registrationForm) }}
                     <fieldset class="mb-3"
@@ -17,19 +15,21 @@
                         {{ form_row(registrationForm.plainPassword, {
                         label: 'Password'}) }}
                     </fieldset>
-                        <legend>Informations complémentaires <br> (Ces informations sont optionnelles et servent à pré-remplir le formulaire de réservation).</legend>
+                        <legend>Informations complémentaires <br> 
+                            <p style="font-size: 16px;">
+                                (Ces informations sont optionnelles et servent à pré-remplir le formulaire de réservation).
+                            </p>
+                        </legend>
                         {{ form_row(registrationForm.nbCouverts) }}
                         {{ form_row(registrationForm.allergie) }}
                     </fieldset>
                     
-                    {{ form_row(registrationForm.RGPDConsent) }}
+                    {# {{ form_row(registrationForm.RGPDConsent) }} #}
 
                     <button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire
                     </button>
-                    <a href="{{ path('app_login') }}" class="btn btn-secondary">Me connecter</a>
+                    <a href="{{ path('app_login') }}" class="btn btn-outline-primary ">Me connecter</a>
                 {{ form_end(registrationForm) }}
-            </div>
-        </div>
     </section>
     
 {% endblock %}

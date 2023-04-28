@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
 {% block title %}Nouvelle Reservation{% endblock %}
 
@@ -10,19 +10,14 @@
 <script src="{{ asset('assets/js/reservation-Form.js') }}"defer></script> 
 {% endblock %}
 
-{% block body %}
-    <main class="row">
-        <div class="col-7 mx-auto">
-            <h1 class="display-5 my-4 text-center"><span class="text-danger"></span> Réservation</h1>
+{% block main %}
+    <section class="mb-5">
+                <h1 class="text-center mb-4">Réservation</h1>
 
-            <div id="fullAlert" class="alert alert-danger" role="alert">
-                <strong>Le restaurant est complet,</strong> nous sommes désolés pour ce désagrément !
-            </div>
+                {# <div id="fullAlert" class="alert alert-danger" role="alert">
+                    <strong>Le restaurant est complet,</strong> nous sommes désolés pour ce désagrément !
+                </div> #}
 
-            <div id="formDiv">
-                {{ include('admin/reservationAdmin/_form.html.twig') }} 
-            </div>
-        </div>
-    </main>    
-
+                {{ include('admin/reservationAdmin/_form.html.twig') }}  
+    </section>
 {% endblock %}

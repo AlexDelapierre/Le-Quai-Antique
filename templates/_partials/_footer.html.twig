@@ -1,25 +1,29 @@
 <div class="row py-4 border-top bg-light">   
   <div class="col-sm-6 col-md-4 col-xl-4 mb-3">
     <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <img id="logo-footer" src="{{ asset('assets/logo/Le-Quai-Antique.png') }}" alt="Logo restaurant" width="200px">
     </a>
-    <p class="text-muted">Logo</p>
+    {# <p class="text-muted">Logo</p> #}
   </div>
 
   <div class="col-sm-6 col-md-4 col-xl-2 mb-3">
-    <h5>Section</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-    </ul>
+    <h5 class="fw-bold">Adresse</h5>
+    <p>
+      Le Quai Antique<br>
+      12 Rue des Alpes<br>
+      73000 Chambery,<br>
+      France    
+    </p>
+    {# <ul class="nav flex-column">
+      <li class="nav-item mb-2"><a href="{{ path('main') }}" class="nav-link p-0 text-muted">Accueil</a></li>
+      <li class="nav-item mb-2"><a href="{{ path('carte') }}" class="nav-link p-0 text-muted">Carte</a></li>
+      <li class="nav-item mb-2"><a href="{{ path('contact') }}" class="nav-link p-0 text-muted">Contact</a></li>  
+    </ul> #}
   </div>
 
-  <div class="col-sm-6 col-md-4 col-xl-4 mb-3">
-    <h5>Horaires</h5>
-    <table id="TableHoraires">
+  <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
+    <h5 class="fw-bold">Horaires</h5>
+    <table id="TableHoraires" class="table table-sm table-borderless">
       <tbody>
         <tr>
           <td>Lundi</td>
@@ -53,14 +57,14 @@
     </table>
   </div>
 
-  <div class="col-sm-6 col-md-4 col-xl-2 mb-3">
-    <h5>Section</h5>
+  <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
+    <h5 class="fw-bold">Contacts</h5>
     <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+      <li class="nav-item mb-2">- Adresse e-mail :</li>
+      <li class="nav-item mb-2">contact@lequaiantique-chambery.fr</li>
+      <li class="nav-item mb-2">- Téléphone :</li>
+      <li class="nav-item mb-2">04 79 00 00 00</li>
+      <li class="nav-item mb-2"></li>
     </ul>
   </div>
 </div> 
