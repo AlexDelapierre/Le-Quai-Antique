@@ -2,14 +2,12 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Image;
 use App\Entity\Plat;
 use App\Form\PlatType;
 use App\Repository\HoraireRepository;
 use App\Repository\PlatRepository;
 use App\Service\PictureService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,23 +32,25 @@ class PlatController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+     
+            if($form->get('image')->getData() !== null) {
+                
+                //On récupère les images
+                $image = $form->get('image')->getData();
+                
+                //On défini le dossier de destination
+                $folder = 'plats';
 
-            //On récupère les images
-            $image = $form->get('image')->getData();
-            
-            //On défini le dossier de destination
-            $folder = 'plats';
-
-            //On appelle le service d'ajout
-            $fichier = $pictureService->add($image, $folder, 1200, 700);
-            
-            // Ancienne méthode avec l'entity Image :
-            // $img = new Image;
-            // $img->setName($fichier);
-
-            //On persiste notre image dans le plat
-            $plat->setImage($fichier);
-
+                //On appelle le service d'ajout
+                $fichier = $pictureService->add($image, $folder, 1200, 700);
+                
+                // Ancienne méthode avec l'entity Image :
+                // $img = new Image;
+                // $img->setName($fichier);
+    
+                //On persiste notre image dans le plat
+                $plat->setImage($fichier);
+            }
 
             $platRepository->save($plat, true);
 
@@ -77,7 +77,7 @@ class PlatController extends AbstractController
     public function edit(Request $request, Plat $plat, PlatRepository $platRepository,HoraireRepository $horaireRepository ,PictureService $pictureService): Response
     {
         // Ancienne méthode avec l'entity Image :
-        //On récupère le nom l'image
+        //On récupère le nom de l'image
         // $image = $plat->getImage()->getName();
 
         //On récupère le nom l'image
@@ -91,22 +91,30 @@ class PlatController extends AbstractController
             //On défini le dossier de destination
             $folder = 'plats';
 
-            //On appelle le service de suppression pour supprimer l'ancienne image
-            $pictureService->delete($image, $folder, 1200, 700);
+            if ($form->get('image')->getData() !== null) {
 
-            //On récupère la nouvelle image
-             $image = $form->get('image')->getData();
-       
-             //On appelle le service d'ajout
-             $fichier = $pictureService->add($image, $folder, 1200, 700);
-             
-             // Ancienne méthode avec l'entity Image :
-            //  $img = new Image;
-            //  $img->setName($fichier);
+                if($image !== null) {
+                    //On appelle le service de suppression pour supprimer l'ancienne image
+                    $pictureService->delete($image, $folder, 1200, 700);
+                }
+    
+                //On récupère la nouvelle image
+                 $image = $form->get('image')->getData();
+           
+                 //On appelle le service d'ajout
+                 $fichier = $pictureService->add($image, $folder, 1200, 700);
+                 
+                 // Ancienne méthode avec l'entity Image :
+                //  $img = new Image;
+                //  $img->setName($fichier);
+                
+                //On persiste notre image dans le plat
+                $plat->setImage($fichier);
+            } else {
+                //On récupère l'image d'origine
+                $plat->setImage($image);
+            };
  
-             //On persiste notre image dans le plat
-             $plat->setImage($fichier);
-
             $platRepository->save($plat, true);
 
             return $this->redirectToRoute('app_plat_index', [], Response::HTTP_SEE_OTHER);
@@ -124,40 +132,35 @@ class PlatController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$plat->getId(), $request->request->get('_token'))) {
             
-            // Ancienne méthode avec l'entity Image :
-            //On récupère le nom l'image
-            // $image = $plat->getImage()->getName();
+            if($plat->getImage() !== null) {
 
-            //On récupère le nom l'image
-            $image = $plat->getImage();
-            
-            //On défini le dossier de destination
-            $folder = 'plats';
-
-            //On appelle le service de suppression
-            $pictureService->delete($image, $folder, 1200, 700);
-            
-
-            // // Use unlink() function to delete a file
-            // $image = $plat->getImage()->getName();
-            // if (!unlink('../public/assets/uploads/images/plats/'.$image)) {
-            // echo ("$image cannot be deleted due to an error");
-            // }
-            // else {
-            // echo ("$image has been deleted");
-            // }
+                // Ancienne méthode avec l'entity Image :
+                //On récupère le nom l'image
+                // $image = $plat->getImage()->getName();
+    
+                //On récupère le nom l'image
+                $image = $plat->getImage();
+                
+                //On défini le dossier de destination
+                $folder = 'plats';
+    
+                //On appelle le service de suppression
+                $pictureService->delete($image, $folder, 1200, 700);
+                
+    
+                // // Use unlink() function to delete a file
+                // $image = $plat->getImage()->getName();
+                // if (!unlink('../public/assets/uploads/images/plats/'.$image)) {
+                // echo ("$image cannot be deleted due to an error");
+                // }
+                // else {
+                // echo ("$image has been deleted");
+                // }
+            } 
 
             $platRepository->remove($plat, true);
         }
 
         return $this->redirectToRoute('app_plat_index', [], Response::HTTP_SEE_OTHER);
     }
-
-    // #[Route('json', name: 'app_plat_json')]
-    // public function jsonPlats(PlatRepository $platRepository): JsonResponse
-    // {
-    //     $plats = $platRepository->findAllOrderedByCategoryAsc();
-
-    //     return new JsonResponse($plats);
-    // }
 }
