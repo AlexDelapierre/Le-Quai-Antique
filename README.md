@@ -5,7 +5,7 @@ Le Quai Antique is a restaurant website
 ## Table of Contents
 1. [Technologies](#technologies)
 2. [Installation](#installation)
-3. [Creating an administrator](#creatingAnAdministrator)
+3. [Creating an administrator](#creating-an-administrator)
 4. [Utilisation] (#utilisation)
 
 ## Technologies
