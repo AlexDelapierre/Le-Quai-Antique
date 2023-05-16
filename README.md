@@ -5,7 +5,8 @@ Le Quai Antique is a restaurant website
 ## Table of Contents
 1. [Technologies](#technologies)
 2. [Installation](#installation)
-3. [Utilisation] (#utilisation)
+3. [Creating an administrator](#creatingAnAdministrator)
+4. [Utilisation] (#utilisation)
 
 ## Technologies
 ***
@@ -47,6 +48,17 @@ $ php bin/console doctrine:schema:update --force
 # Creation of fixtures in the database 
 $ php bin/console doctrine:fixtures:load
 ```
+
+## Creating an administrator
+***
+Creating an administrator for the web application's back office :
+
+1. To create an administrator account, you need to navigate to the UserFixtures file located : 
+"src/DataFixtures/UserFixtures.php" and modify the $admin variable in the load function with the desired values.
+You should keep the value 'ROLE_ADMIN' for $admin->setRoles(['ROLE_ADMIN']);
+
+2. Next, you need to run this command to reload the fixtures :
+php bin/console doctrine:fixtures:load
 
 ## Utilisation 
 ***
