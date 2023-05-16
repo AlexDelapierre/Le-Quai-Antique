@@ -11,9 +11,9 @@ class GalerieFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        $this->createGalerie($manager, 1);
-        $this->createGalerie($manager, 2);
         $this->createGalerie($manager, 3);
+        $this->createGalerie($manager, 5);
+        $this->createGalerie($manager, 8);
         
 
         $manager->flush();
