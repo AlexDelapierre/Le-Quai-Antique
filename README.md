@@ -7,6 +7,7 @@ Le Quai Antique is a restaurant website
 2. [Installation](#installation)
 3. [Creating an administrator](#creating-an-administrator)
 4. [Utilisation](#utilisation)
+5. [Annexes](#annexes)
 
 ## Technologies
 ***
@@ -72,6 +73,10 @@ $ symfony server:start
 $ composer require symfony/web-server-bundle --dev
 $ php bin/console server:start
 ```
+## Annexes
+***
+The following supporting documents are available in the public/annexes folder :
 
-
+* Charte_graphique.pdf
+* documentation_technique.pdf
 
