@@ -39,15 +39,15 @@ class MenuRepository extends ServiceEntityRepository
         }
     }
 
-    //Requête pour tout récupérer avec join
-    public function findAll()
-    {
-        return $this->createQueryBuilder('m')
-            ->leftJoin('m.formule', 'f')
-            ->addSelect('f')
-            ->getQuery()
-            ->getResult();
-    }
+// //Requête pour tout récupérer avec join
+// public function findAllMenu()
+// {
+//     return $this->createQueryBuilder('m')
+//         ->leftJoin('m.formule', 'f')
+//         ->addSelect('f')
+//         ->getQuery()
+//         ->getResult();
+// }
 
 //    /**
 //     * @return Menu[] Returns an array of Menu objects
