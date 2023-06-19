@@ -46,6 +46,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
+        // Condition pour rediriger automatiquement l'administrateur vers la plateforme d'administration lorsqu'il se connecte
         // $userRoles = $token->getUser()->getRoles();
         // if(in_array("ROLE_ADMIN", $userRoles)){
         //     return new RedirectResponse($this->urlGenerator->generate('app_galerie_index'));    

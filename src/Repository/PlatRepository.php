@@ -83,7 +83,7 @@ class PlatRepository extends ServiceEntityRepository
         ->join('p.category', 'c')
         ->andWhere('c.name = :category')
         ->setParameter('category', 'plats')
-        ->orderBy('p.id', 'ASC')
+        ->orderBy('p.title', 'ASC')
         ->getQuery()
         ->getResult();
     }
