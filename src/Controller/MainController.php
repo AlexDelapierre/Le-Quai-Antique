@@ -52,19 +52,11 @@ class MainController extends AbstractController
     return $this->render('main/contact.html.twig', compact('horaires'));
   }
 
-  #[Route('/base', name: 'base')]
-  public function base(GalerieRepository $galerieRepository, HoraireRepository $horaireRepository): Response
+  #[Route('/mainTemplate', name: 'mainTemplate')]
+  public function mainTemplate(GalerieRepository $galerieRepository, HoraireRepository $horaireRepository): Response
   {
     $horaires = $horaireRepository->findAll();
     
-    return $this->render('base.html.twig', compact('horaires'));
-  }
-  
-  #[Route('/footer', name: 'footer')]
-  public function footer(GalerieRepository $galerieRepository, HoraireRepository $horaireRepository): Response
-  {
-    $horaires = $horaireRepository->findAll();
-    
-    return $this->render('_partials/_footer.html.twig', compact('horaires'));
+    return $this->render('main/mainTemplate.html.twig', compact('horaires'));
   }
 }
