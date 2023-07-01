@@ -52,14 +52,12 @@ $ php bin/console doctrine:fixtures:load
 
 ## Creating an administrator
 ***
-Creating an administrator for the web application's back office :
+To Create an administrator for the web application's back office :
 
-1. To create an administrator account, you need to navigate to the UserFixtures file located : 
-"src/DataFixtures/UserFixtures.php" and modify the $admin variable in the load function with the desired values.
-You should keep the value 'ROLE_ADMIN' for $admin->setRoles(['ROLE_ADMIN']);
-
-2. Next, you need to run this command to reload the fixtures :
-php bin/console doctrine:fixtures:load
+```
+# To create an administrator account, you need to enter this command in the console and follow the instructions : 
+$ php bin/console app:create-admin
+```
 
 ## Utilisation 
 ***
@@ -77,6 +75,9 @@ $ php bin/console server:start
 ***
 The following supporting documents are available in the public/annexes folder :
 
-* Charte_graphique.pdf
-* documentation_technique.pdf
+* [Télécharger la charte graphique](https://github.com/AlexDelapierre/Le-Quai-Antique/main/public/annexes/Charte_graphique.pdf)
+* [Télécharger la documentation technique](https://github.com/AlexDelapierre/Le-Quai-Antique/main/public/annexes/documentation_technique.pdf)
+
+
+
 
