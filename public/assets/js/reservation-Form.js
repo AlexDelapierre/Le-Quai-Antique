@@ -74,9 +74,9 @@ service.addEventListener("input", function(event) {
   
 //--------------------------------On écoute le champ nbCouverts-------------------------------
 // On écoute le champ nbCouvert et si les champs date et service on été rempli, on envoie la requête fetch avec les données.
-// Sinon, on empêche la soumission du formulaire et on affiche le message d'alerte : "Vous devez indiquer une date et le service désiré !" 
+// Sinon, on empêche la soumission du formulaire et on affiche le message d'alerte : "Vous devez indiquer une date !" 
 
-//On attend le retour des requêtes fetch et si la valeur rentrée par le client et > au nb de places 
+//On attend le retour des requêtes fetch et si la valeur rentrée par le client est > au nb de places 
 //restantes, on affiche le message d'alerte et on empêche la soumission du formulaire. 
 nbCouverts.addEventListener("input", function(event) {
 

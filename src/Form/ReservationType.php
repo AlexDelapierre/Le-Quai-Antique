@@ -31,14 +31,13 @@ class ReservationType extends AbstractType
             ->add('phoneNumber', options:[
                 'label' => 'Numéro de téléphone',
                 // 'constraints' => [
-                //     new NotBlank(['message' => 'Entrez un nom.']),
+                //     new NotBlank(['message' => 'Entrez un numéro de téléphone.']),
                 //     new Length(['min' => 10, 'minMessage' => '> {{ limit }}'])    
                 // ] 
             ])
             ->add('nbCouverts', NumberType::class, [
                 'label' => 'Nombre de personnes',
                 'html5' => true,
-                // 'attr' => ['id' => 'nom-du-champ']
             ])  
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
