@@ -75,8 +75,8 @@ $ php bin/console server:start
 ***
 The following supporting documents are available in the public/annexes folder :
 
-* [Télécharger la charte graphique](https://github.com/AlexDelapierre/Le-Quai-Antique/main/public/annexes/Charte_graphique.pdf)
-* [Télécharger la documentation technique](https://github.com/AlexDelapierre/Le-Quai-Antique/main/public/annexes/documentation_technique.pdf)
+* Charte_graphique.pdf
+* documentation_technique.pdf
 
 
 
