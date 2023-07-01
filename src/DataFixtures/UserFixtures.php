@@ -18,19 +18,6 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $admin = new User();
-        $admin->setEmail('admin@demo.fr');
-        $admin->setLastname('DELAPIERRE');
-        $admin->setFirstname('Alexandre');
-        $admin->setPhoneNumber('0627175198');
-        $admin->setPassword($this->passwordEncoder->hashPassword($admin, 'admin'));
-        $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setNbCouverts(2);
-        $admin->setAllergie('Crustacés');
-        
-
-        $manager->persist($admin);
-
         //use the factory to create a Faker\Generator instance
         $faker = Faker\Factory::create('fr_FR');
 
