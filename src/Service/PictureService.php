@@ -174,8 +174,10 @@ class PictureService
     //On stocke l'image recadrée
     imagewebp($resized_picture, $path . '/' . $width . 'X' . $height . '-' . $fichier);
 
+    /*
     //Je déplace le fichier de taille d'origine dans le path (le '/' sert à des problème éventuels dans windows).
-    // $picture->move($path . '/', $fichier);
+    $picture->move($path . '/', $fichier);
+    */
 
     //On récupère le nom de l'image redimensionnée
     $webp_filename = $width . 'X' . $height . '-' . $fichier;
@@ -183,8 +185,10 @@ class PictureService
     //On retourne le nom de l'image redimensionnée
     return $webp_filename;
 
+    /*
     //On retourne le nom d'origine de l'image (ancienne version)
-    // return $fichier;
+    return $fichier;
+    */
   }
 
 
@@ -202,12 +206,15 @@ class PictureService
         $success = true;
       }
 
-      // $original = $path . '/' . $fichier;
+      /*
+      $original = $path . '/' . $fichier;
       
-      // if(file_exists($original)){
-      //   unlink($original);
-      //   $success = true;
-      // }
+      if(file_exists($original)){
+        unlink($original);
+        $success = true;
+      }
+      */
+      
       return $success;
     }
     return false;

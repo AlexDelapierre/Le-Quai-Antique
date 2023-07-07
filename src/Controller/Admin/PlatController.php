@@ -44,10 +44,12 @@ class PlatController extends AbstractController
                 //On appelle le service d'ajout
                 $fichier = $pictureService->add($image, $folder, 1200, 700);
                 
-                // Ancienne méthode avec l'entity Image :
-                // $img = new Image;
-                // $img->setName($fichier);
-    
+                /*
+                // Version avec l'entity Image :
+                $img = new Image;
+                $img->setName($fichier);
+                */
+
                 //On persiste notre image dans le plat
                 $plat->setImage($fichier);
             }
@@ -76,9 +78,11 @@ class PlatController extends AbstractController
     #[Route('/{id}/edit', name: 'app_plat_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Plat $plat, PlatRepository $platRepository,HoraireRepository $horaireRepository ,PictureService $pictureService): Response
     {
-        // Ancienne méthode avec l'entity Image :
-        //On récupère le nom de l'image
-        // $image = $plat->getImage()->getName();
+        /*
+        // Version avec l'entity Image :
+        On récupère le nom de l'image
+        $image = $plat->getImage()->getName();
+        */
 
         //On récupère le nom l'image
         $image = $plat->getImage();
@@ -104,9 +108,11 @@ class PlatController extends AbstractController
                  //On appelle le service d'ajout
                  $fichier = $pictureService->add($image, $folder, 1200, 700);
                  
-                 // Ancienne méthode avec l'entity Image :
-                //  $img = new Image;
-                //  $img->setName($fichier);
+                /* 
+                // Version avec l'entity Image :
+                $img = new Image;
+                $img->setName($fichier);
+                */
                 
                 //On persiste notre image dans le plat
                 $plat->setImage($fichier);
@@ -134,9 +140,11 @@ class PlatController extends AbstractController
             
             if($plat->getImage() !== null) {
 
-                // Ancienne méthode avec l'entity Image :
-                //On récupère le nom l'image
-                // $image = $plat->getImage()->getName();
+                /*
+                // Version avec l'entity Image :
+                On récupère le nom l'image
+                $image = $plat->getImage()->getName();
+                */
     
                 //On récupère le nom l'image
                 $image = $plat->getImage();
@@ -147,15 +155,16 @@ class PlatController extends AbstractController
                 //On appelle le service de suppression
                 $pictureService->delete($image, $folder, 1200, 700);
                 
-    
-                // // Use unlink() function to delete a file
-                // $image = $plat->getImage()->getName();
-                // if (!unlink('../public/assets/uploads/images/plats/'.$image)) {
-                // echo ("$image cannot be deleted due to an error");
-                // }
-                // else {
-                // echo ("$image has been deleted");
-                // }
+                /*
+                // Use unlink() function to delete a file
+                $image = $plat->getImage()->getName();
+                if (!unlink('../public/assets/uploads/images/plats/'.$image)) {
+                echo ("$image cannot be deleted due to an error");
+                }
+                else {
+                echo ("$image has been deleted");
+                }
+                */
             } 
 
             $platRepository->remove($plat, true);

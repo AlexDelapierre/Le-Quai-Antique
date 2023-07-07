@@ -65,7 +65,7 @@ class ReservationRepository extends ServiceEntityRepository
     //    }
 
 
-    //Requête DQL pour récupérer le nb total de réservation
+    //Requête SQL pour récupérer le nb total de réservation
     // public function findNbCouverts()
     // {
     //     $conn = $this->getEntityManager()->getConnection();
@@ -76,7 +76,7 @@ class ReservationRepository extends ServiceEntityRepository
     //     return $resultSet->fetchAllAssociative();  
     // }
 
-    //Requête DQL pour récupérer le nb total de réservation en fonction de la date et du service
+    //Requête SQL pour récupérer le nb total de réservation en fonction de la date et du service
     public function findNbCouverts($date, $service)
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -88,6 +88,24 @@ class ReservationRepository extends ServiceEntityRepository
         // returns an array of arrays (i.e. a raw data set)
         return $resultSet->fetchAllAssociative();  
     }
+
+    /*
+    //Requête DQL pour récupérer le nb total de réservation en fonction de la date et du service (à tester)
+    public function findNbCouverts($date, $service)
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+            SELECT SUM(r.nbCouverts) as nbCouverts
+            FROM App\Entity\Reservation r
+            WHERE r.date = :date AND r.service = :service
+        ');
+        $query->setParameter('date', $date);
+        $query->setParameter('service', $service);
+        $result = $query->getSingleScalarResult();
+
+        return $result;
+    }
+    */
 
     /*
     //Requête DQL

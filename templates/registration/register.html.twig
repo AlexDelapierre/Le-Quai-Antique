@@ -4,32 +4,28 @@
 
 {% block main %}
     <section class="mb-5">
-                <h1 class="mb-4 text-center">Inscription</h1>
-
-                {{ form_start(registrationForm) }}
-                    <fieldset class="mb-3"
-                        {{ form_row(registrationForm.lastname) }}
-                        {{ form_row(registrationForm.firstname) }}
-                        {{ form_row(registrationForm.email) }}
-                        {{ form_row(registrationForm.phoneNumber) }}
-                        {{ form_row(registrationForm.plainPassword, {
-                        label: 'Password'}) }}
-                    </fieldset>
-                        <legend>Informations complémentaires <br> 
-                            <p style="font-size: 16px;">
-                                (Ces informations sont optionnelles et servent à pré-remplir le formulaire de réservation).
-                            </p>
-                        </legend>
-                        {{ form_row(registrationForm.nbCouverts) }}
-                        {{ form_row(registrationForm.allergie) }}
-                    </fieldset>
-                    
-                    {# {{ form_row(registrationForm.RGPDConsent) }} #}
-
-                    <button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire
-                    </button>
-                    <a href="{{ path('app_login') }}" class="btn btn-outline-primary ">Me connecter</a>
-                {{ form_end(registrationForm) }}
+        <h1 class="mb-4 text-center">Inscription</h1>
+        {{ form_start(registrationForm) }}
+            <fieldset class="mb-3"
+                {{ form_row(registrationForm.lastname) }}
+                {{ form_row(registrationForm.firstname) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.phoneNumber) }}
+                {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'}) }}
+            </fieldset>
+                <legend>Informations complémentaires <br> 
+                    <p style="font-size: 16px;">
+                        (Ces informations sont optionnelles et servent à pré-remplir le formulaire de réservation).
+                    </p>
+                </legend>
+                {{ form_row(registrationForm.nbCouverts) }}
+                {{ form_row(registrationForm.allergie) }}
+            </fieldset>   
+            {# {{ form_row(registrationForm.RGPDConsent) }} #}
+            <button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire
+            </button>
+            <a href="{{ path('app_login') }}" class="btn btn-outline-primary ">Me connecter</a>
+        {{ form_end(registrationForm) }}
     </section>
-    
 {% endblock %}
