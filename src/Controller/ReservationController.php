@@ -18,21 +18,23 @@ class ReservationController extends AbstractController
     #[Route('/', name: 'app_reservation_index', methods: ['GET'])]
     public function index(ReservationRepository $reservationRepository, HoraireRepository $horaireRepository): Response
     {
-        // if ($this->getUser()){
-        //     $userRole = $this->getUser()->getRoles();
+        /*
+        if ($this->getUser()){
+            $userRole = $this->getUser()->getRoles();
  
-        //     if(in_array("ROLE_ADMIN", $userRole)){
-        //         return $this->render('admin/reservationAdmin/index.html.twig', [
-        //             'reservations' => $reservationRepository->findAll(),
-        //             'horaires' => $horaireRepository->findAll(),
-        //         ]);
-        //     } 
-        //     else {
-        //         return $this->render('main/index.html.twig', compact('galeries', 'horaires'));
-        //     } 
-        // }
+            if(in_array("ROLE_ADMIN", $userRole)){
+                return $this->render('admin/reservationAdmin/index.html.twig', [
+                    'reservations' => $reservationRepository->findAll(),
+                    'horaires' => $horaireRepository->findAll(),
+                ]);
+            } 
+            else {
+                return $this->render('main/index.html.twig', compact('galeries', 'horaires'));
+            } 
+        }
 
-        // return $this->render('main/index.html.twig', compact('galeries', 'horaires'));
+        return $this->render('main/index.html.twig', compact('galeries', 'horaires'));
+        */
 
         return $this->render('admin/reservationAdmin/index.html.twig', [
             'reservations' => $reservationRepository->findAll(),
@@ -62,25 +64,31 @@ class ReservationController extends AbstractController
             
         }; 
 
-        // Pré-remplie les données du formulaire
-            // $form->setData(['lastname' => $user->getLastname(), 'firstname' => $user->getFirstname(),
-            // 'phoneNumber' => $user->getPhoneNumber()]);
+        /*
+        // Pré-remplie les données du formulaire avec $form
+        $form->setData(['lastname' => $user->getLastname(), 'firstname' => $user->getFirstname(),
+        'phoneNumber' => $user->getPhoneNumber()]);
+        */    
             
 
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
+        /*
         // dd(
         //     $form->get('lastname')->getData(),  //Données de modèle
         //     $form->get('lastname')->getNormData(), //Données de normalisation
         //     $form->get('lastname')->getViewData(), //Données de vue
         // );
+        */
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            /*
             // dd($form->getData());
             // dd($form->get('lastname')); 
             // dd($form->get('lastname')->getName()->getConfig()->getType()->getInnerType());
+            */
             
             if ($this->getUser()){
                 $reservation->setUser($user);
@@ -95,9 +103,11 @@ class ReservationController extends AbstractController
                 if(in_array("ROLE_ADMIN", $userRole)){
                     return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
                 } 
+                /*
                 // else {
                 //     return $this->render('main/index.html.twig', compact('galeries', 'horaires'));
                 // } 
+                */
             }
 
             return $this->redirectToRoute('main', [], Response::HTTP_SEE_OTHER);
