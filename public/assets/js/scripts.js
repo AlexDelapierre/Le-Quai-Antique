@@ -1,4 +1,3 @@
-
 // Pour ajouter dynamiquement la classe Bootstrap tableResponsive aux tables du panneau d'administration en format mobile
 const tableResponsive = document.querySelector('.tableResponsive');
 
