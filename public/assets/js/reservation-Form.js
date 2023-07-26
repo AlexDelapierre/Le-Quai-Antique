@@ -1,4 +1,4 @@
-let form = document.querySelector("form");
+let formReservation = document.querySelector("form");
 let formDiv = document.getElementById("formDiv");
 let date = document.getElementById("reservation_date");
 let service = document.getElementById("reservation_service");
@@ -129,7 +129,7 @@ nbCouverts.addEventListener("input", function(event) {
       // on affiche le message d'alerte avec le nb de couverts restant et on empêche la soumission du formulaire. 
       if (event.target.value > nbCouvertsRemain) {
         // On empêche la soumission du formulaire avec la fonction de rappel nommée.
-        form.addEventListener('submit', preventDefaultSubmit);
+        formReservation.addEventListener('submit', preventDefaultSubmit);
         
         //Si le message d'alerte n'est pas déja affiché, on le crée et on l'ajoute au DOM.
         //Sinon on il supprime.
@@ -148,7 +148,7 @@ nbCouverts.addEventListener("input", function(event) {
         }
       } else {
         // Supprimer l'événement "submit" avec la même fonction de rappel nommée
-        form.removeEventListener('submit', preventDefaultSubmit); 
+        formReservation.removeEventListener('submit', preventDefaultSubmit); 
 
         if (isWarningDisplayed) {
           warningParagraph.remove();
@@ -172,8 +172,20 @@ nbCouverts.addEventListener("input", function(event) {
     //     isWarningDisplayed = false;
     // }    
     // On empêche la soumission du formulaire.
-    form.addEventListener('submit', preventDefaultSubmit);
+    formReservation.addEventListener('submit', preventDefaultSubmit);
   }
   
 });
 
+
+//-----------------On désactive le bouton submit lorsque le formulaire est soumis-------------------
+formReservation.addEventListener('submit', function(event) {
+
+  if (nbCouverts.value < nbCouvertsRemain) {
+      // Désactivez tous les boutons du formulaire
+      document.querySelectorAll("button").forEach(function(button) {
+      button.disabled = true;
+    });
+  }
+
+});
