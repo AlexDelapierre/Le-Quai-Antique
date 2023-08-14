@@ -46,6 +46,7 @@ class RegistrationFormType extends AbstractType
                 // ] 
             ])
             ->add('nbCouverts', NumberType::class, [
+                'required' => false,
                 'label' => 'Nombre de personnes',
                 'html5' => true,
             ])
