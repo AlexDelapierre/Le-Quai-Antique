@@ -90,6 +90,21 @@ class ReservationRepository extends ServiceEntityRepository
     }
 
     /*
+    //Requête utilisant le Query Builder pour récupérer le nb total de réservation en fonction de la date et du service (à tester)
+    public function findNbCouverts($date, $service)
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->select('SUM(r.nbCouverts) as nbCouverts')
+            ->where('r.date = :date')
+            ->andWhere('r.service = :service')
+            ->setParameter('date', $date)
+            ->setParameter('service', $service);
+
+        return $qb->getQuery()->getResult();
+    }
+    */
+
+    /*
     //Requête DQL pour récupérer le nb total de réservation en fonction de la date et du service (à tester)
     public function findNbCouverts($date, $service)
     {
