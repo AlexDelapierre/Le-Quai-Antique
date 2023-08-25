@@ -71,7 +71,7 @@ class JsonController extends AbstractController
     }
     */ 
 
-    // Avec requête DQL :
+    // On récupère la requête SQL définie dans le ReservationRepository :
     $nbCouverts = $reservationRepository->findNbCouverts($date, $service);
     
     return new JsonResponse($nbCouverts);  
