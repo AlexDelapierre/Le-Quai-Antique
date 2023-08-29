@@ -96,6 +96,8 @@ class ReservationController extends AbstractController
 
             $reservationRepository->save($reservation, true);
 
+            $this->addFlash('success', 'Votre réservation est enregistrée');
+
             //On vérifie si l'utilisateur est connecté et si c'est l'administrateur
             if ($this->getUser()){
                 $userRole = $this->getUser()->getRoles();
